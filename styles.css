@@ -31,7 +31,7 @@ body {
   background-image: radial-gradient(circle at 20% 80%, rgba(var(--nova-gold-rgb), 0.1) 0%, transparent 50%),
     radial-gradient(circle at 80% 20%, rgba(var(--nova-purple-rgb), 0.1) 0%, transparent 50%),
     radial-gradient(circle at 40% 40%, rgba(var(--nova-pink-rgb), 0.05) 0%, transparent 50%);
-  animation: novaGlow 8s ease-in-out infinite alternate;
+  animation: novaGlow 8s linear infinite alternate;
   /* Updated padding to account for unified navbar height */
   padding-top: 120px;
 }
@@ -215,7 +215,7 @@ body {
   -webkit-text-fill-color: transparent;
   background-clip: text;
   /* Added pulsing glow animation */
-  animation: novaGlowText 2s ease-in-out infinite alternate;
+  animation: novaGlowText 2s linear infinite alternate;
 }
 
 .hero-subtitle {
@@ -253,7 +253,7 @@ body {
 .btn-primary {
   background: var(--nova-gradient);
   background-size: 200% 200%;
-  animation: novaPulse 4s ease-in-out infinite;
+  animation: novaPulse 4s linear infinite;
   color: #000000;
   font-weight: 700;
   text-shadow: 0 0 5px rgba(var(--nova-bg-rgb), 0.3);
@@ -417,7 +417,7 @@ body {
   font-size: 2rem;
   color: #000000;
   /* Added subtle pulse animation */
-  animation: novaPulse 6s ease-in-out infinite;
+  animation: novaPulse 6s linear infinite;
   box-shadow: 0 0 20px rgba(var(--nova-gold-rgb), 0.3);
 }
 
@@ -795,7 +795,7 @@ html {
   align-items: center;
   gap: 8px;
   transition: all 0.3s ease;
-  animation: novaPulse 4s ease-in-out infinite;
+  animation: novaPulse 4s linear infinite;
   
 }
 
