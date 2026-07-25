@@ -562,15 +562,6 @@ body {
 .event-content p {
   color: var(--nova-text-muted);
   line-height: 1.6;
-  margin-bottom: 15px;
-}
-
-.event-date {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  color: var(--nova-gold);
-  font-weight: 500;
 }
 
 /* Footer */
