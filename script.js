@@ -145,7 +145,7 @@ const observer = new IntersectionObserver((entries) => {
 
 // Observe elements for animation
 document.addEventListener("DOMContentLoaded", () => {
-  const animateElements = document.querySelectorAll(".feature-card, .rule-item, .event-card")
+  const animateElements = document.querySelectorAll(".feature-card, .rule-item, .event-card, .rank-card, .price-card")
   animateElements.forEach((el) => {
     el.style.opacity = "0"
     el.style.transform = "translateY(30px)"
