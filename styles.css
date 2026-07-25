@@ -819,82 +819,74 @@ html {
   margin-bottom: 50px;
 }
 
-.store-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 30px;
-  max-width: 900px;
-  margin: 0 auto;
+.store-category {
+  margin-bottom: 60px;
 }
 
-.product-card {
+.store-category:last-child {
+  margin-bottom: 0;
+}
+
+.store-category-title {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 25px;
+  padding-left: 15px;
+  border-left: 4px solid var(--nova-purple);
+}
+
+/* Rank tiers */
+.rank-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 25px;
+}
+
+.rank-card {
+  position: relative;
   background: rgba(var(--nova-bg-rgb), 0.8);
   backdrop-filter: blur(10px);
   border: 1px solid rgba(var(--nova-purple-rgb), 0.2);
   border-radius: 15px;
-  overflow: hidden;
+  padding: 30px 20px;
+  text-align: center;
   transition: all 0.3s ease;
 }
 
-.product-card:hover {
-  transform: translateY(-10px);
+.rank-card:hover {
+  transform: translateY(-8px);
   box-shadow: 0 20px 40px rgba(var(--nova-purple-rgb), 0.2), 0 0 30px rgba(var(--nova-pink-rgb), 0.1);
   border-color: rgba(var(--nova-pink-rgb), 0.4);
 }
 
-.product-image {
-  position: relative;
-  height: 200px;
-  overflow: hidden;
-  background: rgba(var(--nova-bg-rgb), 0.6);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.rank-card-featured {
+  border-color: rgba(var(--nova-gold-rgb), 0.5);
 }
 
-.product-image img {
-  max-width: 60%;
-  max-height: 60%;
-  object-fit: contain;
-  transition: transform 0.3s ease;
-}
-
-.product-card:hover .product-image img {
-  transform: scale(1.05);
-}
-
-.product-badge {
+.rank-badge {
   position: absolute;
-  top: 15px;
-  right: 15px;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
   background: var(--nova-gradient);
   color: #000000;
-  padding: 5px 15px;
+  padding: 4px 14px;
   border-radius: 20px;
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 700;
-  box-shadow: 0 0 10px rgba(var(--nova-gold-rgb), 0.4);
+  white-space: nowrap;
 }
 
-.product-content {
-  padding: 25px;
-  text-align: center;
-}
-
-.product-content h3 {
-  font-size: 1.3rem;
-  font-weight: 600;
-  margin-bottom: 15px;
+.rank-name {
+  font-size: 1.2rem;
+  font-weight: 700;
   color: #ffffff;
-}
-
-.product-content p {
-  color: var(--nova-text-muted);
-  line-height: 1.6;
   margin-bottom: 15px;
+  text-transform: uppercase;
 }
 
-.product-price {
+.rank-price {
   font-size: 2rem;
   font-weight: 700;
   color: var(--nova-gold);
@@ -902,7 +894,79 @@ html {
   margin-bottom: 20px;
 }
 
-.product-buy-btn {
-  width: 100%;
+.rank-price span {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--nova-text-muted);
+  text-shadow: none;
+}
+
+.rank-buy-btn {
+  display: block;
+  background: var(--nova-gradient);
+  color: #000000;
+  text-decoration: none;
+  font-weight: 700;
+  padding: 10px 0;
+  border-radius: 25px;
+  transition: all 0.3s ease;
+}
+
+.rank-buy-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(var(--nova-gold-rgb), 0.4);
+}
+
+/* Compact price list (kits, protections, cosmetics) */
+.price-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 15px;
+}
+
+.price-card {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  background: rgba(var(--nova-bg-rgb), 0.8);
+  border: 1px solid rgba(var(--nova-purple-rgb), 0.15);
+  border-radius: 12px;
+  padding: 15px 20px;
+  transition: all 0.3s ease;
+}
+
+.price-card:hover {
+  border-color: rgba(var(--nova-pink-rgb), 0.4);
+  box-shadow: 0 10px 20px rgba(var(--nova-purple-rgb), 0.15);
+}
+
+.price-name {
+  flex: 1;
+  color: #ffffff;
+  font-weight: 500;
+}
+
+.price-value {
+  color: var(--nova-gold);
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+.price-buy-btn {
+  display: flex;
+  align-items: center;
   justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--nova-gradient);
+  color: #000000;
+  text-decoration: none;
+  flex-shrink: 0;
+  transition: all 0.3s ease;
+}
+
+.price-buy-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 15px rgba(var(--nova-gold-rgb), 0.4);
 }
