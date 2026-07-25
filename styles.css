@@ -644,6 +644,30 @@ body {
   text-shadow: 0 0 8px rgba(var(--nova-gold-rgb), 0.4);
 }
 
+.footer-qr {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  margin-top: 5px;
+  text-decoration: none;
+  color: var(--nova-text-muted);
+  font-size: 0.85rem;
+}
+
+.footer-qr img {
+  width: 100px;
+  height: 100px;
+  border-radius: 10px;
+  border: 2px solid rgba(var(--nova-purple-rgb), 0.4);
+  transition: all 0.3s ease;
+}
+
+.footer-qr:hover img {
+  border-color: var(--nova-gold);
+  box-shadow: 0 0 15px rgba(var(--nova-gold-rgb), 0.4);
+}
+
 .server-info p {
   margin-bottom: 8px;
   color: var(--nova-text-muted);
