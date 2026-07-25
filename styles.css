@@ -191,8 +191,8 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(135deg, rgba(var(--nova-bg-rgb), 0.6), rgba(var(--nova-bg-rgb), 0.4));
-  backdrop-filter: blur(1px);
+  /* Vignette instead of a flat wash: lighter in the middle so the photo reads through, darker at the edges for text contrast and depth */
+  background: radial-gradient(ellipse at center, rgba(var(--nova-bg-rgb), 0.15) 0%, rgba(var(--nova-bg-rgb), 0.35) 55%, rgba(var(--nova-bg-rgb), 0.75) 100%);
   z-index: -1;
 }
 
@@ -307,15 +307,14 @@ body {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  filter: blur(1px) brightness(0.7);
-  /* Added smooth scale transition for subtle zoom effect */
-  transition: transform 2s cubic-bezier(0.4, 0, 0.2, 1);
+  filter: brightness(0.9);
+  /* Slow Ken Burns zoom for a sense of depth/perspective while the slide is showing */
+  transition: transform 9s cubic-bezier(0.4, 0, 0.2, 1);
   transform: scale(1);
 }
 
-/* Added subtle zoom effect during transition */
 .hero-slide.active img {
-  transform: scale(1.02);
+  transform: scale(1.12);
 }
 
 .carousel-dots {
