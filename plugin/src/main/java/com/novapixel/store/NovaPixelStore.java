@@ -10,6 +10,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 public final class NovaPixelStore extends JavaPlugin implements CommandExecutor {
 
     private DeliveryService deliveryService;
+    private RealtimeClient realtimeClient;
 
     @Override
     public void onEnable() {
@@ -33,6 +34,13 @@ public final class NovaPixelStore extends JavaPlugin implements CommandExecutor 
         getLogger().info("NovaPixelStore habilitado. Consultando " + getConfig().getString("api-base-url"));
     }
 
+    @Override
+    public void onDisable() {
+        if (realtimeClient != null) {
+            realtimeClient.stop();
+        }
+    }
+
     private void reloadPluginConfig() {
         reloadConfig();
         String apiBaseUrl = getConfig().getString("api-base-url", "");
@@ -42,8 +50,14 @@ public final class NovaPixelStore extends JavaPlugin implements CommandExecutor 
             getLogger().warning("Configura api-base-url y plugin-secret en config.yml (deben coincidir con el .env del backend).");
         }
 
+        if (realtimeClient != null) {
+            realtimeClient.stop();
+        }
+
         StoreApiClient apiClient = new StoreApiClient(apiBaseUrl, pluginSecret, getLogger());
         this.deliveryService = new DeliveryService(this, apiClient);
+        this.realtimeClient = new RealtimeClient(this, deliveryService, apiBaseUrl, pluginSecret, getLogger());
+        this.realtimeClient.start();
     }
 
     // PurchaseListener lee este getter en cada join en vez de guardarse su
