@@ -517,6 +517,13 @@ body {
   gap: 30px;
 }
 
+.events-loading {
+  grid-column: 1 / -1;
+  text-align: center;
+  color: var(--nova-text-muted);
+  padding: 30px;
+}
+
 .event-card {
   background: rgba(var(--nova-bg-rgb), 0.8);
   backdrop-filter: blur(10px);
@@ -1581,6 +1588,21 @@ body.vip-exclusive-mode .vip-back-btn {
   color: #3a2a06;
   background: radial-gradient(circle at 35% 30%, #ffe9a8, #d4a017 55%, #8a6200);
   box-shadow: 0 0 25px rgba(255, 199, 79, 0.35);
+  overflow: hidden;
+}
+
+.gilcoin-luxury-icon.gilcoin-luxury-icon--img {
+  width: 140px;
+  height: 140px;
+  border-radius: 16px;
+  background: none;
+  box-shadow: none;
+}
+
+.gilcoin-luxury-icon--img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .gilcoin-luxury-name {
@@ -1718,6 +1740,20 @@ body.vip-exclusive-mode .vip-back-btn {
   justify-content: center;
   font-size: 1.6rem;
   color: #000000;
+  overflow: hidden;
+}
+
+.rank-icon.rank-icon--img {
+  width: 190px;
+  height: 190px;
+  border-radius: 20px;
+  background: none;
+}
+
+.rank-icon--img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
   box-shadow: 0 0 20px rgba(var(--nova-gold-rgb), 0.3);
 }
 
@@ -1730,7 +1766,7 @@ body.vip-exclusive-mode .vip-back-btn {
 }
 
 .rank-price {
-  font-size: 2rem;
+  font-size: 1.5rem;
   font-weight: 700;
   color: var(--nova-gold);
   text-shadow: 0 0 10px rgba(var(--nova-gold-rgb), 0.3);
@@ -1799,6 +1835,20 @@ body.vip-exclusive-mode .vip-back-btn {
   color: #000000;
   font-size: 1rem;
   flex-shrink: 0;
+  overflow: hidden;
+}
+
+.price-icon.price-icon--img {
+  width: 130px;
+  height: 130px;
+  border-radius: 16px;
+  background: none;
+}
+
+.price-icon--img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .price-icon-azul {

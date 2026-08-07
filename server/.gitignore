@@ -1,5 +1,0 @@
-node_modules/
-.env
-store.db
-store.db-wal
-store.db-shm

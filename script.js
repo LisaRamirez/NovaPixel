@@ -2,9 +2,9 @@
 // Tienda: checkout con nick de Minecraft
 // ==========================================================================
 
-// URL base del backend de la tienda (ver carpeta /server). Cámbiala por la
-// URL real donde despliegues el backend (ej: "https://api.novapixel.host").
-const NOVAPIXEL_API_BASE = "http://localhost:4000"
+// URL base del backend de la tienda (ver carpeta /django_backend). Cámbiala
+// por la URL real donde despliegues el backend (ej: "https://api.novapixel.host").
+const NOVAPIXEL_API_BASE = "http://localhost:8001"
 
 // Catálogo solo para mostrar el nombre del producto en el modal.
 // El precio real y la validación del producto viven en server/src/products.js
@@ -21,15 +21,16 @@ const STORE_PRODUCT_NAMES = {
   "proteccion-diamante-128": "Protección Diamante 128x128",
   "proteccion-netherita-256": "Protección Netherita 256x256",
   "proteccion-esmeralda-512": "Protección Esmeralda 512x512",
-  "kit-alas": "Kit de Alas",
+  "kit-star-light": "Kit Star Light",
   "kit-samurai": "Kit Samurai",
-  "kit-angelical": "Kit Angelical",
-  "kit-bahamut": "Kit Bahamut",
-  "kit-asura": "Kit Asura",
-  "kit-sakura": "Kit Sakura",
+  "kit-conqueror": "Kit Conqueror",
+  "kit-bahamon": "Kit Bahamon",
+  "kit-loki": "Kit Loki",
+  "kit-darkflame": "Kit Darkflame",
+  "kit-ifrit": "Kit Ifrit",
   "brillo-azul": "Brillo Azul",
   "brillo-agua": "Brillo Agua",
-  "brillo-fuego": "Brillo Fuego",
+  "brillo-arcoiris": "Brillo Arcoíris",
   "brillo-rosado": "Brillo Rosado",
   "brillo-negro": "Brillo Negro",
   "tag-personalizado": "Tag Personalizado",
@@ -75,7 +76,7 @@ const STORE_PRODUCT_PRICES = {
   "kit-sakura": 1500,
   "brillo-azul": 500,
   "brillo-agua": 500,
-  "brillo-fuego": 500,
+  "brillo-arcoiris": 500,
   "brillo-rosado": 500,
   "brillo-negro": 500,
   "tag-personalizado": 300,
@@ -1172,4 +1173,45 @@ document.addEventListener("DOMContentLoaded", () => {
     showSlides(slideIndex)
     startAutoSlide()
   }, 100)
+})
+
+// ==========================================================================
+// Eventos: antes eran cards fijas hardcodeadas acá mismo, ahora el staff
+// las administra desde el panel de Django (/admin/events/event/) y esto
+// solo las pinta.
+// ==========================================================================
+
+document.addEventListener("DOMContentLoaded", async () => {
+  const grid = document.getElementById("events-grid")
+  if (!grid) return
+
+  try {
+    const res = await apiFetch("/api/events/")
+    if (!res.ok) throw new Error("No se pudo cargar")
+    const { events } = await res.json()
+
+    if (events.length === 0) {
+      grid.innerHTML = `<p class="events-loading">No hay eventos activos por ahora.</p>`
+      return
+    }
+
+    grid.innerHTML = events
+      .map(
+        (event) => `
+          <div class="event-card">
+            <div class="event-image">
+              ${event.image ? `<img src="${event.image}" alt="${escapeHtml(event.title)}">` : ""}
+              <div class="event-badge">${escapeHtml(event.badgeLabel)}</div>
+            </div>
+            <div class="event-content">
+              <h3>${escapeHtml(event.title)}</h3>
+              <p>${escapeHtml(event.description)}</p>
+            </div>
+          </div>
+        `,
+      )
+      .join("")
+  } catch {
+    grid.innerHTML = `<p class="events-loading">No se pudieron cargar los eventos. Intenta más tarde.</p>`
+  }
 })

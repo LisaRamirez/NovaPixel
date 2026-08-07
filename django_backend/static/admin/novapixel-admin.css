@@ -1,0 +1,114 @@
+/* Reskin del admin de Django con la paleta de NovaPixel (ver :root en
+   styles.css del sitio). Se fuerza el mismo esquema oscuro sin importar el
+   toggle claro/oscuro del admin, para que siempre se vea de marca. */
+
+:root,
+html[data-theme="dark"],
+html[data-theme="light"] {
+  --primary: #9b5de5;
+  --secondary: #100c1a;
+  --accent: #ffd23f;
+  --primary-fg: #ffffff;
+
+  --body-fg: #f1edf9;
+  --body-bg: #14101f;
+  --body-quiet-color: #b8aed1;
+  --body-loud-color: #ffffff;
+
+  --header-color: #ffd23f;
+  --header-branding-color: #ffd23f;
+  --header-bg: #100c1a;
+  --header-link-color: #ffffff;
+
+  --breadcrumbs-fg: #b8aed1;
+  --breadcrumbs-link-fg: #ffd23f;
+  --breadcrumbs-bg: #1b1530;
+
+  --link-fg: #f15bb5;
+  --link-hover-color: #ffd23f;
+  --link-selected-fg: #ffd23f;
+
+  --hairline-color: rgba(155, 93, 229, 0.25);
+  --border-color: rgba(155, 93, 229, 0.35);
+
+  --error-fg: #ff6b6b;
+  --message-success-bg: #1f3d2e;
+  --message-warning-bg: #3d3620;
+  --message-error-bg: #3d2020;
+
+  --darkened-bg: #1b1530;
+  --selected-bg: #241c3d;
+  --selected-row: #241c3d;
+
+  --button-fg: #14101f;
+  --button-bg: #ffd23f;
+  --button-hover-bg: #f1c22e;
+  --default-button-bg: #9b5de5;
+  --default-button-hover-bg: #8347cf;
+  --close-button-bg: #3fc7b0;
+  --close-button-hover-bg: #34a892;
+  --delete-button-bg: #e14b6a;
+  --delete-button-hover-bg: #c53a57;
+
+  color-scheme: dark;
+}
+
+body {
+  background: #14101f;
+}
+
+#header {
+  background: #100c1a;
+  border-bottom: 1px solid rgba(155, 93, 229, 0.35);
+}
+
+.novapixel-brand a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: #ffd23f;
+  font-weight: 700;
+  font-size: 1.05rem;
+}
+
+.novapixel-brand img {
+  height: 34px;
+  width: auto;
+}
+
+div.breadcrumbs {
+  background: #1b1530;
+}
+
+.module h2,
+.module caption,
+.inline-group h2 {
+  background: linear-gradient(135deg, #9b5de5, #f15bb5);
+  color: #ffffff;
+}
+
+.selector-chosen h2 {
+  background: #9b5de5;
+}
+
+.button,
+input[type="submit"],
+input[type="button"],
+.submit-row input,
+a.button {
+  border-radius: 8px;
+}
+
+.object-tools a.addlink {
+  background-color: #3fc7b0;
+}
+
+a:link,
+a:visited {
+  color: #f15bb5;
+}
+
+.dashboard .module table th {
+  color: #ffd23f;
+}
