@@ -1,0 +1,20 @@
+name: NovaPixelStore
+version: '1.0.0'
+main: com.novapixel.store.NovaPixelStore
+api-version: '1.21'
+author: NovaPixel
+description: Entrega automáticamente las compras hechas en la tienda web de NovaPixel.
+
+commands:
+  novapixelstore:
+    description: Comandos de administración de la tienda NovaPixel.
+    usage: /novapixelstore reload | check <jugador>
+    permission: novapixel.store.admin
+
+permissions:
+  novapixel.store.admin:
+    description: Permite administrar el plugin de la tienda.
+    default: op
+  novapixel.store.notify:
+    description: Recibe avisos de compras que requieren entrega manual.
+    default: op

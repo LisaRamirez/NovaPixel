@@ -1,0 +1,14 @@
+# URL pública del backend de la tienda (carpeta /server de este repo).
+api-base-url: "https://api.novapixel.host"
+
+# Debe coincidir EXACTAMENTE con PLUGIN_SHARED_SECRET en el .env del backend.
+plugin-secret: "cambia-esto-por-un-secreto-largo-y-aleatorio"
+
+# Cada cuántos segundos se revisan compras pendientes de los jugadores
+# que ya están conectados (cubre el caso de que paguen mientras juegan).
+recheck-interval-seconds: 60
+
+# Segundos de espera tras el login antes de consultar la tienda, para
+# dar tiempo a que otros plugins (LuckPerms, etc.) terminen de cargar
+# los datos del jugador.
+join-delay-seconds: 3

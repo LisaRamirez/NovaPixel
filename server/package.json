@@ -1,0 +1,21 @@
+{
+  "name": "novapixel-store-backend",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Backend de la tienda de NovaPixel: crea pagos con Stripe y expone una API para que el plugin de Minecraft entregue las compras.",
+  "type": "commonjs",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "node --watch src/index.js"
+  },
+  "engines": {
+    "node": ">=22.5.0"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.0",
+    "stripe": "^16.12.0"
+  }
+}

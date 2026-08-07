@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NovaPixel - Mis Compras</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Unified Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <!-- Top section with social links -->
+            <div class="navbar-top">
+                <span class="topbar-text">¡Únete a nuestra comunidad!</span>
+                <div class="social-links">
+                    <a href="https://discord.gg/ZKDmDcNgKJ" target="_blank" class="social-link">
+                        <i class="fab fa-discord"></i>
+                        Discord
+                    </a>
+                    <a href="https://www.tiktok.com/@novapixel" target="_blank" class="social-link">
+                        <i class="fab fa-tiktok"></i>
+                        TikTok
+                    </a>
+                </div>
+            </div>
+            <!-- Main navigation section -->
+            <div class="nav-content">
+                <a class="logo" href="index.html#inicio">
+                    <img src="images/logo-novapixel.png" alt="NovaPixel">
+                </a>
+                <ul class="nav-links">
+                    <li><a href="index.html#inicio">Inicio</a></li>
+                    <li><a href="index.html#eventos">Eventos</a></li>
+                    <li><a href="index.html#reglas">Reglas</a></li>
+                    <li><a href="index.html#informacion">Información</a></li>
+                </ul>
+                <div class="nav-actions">
+                    <a href="tienda.html" class="store-btn" aria-label="Tienda">
+                        <i class="fas fa-shopping-cart"></i>
+                    </a>
+                    <div class="nav-account" id="nav-account"></div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Auth Modal -->
+    <div id="auth-modal" class="checkout-modal-overlay">
+        <div class="checkout-modal">
+            <button class="checkout-modal-close" id="auth-modal-close" aria-label="Cerrar">&times;</button>
+
+            <div id="auth-login-view">
+                <h3 class="checkout-modal-title">Iniciar sesión</h3>
+                <label class="checkout-modal-label" for="login-username-input">Usuario</label>
+                <input type="text" id="login-username-input" class="checkout-modal-input" autocomplete="username">
+                <label class="checkout-modal-label" for="login-password-input">Contraseña</label>
+                <input type="password" id="login-password-input" class="checkout-modal-input" autocomplete="current-password">
+                <p class="checkout-modal-error" id="login-error"></p>
+                <button class="checkout-modal-submit" id="login-submit">Entrar</button>
+                <p class="checkout-modal-hint">¿No tienes cuenta? <a href="#" id="show-register-link">Regístrate</a></p>
+                <p class="checkout-modal-hint"><a href="#" id="show-forgot-link">¿Olvidaste tu contraseña?</a></p>
+            </div>
+
+            <div id="auth-register-view" style="display:none;">
+                <h3 class="checkout-modal-title">Crear cuenta</h3>
+                <label class="checkout-modal-label" for="register-username-input">Usuario</label>
+                <input type="text" id="register-username-input" class="checkout-modal-input" autocomplete="username">
+                <label class="checkout-modal-label" for="register-email-input">Correo</label>
+                <input type="email" id="register-email-input" class="checkout-modal-input" autocomplete="email">
+                <label class="checkout-modal-label" for="register-password-input">Contraseña</label>
+                <input type="password" id="register-password-input" class="checkout-modal-input" autocomplete="new-password">
+                <label class="checkout-modal-label" for="register-nick-input">Tu nick de Minecraft (Java o Bedrock)</label>
+                <div class="checkout-nick-row">
+                    <img id="register-nick-avatar" class="checkout-nick-avatar" src="" alt="" width="40" height="40">
+                    <input type="text" id="register-nick-input" class="checkout-modal-input" placeholder="Ej: Steve123" autocomplete="off">
+                </div>
+                <p class="checkout-modal-hint">Este nick queda ligado a tu cuenta para siempre — revísalo bien, ahí se entregan tus compras.</p>
+                <p class="checkout-modal-error" id="register-error"></p>
+                <button class="checkout-modal-submit" id="register-submit">Crear cuenta</button>
+                <p class="checkout-modal-hint">¿Ya tienes cuenta? <a href="#" id="show-login-link">Inicia sesión</a></p>
+            </div>
+
+            <div id="auth-forgot-view" style="display:none;">
+                <h3 class="checkout-modal-title">Recuperar contraseña</h3>
+                <label class="checkout-modal-label" for="forgot-email-input">Correo de tu cuenta</label>
+                <input type="email" id="forgot-email-input" class="checkout-modal-input" autocomplete="email">
+                <p class="checkout-modal-hint">Te enviaremos un enlace para elegir una contraseña nueva.</p>
+                <p class="checkout-modal-error" id="forgot-error"></p>
+                <p class="checkout-modal-success" id="forgot-success"></p>
+                <button class="checkout-modal-submit" id="forgot-submit">Enviar enlace</button>
+                <p class="checkout-modal-hint"><a href="#" id="show-login-from-forgot-link">Volver a iniciar sesión</a></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mis Compras Section -->
+    <section id="mis-compras" class="store-section">
+        <div class="container">
+            <div class="store-header">
+                <img src="images/logo-novapixel.png" alt="NovaPixel" class="store-logo">
+                <h2 class="section-title">Mis Compras</h2>
+            </div>
+            <p class="store-subtitle">Historial de todo lo que has comprado en la tienda</p>
+
+            <div id="purchases-signed-out" class="purchases-empty" style="display:none;">
+                <p>Debes iniciar sesión para ver tu historial de compras.</p>
+                <button class="checkout-modal-submit purchases-login-btn" id="purchases-login-btn" type="button">Iniciar sesión</button>
+            </div>
+
+            <div id="purchases-loading" class="purchases-empty">
+                <p>Cargando...</p>
+            </div>
+
+            <div id="purchases-empty-state" class="purchases-empty" style="display:none;">
+                <p>Todavía no has comprado nada. ¡Visita la <a href="tienda.html">tienda</a>!</p>
+            </div>
+
+            <table id="purchases-table" class="purchases-table" style="display:none;">
+                <thead>
+                    <tr>
+                        <th>Producto</th>
+                        <th>Estado</th>
+                        <th>Fecha de compra</th>
+                    </tr>
+                </thead>
+                <tbody id="purchases-table-body"></tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <img src="images/logo-novapixel.png" alt="NovaPixel">
+                    </div>
+                    <p>El servidor de Minecraft más épico donde las aventuras nunca terminan. Únete a nuestra comunidad y vive experiencias únicas.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Enlaces Rápidos</h4>
+                    <ul>
+                        <li><a href="index.html#inicio">Inicio</a></li>
+                        <li><a href="tienda.html">Tienda</a></li>
+                        <li><a href="tienda.html#cat-donador-vip" class="vip-nav-link">VIP</a></li>
+                        <li><a href="index.html#eventos">Eventos</a></li>
+                        <li><a href="index.html#reglas">Reglas</a></li>
+                        <li><a href="index.html#informacion">Información</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Comunidad</h4>
+                    <div class="footer-social">
+                        <a href="https://discord.gg/ZKDmDcNgKJ" target="_blank" class="footer-social-link">
+                            <i class="fab fa-discord"></i>
+                            Discord
+                        </a>
+                        <a href="https://www.tiktok.com/@novapixel" target="_blank" class="footer-social-link">
+                            <i class="fab fa-tiktok"></i>
+                            TikTok
+                        </a>
+                        <a href="https://discord.gg/ZKDmDcNgKJ" target="_blank" class="footer-qr">
+                            <img src="images/discord-qr.png" alt="Escanea para unirte al Discord de NovaPixel">
+                            <span>Escanea para unirte</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Servidor</h4>
+                    <div class="server-info">
+                        <p><strong>IP:</strong> novapixel.host:25565</p>
+                        <p><strong>Versión:</strong> 1.21.11</p>
+                        <p><strong>Modalidad:</strong> Survival</p>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 NovaPixel. Todos los derechos reservados. No está afiliado con Mojang Studios.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
