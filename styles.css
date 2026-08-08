@@ -1808,7 +1808,7 @@ body.vip-exclusive-mode .vip-back-btn {
 /* Compact price list (kits, protections, cosmetics) */
 .price-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  grid-template-columns: repeat(auto-fill, 260px);
   gap: 24px;
 }
 
