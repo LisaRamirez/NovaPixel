@@ -1024,7 +1024,7 @@ body.vip-exclusive-mode .vip-back-btn {
 .store-main {
   flex: 1;
   min-width: 0;
-  margin-right: 316px;
+  margin-right: 308px;
 }
 
 .store-layout {
@@ -1320,7 +1320,7 @@ body.vip-exclusive-mode .vip-back-btn {
   }
 
   .store-main {
-    margin-right: 276px;
+    margin-right: 268px;
   }
 }
 
@@ -1808,7 +1808,7 @@ body.vip-exclusive-mode .vip-back-btn {
 /* Compact price list (kits, protections, cosmetics) */
 .price-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 24px;
 }
 
@@ -1849,7 +1849,7 @@ body.vip-exclusive-mode .vip-back-btn {
 
 .price-icon.price-icon--img {
   width: 100%;
-  max-width: 200px;
+  max-width: 230px;
   aspect-ratio: 1 / 1;
   height: auto;
   border-radius: 16px;
