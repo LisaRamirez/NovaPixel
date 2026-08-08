@@ -1380,6 +1380,10 @@ body.vip-exclusive-mode .vip-back-btn {
     margin-right: 0;
   }
 
+  .price-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
   .store-layout {
     flex-direction: column;
   }
@@ -1528,6 +1532,10 @@ body.vip-exclusive-mode .vip-back-btn {
 
 @media (max-width: 520px) {
   .gilcoin-luxury-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .price-grid {
     grid-template-columns: 1fr;
   }
 }
@@ -1808,8 +1816,7 @@ body.vip-exclusive-mode .vip-back-btn {
 /* Compact price list (kits, protections, cosmetics) */
 .price-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, 260px);
-  justify-content: center;
+  grid-template-columns: repeat(4, 1fr);
   gap: 24px 20px;
 }
 
