@@ -1809,7 +1809,8 @@ body.vip-exclusive-mode .vip-back-btn {
 .price-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, 260px);
-  gap: 24px;
+  justify-content: center;
+  gap: 24px 20px;
 }
 
 .price-card {
