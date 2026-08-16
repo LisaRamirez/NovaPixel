@@ -2153,6 +2153,8 @@ body.vip-exclusive-mode .vip-back-btn {
   align-items: center;
   justify-content: center;
   padding: 20px;
+  overflow-y: auto;
+  overscroll-behavior: contain;
 }
 
 .checkout-modal-overlay.active {
@@ -2163,6 +2165,12 @@ body.vip-exclusive-mode .vip-back-btn {
   position: relative;
   width: 100%;
   max-width: 420px;
+  /* Sin esto, un modal más alto que la pantalla se desborda por arriba y
+     por abajo del overlay centrado y queda imposible de recorrer (se veía
+     en "Recargas" en celular, con los paquetes en una sola columna). */
+  max-height: calc(100vh - 40px);
+  max-height: calc(100dvh - 40px);
+  margin: auto;
   background: linear-gradient(160deg, var(--nova-bg), var(--nova-bg-alt));
   border: 1px solid rgba(var(--nova-gold-rgb), 0.3);
   border-radius: 16px;
@@ -2400,9 +2408,27 @@ body.vip-exclusive-mode .vip-back-btn {
 
 /* Modal "Recargar Gilcoins": más ancho que el checkout-modal base para que
    quepa la grilla de paquetes cómodamente. */
+/* Columna flex para que solo scrollee la grilla de paquetes: así el título
+   y el botón de cerrar quedan siempre a la vista, aunque la lista sea larga
+   (en celular son 8 paquetes en una sola columna). */
 .gilcoin-recharge-modal {
   max-width: 820px;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.gilcoin-recharge-modal .gilcoin-luxury-grid {
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  min-height: 0;
+  padding-right: 4px;
+  /* Con altura definida (flex + overflow) las filas se reparten el alto
+     disponible y aplastan las tarjetas — y como .gilcoin-luxury-card tiene
+     overflow:hidden su alto mínimo es 0, así que nada las frena. start +
+     max-content las deja a su tamaño real y hace scrollear el contenedor. */
+  align-content: start;
+  grid-auto-rows: max-content;
 }
 
 .gilcoin-recharge-modal .checkout-modal-title {
