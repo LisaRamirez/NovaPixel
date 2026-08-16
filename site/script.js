@@ -107,10 +107,11 @@ const STORE_PRODUCT_PRICES = {
   "donador-vip-lv22": 25000,
 }
 
-// Beneficios de rangos y Donador VIP para el modal "Ver beneficios" (botón
-// .rank-detail-link[data-detail]). Texto tal cual la información de producto
-// ya provista — no se agregan beneficios nuevos. rango-donador-30/indef no
-// tienen entrada a propósito: nunca se recibió su detalle.
+// Beneficios de rangos y Donador VIP para el modal de detalle, que se abre
+// al tocar la imagen del producto (.product-detail-trigger[data-detail]).
+// Texto tal cual la información de producto ya provista — no se agregan
+// beneficios nuevos. rango-donador-30/indef no tienen entrada a propósito:
+// nunca se recibió su detalle.
 const PRODUCT_DETAILS = {
   "rango-angelical-30": {
     image: "images/rango-angelical-icon.png",
@@ -704,8 +705,16 @@ document.addEventListener("DOMContentLoaded", () => {
       currentProductId = null
     }
 
-    document.querySelectorAll(".rank-detail-link[data-detail]").forEach((btn) => {
-      btn.addEventListener("click", () => open(btn.dataset.detail))
+    // El detalle se abre al tocar la imagen del producto (no hay botón
+    // "Ver beneficios"); tabindex/Enter lo mantienen accesible por teclado.
+    document.querySelectorAll(".product-detail-trigger[data-detail]").forEach((trigger) => {
+      trigger.addEventListener("click", () => open(trigger.dataset.detail))
+      trigger.addEventListener("keydown", (e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault()
+          open(trigger.dataset.detail)
+        }
+      })
     })
 
     closeBtn.addEventListener("click", close)

@@ -1029,22 +1029,18 @@ body.vip-exclusive-mode .vip-hero-category {
   color: var(--nova-gold);
 }
 
-.rank-detail-link {
-  display: block;
-  background: none;
-  border: none;
-  color: var(--nova-text-muted);
-  font-family: inherit;
-  font-size: 0.8rem;
-  text-decoration: underline;
-  text-underline-offset: 2px;
+/* La imagen del producto abre el detalle de beneficios (reemplaza al viejo
+   botón "Ver beneficios"), así que debe leerse como clicable. */
+.product-detail-trigger {
   cursor: pointer;
-  margin: 8px 0 2px;
-  padding: 0;
+  transition: transform 0.2s ease, filter 0.2s ease;
 }
 
-.rank-detail-link:hover {
-  color: var(--nova-gold);
+.product-detail-trigger:hover,
+.product-detail-trigger:focus-visible {
+  transform: scale(1.04);
+  filter: drop-shadow(0 0 14px rgba(var(--nova-gold-rgb), 0.45));
+  outline: none;
 }
 
 .vip-back-btn {
@@ -1464,13 +1460,34 @@ body.vip-exclusive-mode .vip-back-btn {
   animation: fadeInUp 0.5s ease-out;
 }
 
+/* Compact price list (kits, protections, cosmetics). Base primero y
+   siempre antes de sus @media: si va después, gana por orden de cascada
+   y anula el responsive en cualquier ancho. */
+.price-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px 20px;
+}
+
+@media (max-width: 1024px) {
+  .price-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
 @media (max-width: 900px) {
   .store-page {
     flex-direction: column;
+    /* align-items:flex-start (base) deja que .store-main crezca al ancho
+       de su contenido en vez del contenedor — sin esto, .store-menu con
+       overflow-x:auto nunca llega a recortar/scrollear y empuja toda la
+       página a un ancho enorme (scroll horizontal en todo el sitio). */
+    align-items: stretch;
   }
 
   .store-main {
     margin-right: 0;
+    min-width: 0;
   }
 
   .price-grid {
@@ -1485,6 +1502,10 @@ body.vip-exclusive-mode .vip-back-btn {
 
   .store-tab {
     flex: 0 0 auto;
+  }
+
+  .store-tab-recharge {
+    margin-left: 0;
   }
 
   .store-cart {
@@ -1658,8 +1679,18 @@ body.vip-exclusive-mode .vip-back-btn {
   gap: 32px;
 }
 
+/* En celular el minmax(220px) dejaría una sola columna; se fuerzan 2 para
+   que la tienda se recorra igual que el resto de categorías. */
+@media (max-width: 700px) {
+  .rank-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+}
+
 .rank-card {
   position: relative;
+  min-width: 0;
   background: rgba(var(--nova-bg-rgb), 0.8);
   backdrop-filter: blur(10px);
   border: 1px solid rgba(var(--nova-purple-rgb), 0.2);
@@ -1697,14 +1728,11 @@ body.vip-exclusive-mode .vip-back-btn {
   .gilcoin-luxury-grid {
     grid-template-columns: 1fr;
   }
-
-  .price-grid {
-    grid-template-columns: 1fr;
-  }
 }
 
 .gilcoin-luxury-card {
   position: relative;
+  min-width: 0;
   background: linear-gradient(165deg, #14110a, #050403);
   border: 1px solid rgba(255, 199, 79, 0.3);
   border-radius: 14px;
@@ -1917,8 +1945,10 @@ body.vip-exclusive-mode .vip-back-btn {
 }
 
 .rank-icon.rank-icon--img {
-  width: 190px;
-  height: 190px;
+  width: 100%;
+  max-width: 190px;
+  height: auto;
+  aspect-ratio: 1 / 1;
   border-radius: 20px;
   background: none;
 }
@@ -1976,19 +2006,13 @@ body.vip-exclusive-mode .vip-back-btn {
   box-shadow: 0 10px 25px rgba(var(--nova-gold-rgb), 0.4);
 }
 
-/* Compact price list (kits, protections, cosmetics) */
-.price-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 24px 20px;
-}
-
 .price-card {
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
   gap: 8px;
+  min-width: 0;
   background: rgba(var(--nova-bg-rgb), 0.8);
   border: 1px solid rgba(var(--nova-purple-rgb), 0.15);
   border-radius: 12px;
