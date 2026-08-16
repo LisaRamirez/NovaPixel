@@ -349,6 +349,30 @@ function escapeHtml(str) {
   return div.innerHTML
 }
 
+// Aviso breve tipo "toast". En móvil el carrito es un panel cerrado, así
+// que sin esto añadir un producto no daba ninguna señal visible.
+let toastTimer = null
+function showToast(message) {
+  let toast = document.getElementById("novapixel-toast")
+  if (!toast) {
+    toast = document.createElement("div")
+    toast.id = "novapixel-toast"
+    toast.className = "novapixel-toast"
+    toast.setAttribute("role", "status")
+    toast.setAttribute("aria-live", "polite")
+    document.body.appendChild(toast)
+  }
+
+  toast.innerHTML = `<i class="fas fa-circle-check"></i><span>${escapeHtml(message)}</span>`
+  // Reiniciar la animación cuando ya había un toast en pantalla.
+  toast.classList.remove("visible")
+  void toast.offsetWidth
+  toast.classList.add("visible")
+
+  clearTimeout(toastTimer)
+  toastTimer = setTimeout(() => toast.classList.remove("visible"), 2200)
+}
+
 // Vista previa de la cabeza del skin usando mc-heads.net (servicio público
 // no oficial). Funciona bien con nicks de Java; para nicks de Bedrock sin
 // vincular muestra un skin genérico porque Mojang no conoce ese nombre.
@@ -921,6 +945,7 @@ document.addEventListener("DOMContentLoaded", () => {
       render()
       cartEl.classList.add("pulse")
       setTimeout(() => cartEl.classList.remove("pulse"), 400)
+      showToast(`${STORE_PRODUCT_NAMES[productId] || "Producto"} añadido al carrito`)
     }
 
     itemsEl.addEventListener("click", (e) => {

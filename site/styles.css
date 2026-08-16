@@ -2159,6 +2159,52 @@ body.vip-exclusive-mode .vip-back-btn {
   }
 }
 
+/* Aviso "añadido al carrito" (showToast en script.js) */
+.novapixel-toast {
+  position: fixed;
+  left: 50%;
+  bottom: 28px;
+  z-index: 21000;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  /* max-content evita que el aviso se parta en varias líneas cuando cabe
+     entero; el max-width lo mantiene dentro de la pantalla si no cabe. */
+  width: max-content;
+  max-width: calc(100vw - 40px);
+  padding: 13px 20px;
+  border-radius: 16px;
+  background: linear-gradient(160deg, var(--nova-bg), var(--nova-bg-alt));
+  border: 1px solid rgba(var(--nova-gold-rgb), 0.45);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.55);
+  color: #ffffff;
+  font-size: 0.9rem;
+  font-weight: 600;
+  opacity: 0;
+  visibility: hidden;
+  transform: translate(-50%, 16px);
+  transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s ease;
+}
+
+.novapixel-toast.visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(-50%, 0);
+}
+
+.novapixel-toast i {
+  color: var(--nova-gold);
+  font-size: 1.05rem;
+  flex-shrink: 0;
+}
+
+/* Sobre el botón flotante del carrito, que ocupa la esquina inferior. */
+@media (max-width: 900px) {
+  .novapixel-toast {
+    bottom: 96px;
+  }
+}
+
 /* Checkout Modal */
 .checkout-modal-overlay {
   display: none;
