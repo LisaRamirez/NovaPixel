@@ -2142,6 +2142,31 @@ body.vip-exclusive-mode .vip-back-btn {
   box-shadow: 0 0 15px rgba(var(--nova-gold-rgb), 0.4);
 }
 
+/* En celular la tarjeta queda en ~145px y precio + botón lado a lado no
+   caben (la fila pedía 168px y se salía de la tarjeta), así que se apilan
+   y se recorta el padding para ganar ancho útil. */
+@media (max-width: 700px) {
+  .price-card {
+    padding: 14px 10px;
+  }
+
+  .price-bottom-row {
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+  }
+
+  .price-value {
+    font-size: 0.95rem;
+    white-space: normal;
+  }
+
+  .price-buy-btn {
+    width: 36px;
+    height: 36px;
+  }
+}
+
 /* Checkout Modal */
 .checkout-modal-overlay {
   display: none;
