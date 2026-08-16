@@ -167,6 +167,18 @@ body {
   text-shadow: 0 0 8px rgba(var(--nova-purple-rgb), 0.4);
 }
 
+/* "VIP" lleva a la tienda exclusiva, así que va en dorado como el resto
+   de lo VIP (banner, tarjetas Donador) y no como un link normal. */
+.nav-links a.nav-link-vip {
+  color: var(--nova-gold);
+  font-weight: 700;
+}
+
+.nav-links a.nav-link-vip:hover {
+  color: var(--nova-gold);
+  text-shadow: 0 0 10px rgba(var(--nova-gold-rgb), 0.6);
+}
+
 /* Hero Section */
 .hero {
   position: relative;
@@ -1095,9 +1107,13 @@ body.vip-exclusive-mode .vip-back-btn {
   gap: 26px;
 }
 
+/* Una sola fila en todo ancho: en cuanto las pestañas + "Recargas" no
+   caben, el propio menú se vuelve una barra deslizable, sin depender de un
+   breakpoint fijo. Si caben (pantallas anchas) no aparece ninguna barra. */
 .store-menu {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
+  overflow-x: auto;
   gap: 10px;
   position: sticky;
   top: 110px;
@@ -1107,6 +1123,10 @@ body.vip-exclusive-mode .vip-back-btn {
   padding: 12px;
   border-radius: 16px;
   border: 1px solid rgba(var(--nova-purple-rgb), 0.25);
+}
+
+.store-menu .store-tab {
+  flex: 0 0 auto;
 }
 
 .store-items {
@@ -1430,9 +1450,9 @@ body.vip-exclusive-mode .vip-back-btn {
 
 /* Botón "Recargar Gilcoins": mismo tamaño que las pestañas de categoría
    pero con acento dorado, para distinguirlo como una acción y no como una
-   categoría más — va al final del menú. */
+   categoría más. Va al final del menú, pegado a Spawners (sin margin-left
+   auto, que en pantallas anchas lo empujaba lejos del resto). */
 .store-tab-recharge {
-  margin-left: auto;
   border-color: rgba(var(--nova-gold-rgb), 0.5);
   color: var(--nova-gold);
 }
@@ -1443,22 +1463,11 @@ body.vip-exclusive-mode .vip-back-btn {
   color: var(--nova-gold);
 }
 
-/* Tablet (incluye horizontal): mismo menú que en celular — una sola fila
-   deslizable. Al envolverse en 3 filas, "Recargas" quedaba solo a la
-   derecha por su margin-left:auto y se leía como un bloque suelto. */
+/* En tablet y celular el menú no se fija al hacer scroll: el navbar ya
+   ocupa buena parte de la pantalla y el sticky comía altura útil. */
 @media (max-width: 1100px) {
   .store-menu {
     position: static;
-    overflow-x: auto;
-    flex-wrap: nowrap;
-  }
-
-  .store-tab {
-    flex: 0 0 auto;
-  }
-
-  .store-tab-recharge {
-    margin-left: 0;
   }
 }
 

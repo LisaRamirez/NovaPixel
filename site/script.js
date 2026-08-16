@@ -1237,8 +1237,22 @@ document.addEventListener("DOMContentLoaded", () => {
 document.querySelectorAll('a[href^="#"]:not([href="#"])').forEach((anchor) => {
   anchor.addEventListener("click", function (e) {
     e.preventDefault()
-    const target = document.querySelector(this.getAttribute("href"))
-    if (target) {
+    const href = this.getAttribute("href")
+
+    // Actualizar el hash es lo que dispara los handlers de "hashchange"
+    // (modo VIP, pestañas de categoría), que son los que revelan secciones
+    // ocultas. Antes el preventDefault dejaba el hash intacto y esos
+    // handlers nunca corrían: el link "VIP" no hacía nada. Se usa
+    // pushState + evento manual para no dar el salto brusco del navegador.
+    if (window.location.hash !== href) {
+      history.pushState(null, "", href)
+    }
+    window.dispatchEvent(new HashChangeEvent("hashchange"))
+
+    // Solo se hace scroll si el destino ya es visible; si estaba oculto, el
+    // handler correspondiente lo muestra y hace scroll él mismo.
+    const target = document.querySelector(href)
+    if (target && getComputedStyle(target).display !== "none") {
       target.scrollIntoView({
         behavior: "smooth",
         block: "start",
@@ -1249,7 +1263,7 @@ document.querySelectorAll('a[href^="#"]:not([href="#"])').forEach((anchor) => {
 
 // Copy IP function
 function copyIP() {
-  const ip = "novapixel.host:25565"
+  const ip = "play.novapixelmc.com"
   navigator.clipboard
     .writeText(ip)
     .then(() => {
@@ -1302,7 +1316,7 @@ function copyIP() {
 }
 // Copy IP function
 function copyIP1() {
-  const ip = "novapixel.host  Puerto: 25565"
+  const ip = "play.novapixelmc.com  Puerto: 33334"
   navigator.clipboard
     .writeText(ip)
     .then(() => {
@@ -1412,13 +1426,23 @@ document.addEventListener("DOMContentLoaded", () => {
     })
   }
 
-  // Los links "VIP" del footer en otras páginas apuntan a
+  // Los links "VIP" del navbar y del footer apuntan a
   // tienda.html#cat-donador-vip: sin esto, el ancla llegaba a un elemento
-  // display:none y no pasaba nada visible.
-  if (window.location.hash === "#cat-donador-vip") {
-    document.body.classList.add("vip-exclusive-mode")
-    vipSection.scrollIntoView({ block: "start" })
+  // display:none y no pasaba nada visible. Se escucha también
+  // "hashchange" porque estando ya en tienda.html el link solo cambia el
+  // hash (mismo path) y no recarga la página.
+  function syncVipFromHash(smooth) {
+    if (window.location.hash === "#cat-donador-vip") {
+      document.body.classList.add("vip-exclusive-mode")
+      vipSection.scrollIntoView({ behavior: smooth ? "smooth" : "auto", block: "start" })
+    } else if (window.location.hash === "#tienda") {
+      // El link "Tienda" del navbar sale del modo VIP.
+      document.body.classList.remove("vip-exclusive-mode")
+    }
   }
+
+  syncVipFromHash(false)
+  window.addEventListener("hashchange", () => syncVipFromHash(true))
 })
 
 // Menú horizontal de categorías de la tienda. "Todos" (data-target="all")
