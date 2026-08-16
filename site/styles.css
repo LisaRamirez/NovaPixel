@@ -1715,7 +1715,9 @@ body.vip-exclusive-mode .vip-back-btn {
   gap: 22px;
 }
 
-@media (max-width: 900px) {
+/* Mismo corte que el menú: en tablet (vertical y horizontal) van 2
+   columnas. A 1024px las 4 columnas dejaban tarjetas de ~119px. */
+@media (max-width: 1100px) {
   .gilcoin-luxury-grid {
     grid-template-columns: repeat(2, 1fr);
   }
