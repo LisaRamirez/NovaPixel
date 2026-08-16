@@ -1471,18 +1471,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // Menú móvil: en pantallas angostas el navbar se reduce a solo logo +
 // botón de hamburguesa. Al abrirlo, mueve (no clona) los links de
-// navegación, Discord/TikTok y el bloque de carrito+cuenta dentro de un
-// panel desplegable único. Al volver a escritorio los regresa a su lugar
-// original, así los mismos elementos (con sus listeners y el id
-// #nav-account que usa NovaPixelAuth) siguen funcionando en ambos layouts.
+// navegación y el bloque de carrito+cuenta dentro de un panel desplegable
+// único. Al volver a escritorio los regresa a su lugar original, así los
+// mismos elementos (con sus listeners y el id #nav-account que usa
+// NovaPixelAuth) siguen funcionando en ambos layouts.
 function setupMobileMenu() {
   const navbar = document.querySelector(".navbar")
   if (!navbar) return
 
   const navContent = navbar.querySelector(".nav-content")
-  const navbarTop = navbar.querySelector(".navbar-top")
   const navLinks = navbar.querySelector(".nav-links")
-  const socialLinks = navbar.querySelector(".navbar-top .social-links")
   const navActions = navbar.querySelector(".nav-actions")
 
   let menuBtn = navbar.querySelector(".mobile-menu-btn")
@@ -1509,11 +1507,11 @@ function setupMobileMenu() {
       navContent.appendChild(dropdown)
     }
 
-    // Orden dentro del desplegable: Inicio/Eventos/Reglas/Información,
-    // luego carrito + iniciar sesión, y Discord/TikTok al final (abajo).
+    // Orden dentro del desplegable: Inicio/Eventos/Información y luego
+    // carrito + iniciar sesión. Discord/TikTok se quedan fuera: viven en
+    // .navbar-top, que está oculto en móvil, y siguen en el footer.
     if (navLinks && navLinks.parentElement !== dropdown) dropdown.appendChild(navLinks)
     if (navActions && navActions.parentElement !== dropdown) dropdown.appendChild(navActions)
-    if (socialLinks && socialLinks.parentElement !== dropdown) dropdown.appendChild(socialLinks)
   } else {
     // Restaura cada elemento a su posición original en el navbar de
     // escritorio. Se compara el padre actual (no solo si existe dropdown)
@@ -1523,9 +1521,6 @@ function setupMobileMenu() {
     }
     if (navActions && navContent && navActions.parentElement !== navContent) {
       navContent.insertBefore(navActions, menuBtn || null)
-    }
-    if (socialLinks && navbarTop && socialLinks.parentElement !== navbarTop) {
-      navbarTop.appendChild(socialLinks)
     }
     if (dropdown) dropdown.classList.remove("mobile-active")
   }

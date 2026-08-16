@@ -792,14 +792,6 @@ body {
     padding: 12px 20px;
   }
 
-  .navbar-top .social-links {
-    width: 100%;
-    justify-content: center;
-    gap: 24px;
-    padding-top: 12px;
-    border-top: 1px solid rgba(var(--nova-purple-rgb), 0.2);
-  }
-
   .nav-actions {
     width: 100%;
     justify-self: auto;
