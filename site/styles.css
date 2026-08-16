@@ -1443,6 +1443,25 @@ body.vip-exclusive-mode .vip-back-btn {
   color: var(--nova-gold);
 }
 
+/* Tablet (incluye horizontal): mismo menú que en celular — una sola fila
+   deslizable. Al envolverse en 3 filas, "Recargas" quedaba solo a la
+   derecha por su margin-left:auto y se leía como un bloque suelto. */
+@media (max-width: 1100px) {
+  .store-menu {
+    position: static;
+    overflow-x: auto;
+    flex-wrap: nowrap;
+  }
+
+  .store-tab {
+    flex: 0 0 auto;
+  }
+
+  .store-tab-recharge {
+    margin-left: 0;
+  }
+}
+
 .store-category {
   display: none;
 }
@@ -1484,20 +1503,6 @@ body.vip-exclusive-mode .vip-back-btn {
 
   .price-grid {
     grid-template-columns: repeat(2, 1fr);
-  }
-
-  .store-menu {
-    position: static;
-    overflow-x: auto;
-    flex-wrap: nowrap;
-  }
-
-  .store-tab {
-    flex: 0 0 auto;
-  }
-
-  .store-tab-recharge {
-    margin-left: 0;
   }
 
   .store-cart {
