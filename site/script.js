@@ -45,9 +45,6 @@ const STORE_PRODUCT_NAMES = {
   "fly-indefinido": "Fly Indefinido",
   "fly-30": "Fly 30 días",
   "comandos-pack": "Pack Comandos (/hat /ec /craft)",
-  "libro-ilimitado": "Libro Ilimitado",
-  "alas-angelicales": "Alas Angelicales",
-  "pocion-suerte": "Poción de la Suerte",
   "spawner-vaca": "Spawner de Vaca",
   "spawner-pollo": "Spawner de Pollo",
   "spawner-cerdo": "Spawner de Cerdo",
@@ -99,9 +96,6 @@ const STORE_PRODUCT_PRICES = {
   "fly-indefinido": 1500,
   "fly-30": 800,
   "comandos-pack": 400,
-  "libro-ilimitado": 1200,
-  "alas-angelicales": 1800,
-  "pocion-suerte": 900,
   "spawner-vaca": 300,
   "spawner-pollo": 300,
   "spawner-cerdo": 300,
@@ -698,6 +692,10 @@ document.addEventListener("DOMContentLoaded", () => {
       durationEl.textContent = detail.duration
       benefitsEl.innerHTML = detail.benefits.map((b) => `<li>${escapeHtml(b)}</li>`).join("")
 
+      const affordable = isAffordable(productId)
+      buyBtn.classList.toggle("needs-recharge", !affordable)
+      buyBtn.textContent = affordable ? "Añadir al carrito" : "Recargar Gilcoins"
+
       modalEl.classList.add("active")
     }
 
@@ -716,9 +714,67 @@ document.addEventListener("DOMContentLoaded", () => {
     })
 
     buyBtn.addEventListener("click", () => {
-      if (currentProductId && cartApi) cartApi.addItem(currentProductId)
+      if (!currentProductId) return
+      if (buyBtn.classList.contains("needs-recharge")) {
+        close()
+        document.dispatchEvent(new CustomEvent("novapixel:open-recharge-modal"))
+        return
+      }
+      if (cartApi) cartApi.addItem(currentProductId)
       close()
     })
+  }
+
+  // Modal "Recargar Gilcoins": los paquetes ya no viven en una pestaña
+  // propia, sino en este modal, abierto desde cualquier botón "Recargar"
+  // (saldo insuficiente para un ítem) o desde el aviso de saldo del carrito.
+  function setupGilcoinRechargeModal() {
+    const modalEl = document.getElementById("gilcoin-recharge-modal")
+    if (!modalEl) return null
+
+    const closeBtn = document.getElementById("gilcoin-recharge-close")
+
+    function open() {
+      modalEl.classList.add("active")
+    }
+
+    function close() {
+      modalEl.classList.remove("active")
+    }
+
+    closeBtn.addEventListener("click", close)
+    modalEl.addEventListener("click", (e) => {
+      if (e.target === modalEl) close()
+    })
+    document.addEventListener("novapixel:open-recharge-modal", open)
+
+    return { open, close }
+  }
+
+  // Un producto es "no asequible" cuando hay sesión iniciada y el saldo de
+  // Gilcoins de la cuenta no alcanza para ESE ítem en particular. Sin
+  // sesión no se penaliza: agregar al carrito sigue funcionando igual,
+  // el login se pide recién al pagar.
+  function isAffordable(productId) {
+    if (!NovaPixelAuth.user) return true
+    const price = STORE_PRODUCT_PRICES[productId]
+    if (price === undefined) return true
+    return NovaPixelAuth.user.gilcoinBalance >= price
+  }
+
+  function updateBuyButtonAffordability() {
+    document
+      .querySelectorAll(".rank-buy-btn[data-product], .price-buy-btn[data-product], .vip-product-buy-btn[data-product]")
+      .forEach((btn) => {
+        const affordable = isAffordable(btn.dataset.product)
+        btn.classList.toggle("needs-recharge", !affordable)
+        if (btn.classList.contains("price-buy-btn")) {
+          btn.innerHTML = affordable ? '<i class="fas fa-shopping-cart"></i>' : '<i class="fas fa-coins"></i>'
+          btn.title = affordable ? "" : "Te faltan Gilcoins — clic para recargar"
+        } else {
+          btn.textContent = affordable ? "Añadir" : "Recargar"
+        }
+      })
   }
 
   // Carrito de la tienda: los botones de producto ya no compran al instante,
@@ -882,8 +938,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const link = e.target.closest("#cart-buy-gilcoins-link")
       if (!link) return
       e.preventDefault()
-      const gilcoinsTab = document.querySelector('.store-tab[data-target="cat-gilcoins"]')
-      if (gilcoinsTab) gilcoinsTab.click()
+      document.dispatchEvent(new CustomEvent("novapixel:open-recharge-modal"))
     })
 
     clearBtn.addEventListener("click", () => {
@@ -941,14 +996,22 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const cartApi = setupCart()
   setupProductDetailModal(cartApi)
+  setupGilcoinRechargeModal()
 
   document
     .querySelectorAll(".rank-buy-btn[data-product], .price-buy-btn[data-product], .vip-product-buy-btn[data-product]")
     .forEach((btn) => {
       btn.addEventListener("click", () => {
+        if (btn.classList.contains("needs-recharge")) {
+          document.dispatchEvent(new CustomEvent("novapixel:open-recharge-modal"))
+          return
+        }
         if (cartApi) cartApi.addItem(btn.dataset.product)
       })
     })
+
+  updateBuyButtonAffordability()
+  document.addEventListener("novapixel:auth-changed", updateBuyButtonAffordability)
 })
 
 // ==========================================================================
@@ -1292,8 +1355,9 @@ document.addEventListener("DOMContentLoaded", () => {
 })
 
 // Banner dorado "NovaPixel VIP": al hacer clic entra a una "tienda" exclusiva
-// que reemplaza la tienda normal (la oculta) y deja ver Membresías Permanentes
-// + Donador VIP + el carrito. El botón "Volver" regresa a la tienda normal.
+// que reemplaza la tienda normal (la oculta) y deja ver Donador VIP + el
+// carrito. El botón "Volver" regresa a la tienda normal. Es la única
+// segunda "tienda" que existe aparte del catálogo principal.
 document.addEventListener("DOMContentLoaded", () => {
   const vipBannerBtn = document.getElementById("vip-hero-banner-btn")
   const vipBackBtn = document.getElementById("vip-back-btn")
@@ -1302,7 +1366,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (vipBannerBtn) {
     vipBannerBtn.addEventListener("click", () => {
-      document.body.classList.add("store-browsing", "vip-exclusive-mode")
+      document.body.classList.add("vip-exclusive-mode")
       vipSection.scrollIntoView({ behavior: "smooth", block: "start" })
     })
   }
@@ -1316,26 +1380,40 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Los links "VIP" del footer en otras páginas apuntan a
   // tienda.html#cat-donador-vip: sin esto, el ancla llegaba a un elemento
-  // display:none (vip-hero-category vive dentro de store-browse, oculto
-  // hasta entrar en modo "explorar") y no pasaba nada visible.
+  // display:none y no pasaba nada visible.
   if (window.location.hash === "#cat-donador-vip") {
-    document.body.classList.add("store-browsing", "vip-exclusive-mode")
+    document.body.classList.add("vip-exclusive-mode")
     vipSection.scrollIntoView({ block: "start" })
   }
 })
 
-// Tienda category tabs
+// Menú horizontal de categorías de la tienda. "Todos" (data-target="all")
+// muestra todas las categorías a la vez; el resto de pestañas muestra solo
+// la suya. Único catálogo — ya no hay página de inicio previa ni sidebar.
 document.addEventListener("DOMContentLoaded", () => {
-  const tabs = document.querySelectorAll(".store-tab")
+  // El botón "Recargar Gilcoins" vive al final del menú (misma pinta que
+  // las pestañas), pero no activa una categoría: abre el modal de recarga.
+  const rechargeMenuBtn = document.getElementById("store-menu-recharge-btn")
+  if (rechargeMenuBtn) {
+    rechargeMenuBtn.addEventListener("click", () => {
+      document.dispatchEvent(new CustomEvent("novapixel:open-recharge-modal"))
+    })
+  }
+
+  const tabs = Array.from(document.querySelectorAll(".store-tab")).filter((t) => t.dataset.target)
   const categories = document.querySelectorAll(".store-category")
   if (tabs.length === 0) return
 
   function activateTab(tab) {
-    document.body.classList.add("store-browsing")
     tabs.forEach((t) => t.classList.remove("active"))
-    categories.forEach((c) => c.classList.remove("active"))
     tab.classList.add("active")
-    document.getElementById(tab.dataset.target).classList.add("active")
+
+    if (tab.dataset.target === "all") {
+      categories.forEach((c) => c.classList.add("active"))
+      return
+    }
+    categories.forEach((c) => c.classList.remove("active"))
+    document.getElementById(tab.dataset.target)?.classList.add("active")
   }
 
   tabs.forEach((tab) => {
@@ -1353,62 +1431,33 @@ document.addEventListener("DOMContentLoaded", () => {
     if (matchingTab) activateTab(matchingTab)
   }
 
+  // Estado inicial: si el hash no marcó ninguna pestaña, se activa la que
+  // ya viene marcada en el HTML ("Todos" por defecto) para que "Todos"
+  // realmente muestre todas las categorías desde el primer render.
+  if (!window.location.hash) {
+    const initialTab = document.querySelector(".store-tab.active") || tabs[0]
+    activateTab(initialTab)
+  }
+
   syncTabFromHash()
   window.addEventListener("hashchange", syncTabFromHash)
 })
 
-// Página de inicio de la tienda (store-home): por defecto se ve el hero +
-// accesos rápidos en vez de los 48 productos de una. Entrar a una categoría,
-// a Gilcoins, a VIP o a "Explorar tienda" agrega body.store-browsing, que
-// muestra el catálogo completo (ver reglas en styles.css). "Inicio de la
-// tienda" vuelve atrás.
+// Selector "30 días" / "Indefinido" dentro de la pestaña Rangos: alterna
+// qué panel de precios se ve sin salir de la categoría.
 document.addEventListener("DOMContentLoaded", () => {
-  const storeHome = document.getElementById("store-home")
-  if (!storeHome) return
+  const durationBtns = document.querySelectorAll(".rank-duration-btn")
+  const durationPanels = document.querySelectorAll(".rank-duration-panel")
+  if (durationBtns.length === 0) return
 
-  const storeBrowse = document.getElementById("store-browse")
-
-  function enterBrowseMode() {
-    document.body.classList.add("store-browsing")
-    storeBrowse?.scrollIntoView({ behavior: "smooth", block: "start" })
-  }
-
-  const gilcoinsBtn = document.getElementById("store-hero-gilcoins-btn")
-  if (gilcoinsBtn) {
-    gilcoinsBtn.addEventListener("click", () => {
-      enterBrowseMode()
-      document.querySelector('.store-tab[data-target="cat-gilcoins"]')?.click()
-    })
-  }
-
-  document.querySelectorAll(".category-tile[data-target]").forEach((tile) => {
-    tile.addEventListener("click", () => {
-      enterBrowseMode()
-      document.querySelector(`.store-tab[data-target="${tile.dataset.target}"]`)?.click()
+  durationBtns.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      durationBtns.forEach((b) => b.classList.remove("active"))
+      durationPanels.forEach((p) => p.classList.remove("active"))
+      btn.classList.add("active")
+      document.querySelector(`.rank-duration-panel[data-duration="${btn.dataset.duration}"]`)?.classList.add("active")
     })
   })
-
-  const vipTeaserBtn = document.getElementById("store-hero-vip-btn")
-  if (vipTeaserBtn) {
-    vipTeaserBtn.addEventListener("click", () => {
-      document.body.classList.add("store-browsing")
-      document.getElementById("vip-hero-banner-btn")?.click()
-    })
-  }
-
-  const exploreBtn = document.getElementById("store-explore-btn")
-  if (exploreBtn) {
-    exploreBtn.addEventListener("click", enterBrowseMode)
-  }
-
-  const backBtn = document.getElementById("store-home-back-btn")
-  if (backBtn) {
-    backBtn.addEventListener("click", () => {
-      document.body.classList.remove("store-browsing")
-      document.body.classList.remove("vip-exclusive-mode")
-      storeHome.scrollIntoView({ behavior: "smooth", block: "start" })
-    })
-  }
 })
 
 // Menú móvil: en pantallas angostas el navbar se reduce a solo logo +

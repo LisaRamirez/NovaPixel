@@ -110,129 +110,98 @@
         </div>
     </div>
 
+    <!-- Modal "Recargar Gilcoins": se abre desde cualquier botón "Recargar"
+         (saldo insuficiente para un ítem) o desde el carrito. -->
+    <div id="gilcoin-recharge-modal" class="checkout-modal-overlay">
+        <div class="checkout-modal gilcoin-recharge-modal">
+            <button class="checkout-modal-close" id="gilcoin-recharge-close" aria-label="Cerrar">&times;</button>
+            <h3 class="checkout-modal-title"><i class="fas fa-coins"></i> Recargar Gilcoins</h3>
+            <p class="checkout-modal-hint" id="gilcoin-recharge-hint">Los productos de la tienda se compran con Gilcoins. Recarga tu saldo con Stripe o PayPal.</p>
+            <div class="gilcoin-luxury-grid">
+                <div class="gilcoin-luxury-card">
+                    <div class="gilcoin-luxury-icon gilcoin-luxury-icon--img"><img src="images/gilcoin-pack-575-icon.png" alt="575 Gilcoins"></div>
+                    <div class="gilcoin-luxury-name">575 Gilcoins</div>
+                    <div class="gilcoin-luxury-total">575<span> 🪙</span></div>
+                    <div class="gilcoin-luxury-price-row">
+                        <button class="gilcoin-luxury-buy-btn" data-package="pack-575" data-provider="stripe">$5.75 USD · Stripe</button>
+                        <button class="gilcoin-luxury-buy-btn" data-package="pack-575" data-provider="paypal">$5.75 USD · PayPal</button>
+                    </div>
+                </div>
+                <div class="gilcoin-luxury-card">
+                    <div class="gilcoin-luxury-icon gilcoin-luxury-icon--img"><img src="images/gilcoin-pack-1380-icon.png" alt="1,380 Gilcoins"></div>
+                    <div class="gilcoin-luxury-name">1,380 Gilcoins</div>
+                    <div class="gilcoin-luxury-total">1,380<span> 🪙</span></div>
+                    <div class="gilcoin-luxury-price-row">
+                        <button class="gilcoin-luxury-buy-btn" data-package="pack-1380" data-provider="stripe">$13.80 USD · Stripe</button>
+                        <button class="gilcoin-luxury-buy-btn" data-package="pack-1380" data-provider="paypal">$13.80 USD · PayPal</button>
+                    </div>
+                </div>
+                <div class="gilcoin-luxury-card">
+                    <div class="gilcoin-luxury-icon gilcoin-luxury-icon--img"><img src="images/gilcoin-pack-2800-icon.png" alt="2,800 Gilcoins"></div>
+                    <div class="gilcoin-luxury-name">2,800 Gilcoins</div>
+                    <div class="gilcoin-luxury-total">2,800<span> 🪙</span></div>
+                    <div class="gilcoin-luxury-price-row">
+                        <button class="gilcoin-luxury-buy-btn" data-package="pack-2800" data-provider="stripe">$28.00 USD · Stripe</button>
+                        <button class="gilcoin-luxury-buy-btn" data-package="pack-2800" data-provider="paypal">$28.00 USD · PayPal</button>
+                    </div>
+                </div>
+                <div class="gilcoin-luxury-card gilcoin-luxury-featured">
+                    <div class="gilcoin-luxury-badge">Popular</div>
+                    <div class="gilcoin-luxury-icon gilcoin-luxury-icon--img"><img src="images/gilcoin-pack-4500-icon.png" alt="4,500 Gilcoins"></div>
+                    <div class="gilcoin-luxury-name">4,500 Gilcoins</div>
+                    <div class="gilcoin-luxury-total">4,500<span> 🪙</span></div>
+                    <div class="gilcoin-luxury-price-row">
+                        <button class="gilcoin-luxury-buy-btn" data-package="pack-4500" data-provider="stripe">$45.00 USD · Stripe</button>
+                        <button class="gilcoin-luxury-buy-btn" data-package="pack-4500" data-provider="paypal">$45.00 USD · PayPal</button>
+                    </div>
+                </div>
+                <div class="gilcoin-luxury-card">
+                    <div class="gilcoin-luxury-icon gilcoin-luxury-icon--img"><img src="images/gilcoin-pack-6500-icon.png" alt="6,500 Gilcoins"></div>
+                    <div class="gilcoin-luxury-name">6,500 Gilcoins</div>
+                    <div class="gilcoin-luxury-total">6,500<span> 🪙</span></div>
+                    <div class="gilcoin-luxury-price-row">
+                        <button class="gilcoin-luxury-buy-btn" data-package="pack-6500" data-provider="stripe">$65.00 USD · Stripe</button>
+                        <button class="gilcoin-luxury-buy-btn" data-package="pack-6500" data-provider="paypal">$65.00 USD · PayPal</button>
+                    </div>
+                </div>
+                <div class="gilcoin-luxury-card">
+                    <div class="gilcoin-luxury-icon gilcoin-luxury-icon--img"><img src="images/gilcoin-pack-13500-icon.png" alt="13,500 Gilcoins"></div>
+                    <div class="gilcoin-luxury-name">13,500 Gilcoins</div>
+                    <div class="gilcoin-luxury-total">13,500<span> 🪙</span></div>
+                    <div class="gilcoin-luxury-price-row">
+                        <button class="gilcoin-luxury-buy-btn" data-package="pack-13500" data-provider="stripe">$135.00 USD · Stripe</button>
+                        <button class="gilcoin-luxury-buy-btn" data-package="pack-13500" data-provider="paypal">$135.00 USD · PayPal</button>
+                    </div>
+                </div>
+                <div class="gilcoin-luxury-card">
+                    <div class="gilcoin-luxury-icon gilcoin-luxury-icon--img"><img src="images/gilcoin-pack-33500-icon.png" alt="33,500 Gilcoins"></div>
+                    <div class="gilcoin-luxury-name">33,500 Gilcoins</div>
+                    <div class="gilcoin-luxury-total">33,500<span> 🪙</span></div>
+                    <div class="gilcoin-luxury-price-row">
+                        <button class="gilcoin-luxury-buy-btn" data-package="pack-33500" data-provider="stripe">$335.00 USD · Stripe</button>
+                        <button class="gilcoin-luxury-buy-btn" data-package="pack-33500" data-provider="paypal">$335.00 USD · PayPal</button>
+                    </div>
+                </div>
+                <div class="gilcoin-luxury-card">
+                    <div class="gilcoin-luxury-icon gilcoin-luxury-icon--img"><img src="images/gilcoin-pack-60200-icon.png" alt="60,200 Gilcoins"></div>
+                    <div class="gilcoin-luxury-name">60,200 Gilcoins</div>
+                    <div class="gilcoin-luxury-total">60,200<span> 🪙</span></div>
+                    <div class="gilcoin-luxury-price-row">
+                        <button class="gilcoin-luxury-buy-btn" data-package="pack-60200" data-provider="stripe">$602.00 USD · Stripe</button>
+                        <button class="gilcoin-luxury-buy-btn" data-package="pack-60200" data-provider="paypal">$602.00 USD · PayPal</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Tienda / Zona de Ventas Section -->
     <section id="tienda" class="store-section">
         <div class="container">
             <div class="store-page">
             <div class="store-main">
 
-            <!-- Página de inicio de la tienda: hero + accesos rápidos, no muestra
-                 los 48 productos de una. "Explorar tienda" / cualquier categoría /
-                 VIP llevan al modo store-browsing (ver más abajo). -->
-            <div class="store-home" id="store-home">
-                <div class="store-hero">
-                    <span class="store-hero-eyebrow">NovaPixel</span>
-                    <h1 class="store-hero-title">NovaPixel Shop</h1>
-                    <p class="store-hero-subtitle">Compra contenido para mejorar tu experiencia dentro del servidor.</p>
-                    <button type="button" class="store-hero-cta" id="store-hero-gilcoins-btn">
-                        <i class="fas fa-coins"></i> Comprar Gilcoins
-                    </button>
-                </div>
-
-                <div class="store-home-section">
-                    <h2 class="store-home-heading">Categorías</h2>
-                    <div class="store-category-grid">
-                        <button type="button" class="category-tile" data-target="cat-rangos-30">
-                            <i class="fas fa-crown"></i><span>Rangos</span>
-                        </button>
-                        <button type="button" class="category-tile" data-target="cat-kits">
-                            <i class="fas fa-box-open"></i><span>Kits</span>
-                        </button>
-                        <button type="button" class="category-tile" data-target="cat-cosmeticos">
-                            <i class="fas fa-palette"></i><span>Cosméticos</span>
-                        </button>
-                        <button type="button" class="category-tile" data-target="cat-protecciones">
-                            <i class="fas fa-shield-alt"></i><span>Protecciones</span>
-                        </button>
-                        <button type="button" class="category-tile" data-target="cat-exp-economia">
-                            <i class="fas fa-coins"></i><span>Economía</span>
-                        </button>
-                        <button type="button" class="category-tile" data-target="cat-comandos-vuelo">
-                            <i class="fas fa-terminal"></i><span>Comandos</span>
-                        </button>
-                        <button type="button" class="category-tile" data-target="cat-spawners">
-                            <i class="fas fa-cube"></i><span>Spawners</span>
-                        </button>
-                    </div>
-                </div>
-
-                <div class="store-home-vip-teaser">
-                    <div class="vip-teaser-text">
-                        <span class="vip-permanent-badge"><i class="fas fa-infinity"></i> Permanente</span>
-                        <h2><i class="fas fa-crown"></i> NovaPixel VIP</h2>
-                        <p>Membresías permanentes asociadas a tu cuenta. Una sola compra, beneficios para siempre.</p>
-                    </div>
-                    <button type="button" class="store-hero-cta store-hero-cta--vip" id="store-hero-vip-btn">
-                        Descubrir VIP <i class="fas fa-arrow-right"></i>
-                    </button>
-                </div>
-
-                <div class="store-home-section">
-                    <h2 class="store-home-heading">Productos destacados</h2>
-                    <div class="price-grid store-featured-grid">
-                        <div class="price-card">
-                            <div class="price-icon price-icon--img"><span class="store-price-badge">-35%</span><img src="images/kit-star-light-icon.png" alt="Kit Star Light"></div>
-                            <span class="price-name">Kit Star Light</span>
-                            <div class="price-bottom-row">
-                                <span class="price-value"><span class="store-price-old">5,385</span>3,500 🪙</span>
-                                <button class="price-buy-btn" data-product="kit-star-light"><i class="fas fa-shopping-cart"></i></button>
-                            </div>
-                        </div>
-                        <div class="price-card">
-                            <div class="price-icon price-icon--img"><span class="store-price-badge">-36%</span><img src="images/proteccion-512-icon.png" alt="Protección 512x512"></div>
-                            <span class="price-name">Protección Esmeralda 512x512</span>
-                            <div class="price-bottom-row">
-                                <span class="price-value"><span class="store-price-old">7,031</span>4,500 🪙</span>
-                                <button class="price-buy-btn" data-product="proteccion-esmeralda-512"><i class="fas fa-shopping-cart"></i></button>
-                            </div>
-                        </div>
-                        <div class="price-card">
-                            <div class="price-icon price-icon--img"><span class="store-price-badge">-21%</span><img src="images/pico-3x3-icon.png" alt="Pico 3x3"></div>
-                            <span class="price-name">Pico 3x3</span>
-                            <div class="price-bottom-row">
-                                <span class="price-value"><span class="store-price-old">1,899</span>1,500 🪙</span>
-                                <button class="price-buy-btn" data-product="pico-3x3"><i class="fas fa-shopping-cart"></i></button>
-                            </div>
-                        </div>
-                        <div class="price-card">
-                            <div class="price-icon price-icon--img"><span class="store-price-badge">-30%</span><img src="images/alas-angelicales-icon.png" alt="Alas Angelicales"></div>
-                            <span class="price-name">Alas Angelicales</span>
-                            <div class="price-bottom-row">
-                                <span class="price-value"><span class="store-price-old">2,571</span>1,800 🪙</span>
-                                <button class="price-buy-btn" data-product="alas-angelicales"><i class="fas fa-shopping-cart"></i></button>
-                            </div>
-                        </div>
-                        <div class="price-card">
-                            <div class="price-icon price-icon--img"><span class="store-price-badge">-17%</span><img src="images/brillo-arcoiris-icon.png" alt="Brillo Arcoíris"></div>
-                            <span class="price-name">Brillo Arcoíris</span>
-                            <div class="price-bottom-row">
-                                <span class="price-value"><span class="store-price-old">602</span>500 🪙</span>
-                                <button class="price-buy-btn" data-product="brillo-arcoiris"><i class="fas fa-shopping-cart"></i></button>
-                            </div>
-                        </div>
-                        <div class="price-card">
-                            <div class="price-icon price-icon--img"><span class="store-price-badge">-33%</span><img src="images/schematic-pegado-icon.png" alt="Pegado de Schematic"></div>
-                            <span class="price-name">Pegado de Schematic</span>
-                            <div class="price-bottom-row">
-                                <span class="price-value"><span class="store-price-old">1,791</span>1,200 🪙</span>
-                                <button class="price-buy-btn" data-product="schematic-pegado"><i class="fas fa-shopping-cart"></i></button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <button type="button" class="store-explore-btn" id="store-explore-btn">
-                    <i class="fas fa-shopping-cart"></i> Explorar tienda completa
-                </button>
-            </div>
-
-            <!-- Modo "explorar": catálogo completo por categorías + VIP. Oculto
-                 hasta que se entra desde la página de inicio de arriba. -->
             <div class="store-browse" id="store-browse">
-            <button type="button" class="store-home-back-btn" id="store-home-back-btn">
-                <i class="fas fa-arrow-left"></i> Inicio de la tienda
-            </button>
-            <p class="store-subtitle store-intro">Todo lo que necesitas para mejorar tu experiencia en NovaPixel: Gilcoins, rangos, kits, cosméticos y más. Elige una categoría o entra a VIP para beneficios permanentes.</p>
             <div class="vip-hero">
                 <button type="button" class="vip-hero-banner" id="vip-hero-banner-btn">
                     <img src="images/vip-banner.png" alt="NovaPixel VIP" class="vip-hero-banner-img">
@@ -295,19 +264,13 @@
                 </div>
             </div>
 
-            <div class="store-layout">
-                <div class="store-sidebar">
-                    <button class="store-tab active" data-target="cat-gilcoins">
-                        <i class="fas fa-coins"></i> Comprar Gilcoins
+            <div class="store-catalog">
+                <div class="store-menu">
+                    <button class="store-tab active" data-target="all">
+                        <i class="fas fa-border-all"></i> Todos
                     </button>
-                    <button class="store-tab" data-target="cat-rangos-30">
-                        <i class="fas fa-crown"></i> Rangos 30 días
-                    </button>
-                    <button class="store-tab" data-target="cat-rangos-indef">
-                        <i class="fas fa-infinity"></i> Rangos Indefinido
-                    </button>
-                    <button class="store-tab" data-target="cat-protecciones">
-                        <i class="fas fa-shield-alt"></i> Protecciones y Herramientas
+                    <button class="store-tab" data-target="cat-rangos">
+                        <i class="fas fa-crown"></i> Rangos
                     </button>
                     <button class="store-tab" data-target="cat-kits">
                         <i class="fas fa-box-open"></i> Kits
@@ -315,209 +278,101 @@
                     <button class="store-tab" data-target="cat-cosmeticos">
                         <i class="fas fa-palette"></i> Cosméticos
                     </button>
+                    <button class="store-tab" data-target="cat-protecciones">
+                        <i class="fas fa-shield-alt"></i> Protecciones
+                    </button>
                     <button class="store-tab" data-target="cat-exp-economia">
-                        <i class="fas fa-coins"></i> Experiencia y Economía
+                        <i class="fas fa-coins"></i> Economía
                     </button>
                     <button class="store-tab" data-target="cat-comandos-vuelo">
-                        <i class="fas fa-terminal"></i> Comandos y Vuelo
+                        <i class="fas fa-terminal"></i> Comandos
                     </button>
                     <button class="store-tab" data-target="cat-spawners">
-                        <i class="fas fa-cube"></i> Spawners y Construcción
+                        <i class="fas fa-cube"></i> Spawners
+                    </button>
+                    <button type="button" class="store-tab store-tab-recharge" id="store-menu-recharge-btn">
+                        <i class="fas fa-coins"></i> Recargar Gilcoins
                     </button>
                 </div>
 
                 <div class="store-items">
-                    <div class="store-category active" id="cat-gilcoins">
-                        <h3 class="store-category-title">Comprar Gilcoins</h3>
-                        <p class="store-subtitle" style="margin-bottom:20px;">Los productos de la tienda se compran con Gilcoins. Recarga tu saldo con Stripe o PayPal.</p>
-                        <div class="gilcoin-luxury-grid">
-                            <div class="gilcoin-luxury-card">
-                                <div class="gilcoin-luxury-icon gilcoin-luxury-icon--img"><img src="images/gilcoin-pack-575-icon.png" alt="575 Gilcoins"></div>
-                                <div class="gilcoin-luxury-name">575 Gilcoins</div>
-                                <div class="gilcoin-luxury-total">575<span> 🪙</span></div>
-                                <div class="gilcoin-luxury-price-row">
-                                    <button class="gilcoin-luxury-buy-btn" data-package="pack-575" data-provider="stripe">$5.75 USD · Stripe</button>
-                                    <button class="gilcoin-luxury-buy-btn" data-package="pack-575" data-provider="paypal">$5.75 USD · PayPal</button>
-                                </div>
-                            </div>
-                            <div class="gilcoin-luxury-card">
-                                <div class="gilcoin-luxury-icon gilcoin-luxury-icon--img"><img src="images/gilcoin-pack-1380-icon.png" alt="1,380 Gilcoins"></div>
-                                <div class="gilcoin-luxury-name">1,380 Gilcoins</div>
-                                <div class="gilcoin-luxury-total">1,380<span> 🪙</span></div>
-                                <div class="gilcoin-luxury-price-row">
-                                    <button class="gilcoin-luxury-buy-btn" data-package="pack-1380" data-provider="stripe">$13.80 USD · Stripe</button>
-                                    <button class="gilcoin-luxury-buy-btn" data-package="pack-1380" data-provider="paypal">$13.80 USD · PayPal</button>
-                                </div>
-                            </div>
-                            <div class="gilcoin-luxury-card">
-                                <div class="gilcoin-luxury-icon gilcoin-luxury-icon--img"><img src="images/gilcoin-pack-2800-icon.png" alt="2,800 Gilcoins"></div>
-                                <div class="gilcoin-luxury-name">2,800 Gilcoins</div>
-                                <div class="gilcoin-luxury-total">2,800<span> 🪙</span></div>
-                                <div class="gilcoin-luxury-price-row">
-                                    <button class="gilcoin-luxury-buy-btn" data-package="pack-2800" data-provider="stripe">$28.00 USD · Stripe</button>
-                                    <button class="gilcoin-luxury-buy-btn" data-package="pack-2800" data-provider="paypal">$28.00 USD · PayPal</button>
-                                </div>
-                            </div>
-                            <div class="gilcoin-luxury-card gilcoin-luxury-featured">
-                                <div class="gilcoin-luxury-badge">Popular</div>
-                                <div class="gilcoin-luxury-icon gilcoin-luxury-icon--img"><img src="images/gilcoin-pack-4500-icon.png" alt="4,500 Gilcoins"></div>
-                                <div class="gilcoin-luxury-name">4,500 Gilcoins</div>
-                                <div class="gilcoin-luxury-total">4,500<span> 🪙</span></div>
-                                <div class="gilcoin-luxury-price-row">
-                                    <button class="gilcoin-luxury-buy-btn" data-package="pack-4500" data-provider="stripe">$45.00 USD · Stripe</button>
-                                    <button class="gilcoin-luxury-buy-btn" data-package="pack-4500" data-provider="paypal">$45.00 USD · PayPal</button>
-                                </div>
-                            </div>
-                            <div class="gilcoin-luxury-card">
-                                <div class="gilcoin-luxury-icon gilcoin-luxury-icon--img"><img src="images/gilcoin-pack-6500-icon.png" alt="6,500 Gilcoins"></div>
-                                <div class="gilcoin-luxury-name">6,500 Gilcoins</div>
-                                <div class="gilcoin-luxury-total">6,500<span> 🪙</span></div>
-                                <div class="gilcoin-luxury-price-row">
-                                    <button class="gilcoin-luxury-buy-btn" data-package="pack-6500" data-provider="stripe">$65.00 USD · Stripe</button>
-                                    <button class="gilcoin-luxury-buy-btn" data-package="pack-6500" data-provider="paypal">$65.00 USD · PayPal</button>
-                                </div>
-                            </div>
-                            <div class="gilcoin-luxury-card">
-                                <div class="gilcoin-luxury-icon gilcoin-luxury-icon--img"><img src="images/gilcoin-pack-13500-icon.png" alt="13,500 Gilcoins"></div>
-                                <div class="gilcoin-luxury-name">13,500 Gilcoins</div>
-                                <div class="gilcoin-luxury-total">13,500<span> 🪙</span></div>
-                                <div class="gilcoin-luxury-price-row">
-                                    <button class="gilcoin-luxury-buy-btn" data-package="pack-13500" data-provider="stripe">$135.00 USD · Stripe</button>
-                                    <button class="gilcoin-luxury-buy-btn" data-package="pack-13500" data-provider="paypal">$135.00 USD · PayPal</button>
-                                </div>
-                            </div>
-                            <div class="gilcoin-luxury-card">
-                                <div class="gilcoin-luxury-icon gilcoin-luxury-icon--img"><img src="images/gilcoin-pack-33500-icon.png" alt="33,500 Gilcoins"></div>
-                                <div class="gilcoin-luxury-name">33,500 Gilcoins</div>
-                                <div class="gilcoin-luxury-total">33,500<span> 🪙</span></div>
-                                <div class="gilcoin-luxury-price-row">
-                                    <button class="gilcoin-luxury-buy-btn" data-package="pack-33500" data-provider="stripe">$335.00 USD · Stripe</button>
-                                    <button class="gilcoin-luxury-buy-btn" data-package="pack-33500" data-provider="paypal">$335.00 USD · PayPal</button>
-                                </div>
-                            </div>
-                            <div class="gilcoin-luxury-card">
-                                <div class="gilcoin-luxury-icon gilcoin-luxury-icon--img"><img src="images/gilcoin-pack-60200-icon.png" alt="60,200 Gilcoins"></div>
-                                <div class="gilcoin-luxury-name">60,200 Gilcoins</div>
-                                <div class="gilcoin-luxury-total">60,200<span> 🪙</span></div>
-                                <div class="gilcoin-luxury-price-row">
-                                    <button class="gilcoin-luxury-buy-btn" data-package="pack-60200" data-provider="stripe">$602.00 USD · Stripe</button>
-                                    <button class="gilcoin-luxury-buy-btn" data-package="pack-60200" data-provider="paypal">$602.00 USD · PayPal</button>
-                                </div>
-                            </div>
+                    <div class="store-category active" id="cat-rangos">
+                        <h3 class="store-category-title">Rangos</h3>
+                        <div class="rank-duration-toggle">
+                            <button type="button" class="rank-duration-btn active" data-duration="30">30 días</button>
+                            <button type="button" class="rank-duration-btn" data-duration="indef">Indefinido</button>
                         </div>
-                    </div>
 
-                    <div class="store-category" id="cat-rangos-30">
-                        <h3 class="store-category-title">Rangos · 30 días</h3>
-                        <div class="rank-compare-wrap">
-                            <table class="rank-compare-table">
-                                <thead>
-                                    <tr>
-                                        <th>Beneficio</th>
-                                        <th>Angelical</th>
-                                        <th>Celestial</th>
-                                        <th>Divino</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr><td>Protecciones</td><td>6</td><td>7</td><td>8</td></tr>
-                                    <tr><td>Hogares</td><td>6</td><td>7</td><td>8</td></tr>
-                                    <tr><td>Mochilas</td><td>3</td><td>6</td><td>9</td></tr>
-                                    <tr><td>Encantamientos</td><td>Nivel 6</td><td>Nivel 7</td><td>Nivel 8</td></tr>
-                                    <tr><td>Economía inicial</td><td>$10,000</td><td>$15,000</td><td>$30,000</td></tr>
-                                    <tr><td>Niveles de XP</td><td>150</td><td>200</td><td>350</td></tr>
-                                </tbody>
-                            </table>
-                        </div>
-                        <div class="rank-grid">
-                            <div class="rank-card">
-                                <div class="rank-icon rank-icon--img"><img src="images/rango-angelical-icon.png" alt="Angelical"></div>
-                                <div class="rank-name">Angelical</div>
-                                <div class="rank-price"><span class="store-price-old">476</span><span class="store-price-badge">-16%</span><br>400 🪙<span>/30 días</span></div>
-                                <button type="button" class="rank-detail-link" data-detail="rango-angelical-30">Ver beneficios</button>
-                                <button class="rank-buy-btn" data-product="rango-angelical-30">Añadir</button>
-                            </div>
-                            <div class="rank-card">
-                                <div class="rank-icon rank-icon--img"><img src="images/rango-celestial-icon.png" alt="Celestial"></div>
-                                <div class="rank-name">Celestial</div>
-                                <div class="rank-price"><span class="store-price-old">1,169</span><span class="store-price-badge">-23%</span><br>900 🪙<span>/30 días</span></div>
-                                <button type="button" class="rank-detail-link" data-detail="rango-celestial-30">Ver beneficios</button>
-                                <button class="rank-buy-btn" data-product="rango-celestial-30">Añadir</button>
-                            </div>
-                            <div class="rank-card">
-                                <div class="rank-icon rank-icon--img"><img src="images/rango-divino-icon.png" alt="Divino"></div>
-                                <div class="rank-name">Divino</div>
-                                <div class="rank-price"><span class="store-price-old">2,222</span><span class="store-price-badge">-28%</span><br>1,600 🪙<span>/30 días</span></div>
-                                <button type="button" class="rank-detail-link" data-detail="rango-divino-30">Ver beneficios</button>
-                                <button class="rank-buy-btn" data-product="rango-divino-30">Añadir</button>
-                            </div>
-                            <div class="rank-card rank-card-featured">
-                                <div class="rank-badge">Mejor valor</div>
-                                <div class="rank-icon rank-icon--img"><img src="images/rango-donador-icon.png" alt="Donador"></div>
-                                <div class="rank-name">Donador</div>
-                                <div class="rank-price"><span class="store-price-old">7,937</span><span class="store-price-badge">-37%</span><br>5,000 🪙<span>/30 días</span></div>
-                                <button class="rank-buy-btn" data-product="rango-donador-30">Añadir</button>
+                        <div class="rank-duration-panel active" data-duration="30">
+                            <div class="rank-grid">
+                                <div class="rank-card">
+                                    <div class="rank-icon rank-icon--img"><img src="images/rango-angelical-icon.png" alt="Angelical"></div>
+                                    <div class="rank-name">Angelical</div>
+                                    <div class="rank-price"><span class="store-price-old">476</span><span class="store-price-badge">-16%</span><br>400 🪙<span>/30 días</span></div>
+                                    <button type="button" class="rank-detail-link" data-detail="rango-angelical-30">Ver beneficios</button>
+                                    <button class="rank-buy-btn" data-product="rango-angelical-30">Añadir</button>
+                                </div>
+                                <div class="rank-card">
+                                    <div class="rank-icon rank-icon--img"><img src="images/rango-celestial-icon.png" alt="Celestial"></div>
+                                    <div class="rank-name">Celestial</div>
+                                    <div class="rank-price"><span class="store-price-old">1,169</span><span class="store-price-badge">-23%</span><br>900 🪙<span>/30 días</span></div>
+                                    <button type="button" class="rank-detail-link" data-detail="rango-celestial-30">Ver beneficios</button>
+                                    <button class="rank-buy-btn" data-product="rango-celestial-30">Añadir</button>
+                                </div>
+                                <div class="rank-card">
+                                    <div class="rank-icon rank-icon--img"><img src="images/rango-divino-icon.png" alt="Divino"></div>
+                                    <div class="rank-name">Divino</div>
+                                    <div class="rank-price"><span class="store-price-old">2,222</span><span class="store-price-badge">-28%</span><br>1,600 🪙<span>/30 días</span></div>
+                                    <button type="button" class="rank-detail-link" data-detail="rango-divino-30">Ver beneficios</button>
+                                    <button class="rank-buy-btn" data-product="rango-divino-30">Añadir</button>
+                                </div>
+                                <div class="rank-card rank-card-featured">
+                                    <div class="rank-badge">Mejor valor</div>
+                                    <div class="rank-icon rank-icon--img"><img src="images/rango-donador-icon.png" alt="Donador"></div>
+                                    <div class="rank-name">Donador</div>
+                                    <div class="rank-price"><span class="store-price-old">7,937</span><span class="store-price-badge">-37%</span><br>5,000 🪙<span>/30 días</span></div>
+                                    <button class="rank-buy-btn" data-product="rango-donador-30">Añadir</button>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="store-category" id="cat-rangos-indef">
-                        <h3 class="store-category-title">Rangos · Indefinido</h3>
-                        <p class="store-subtitle" style="margin-bottom:20px;">Los mismos rangos Angelical, Celestial y Divino, pero indefinidos: los compras una vez y quedan para siempre.</p>
-                        <div class="rank-compare-wrap">
-                            <table class="rank-compare-table">
-                                <thead>
-                                    <tr>
-                                        <th>Beneficio</th>
-                                        <th>Angelical</th>
-                                        <th>Celestial</th>
-                                        <th>Divino</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr><td>Protecciones</td><td>6</td><td>7</td><td>8</td></tr>
-                                    <tr><td>Hogares</td><td>6</td><td>7</td><td>8</td></tr>
-                                    <tr><td>Mochilas</td><td>3</td><td>6</td><td>9</td></tr>
-                                    <tr><td>Encantamientos</td><td>Nivel 6</td><td>Nivel 7</td><td>Nivel 8</td></tr>
-                                    <tr><td>Kit de rango</td><td>Cada 30 días</td><td>Cada 30 días</td><td>Cada 30 días</td></tr>
-                                    <tr><td>Mina VIP</td><td>—</td><td>✔</td><td>✔</td></tr>
-                                </tbody>
-                            </table>
-                        </div>
-                        <div class="rank-grid">
-                            <div class="rank-card">
-                                <div class="rank-icon rank-icon--img"><img src="images/rango-angelical-icon.png" alt="Angelical"></div>
-                                <div class="rank-name">Angelical</div>
-                                <div class="rank-price"><span class="store-price-old">1,974</span><span class="store-price-badge">-24%</span><br>1,500 🪙<span>/indefinido</span></div>
-                                <button type="button" class="rank-detail-link" data-detail="rango-angelical-indef">Ver beneficios</button>
-                                <button class="rank-buy-btn" data-product="rango-angelical-indef">Añadir</button>
-                            </div>
-                            <div class="rank-card">
-                                <div class="rank-icon rank-icon--img"><img src="images/rango-celestial-icon.png" alt="Celestial"></div>
-                                <div class="rank-name">Celestial</div>
-                                <div class="rank-price"><span class="store-price-old">3,000</span><span class="store-price-badge">-30%</span><br>2,100 🪙<span>/indefinido</span></div>
-                                <button type="button" class="rank-detail-link" data-detail="rango-celestial-indef">Ver beneficios</button>
-                                <button class="rank-buy-btn" data-product="rango-celestial-indef">Añadir</button>
-                            </div>
-                            <div class="rank-card">
-                                <div class="rank-icon rank-icon--img"><img src="images/rango-divino-icon.png" alt="Divino"></div>
-                                <div class="rank-name">Divino</div>
-                                <div class="rank-price"><span class="store-price-old">5,758</span><span class="store-price-badge">-34%</span><br>3,800 🪙<span>/indefinido</span></div>
-                                <button type="button" class="rank-detail-link" data-detail="rango-divino-indef">Ver beneficios</button>
-                                <button class="rank-buy-btn" data-product="rango-divino-indef">Añadir</button>
-                            </div>
-                            <div class="rank-card rank-card-featured">
-                                <div class="rank-badge">Mejor valor</div>
-                                <div class="rank-icon rank-icon--img"><img src="images/rango-donador-icon.png" alt="Donador"></div>
-                                <div class="rank-name">Donador</div>
-                                <div class="rank-price"><span class="store-price-old">25,000</span><span class="store-price-badge">-40%</span><br>15,000 🪙<span>/indefinido</span></div>
-                                <button class="rank-buy-btn" data-product="rango-donador-indef">Añadir</button>
+                        <div class="rank-duration-panel" data-duration="indef">
+                            <p class="store-subtitle" style="margin-bottom:20px;">Los mismos rangos Angelical, Celestial y Divino, pero indefinidos: los compras una vez y quedan para siempre.</p>
+                            <div class="rank-grid">
+                                <div class="rank-card">
+                                    <div class="rank-icon rank-icon--img"><img src="images/rango-angelical-icon.png" alt="Angelical"></div>
+                                    <div class="rank-name">Angelical</div>
+                                    <div class="rank-price"><span class="store-price-old">1,974</span><span class="store-price-badge">-24%</span><br>1,500 🪙<span>/indefinido</span></div>
+                                    <button type="button" class="rank-detail-link" data-detail="rango-angelical-indef">Ver beneficios</button>
+                                    <button class="rank-buy-btn" data-product="rango-angelical-indef">Añadir</button>
+                                </div>
+                                <div class="rank-card">
+                                    <div class="rank-icon rank-icon--img"><img src="images/rango-celestial-icon.png" alt="Celestial"></div>
+                                    <div class="rank-name">Celestial</div>
+                                    <div class="rank-price"><span class="store-price-old">3,000</span><span class="store-price-badge">-30%</span><br>2,100 🪙<span>/indefinido</span></div>
+                                    <button type="button" class="rank-detail-link" data-detail="rango-celestial-indef">Ver beneficios</button>
+                                    <button class="rank-buy-btn" data-product="rango-celestial-indef">Añadir</button>
+                                </div>
+                                <div class="rank-card">
+                                    <div class="rank-icon rank-icon--img"><img src="images/rango-divino-icon.png" alt="Divino"></div>
+                                    <div class="rank-name">Divino</div>
+                                    <div class="rank-price"><span class="store-price-old">5,758</span><span class="store-price-badge">-34%</span><br>3,800 🪙<span>/indefinido</span></div>
+                                    <button type="button" class="rank-detail-link" data-detail="rango-divino-indef">Ver beneficios</button>
+                                    <button class="rank-buy-btn" data-product="rango-divino-indef">Añadir</button>
+                                </div>
+                                <div class="rank-card rank-card-featured">
+                                    <div class="rank-badge">Mejor valor</div>
+                                    <div class="rank-icon rank-icon--img"><img src="images/rango-donador-icon.png" alt="Donador"></div>
+                                    <div class="rank-name">Donador</div>
+                                    <div class="rank-price"><span class="store-price-old">25,000</span><span class="store-price-badge">-40%</span><br>15,000 🪙<span>/indefinido</span></div>
+                                    <button class="rank-buy-btn" data-product="rango-donador-indef">Añadir</button>
+                                </div>
                             </div>
                         </div>
                     </div>
 
                     <div class="store-category" id="cat-protecciones">
-                        <h3 class="store-category-title">Protecciones y Herramientas</h3>
+                        <h3 class="store-category-title">Protecciones</h3>
                         <div class="price-grid">
                             <div class="price-card">
                                 <div class="price-icon price-icon--img"><span class="store-price-badge">-21%</span><img src="images/pico-3x3-icon.png" alt="Pico 3x3"></div>
@@ -703,10 +558,10 @@
                     </div>
 
                     <div class="store-category" id="cat-exp-economia">
-                        <h3 class="store-category-title">Experiencia y Economía</h3>
+                        <h3 class="store-category-title">Economía</h3>
                         <div class="price-grid">
                             <div class="price-card">
-                                <div class="price-icon"><span class="store-price-badge">-17%</span><i class="fas fa-flask"></i></div>
+                                <div class="price-icon price-icon--img"><span class="store-price-badge">-17%</span><img src="images/pocion-suerte-icon.png" alt="Experiencia 100 Niveles"></div>
                                 <span class="price-name">Experiencia 100 Niveles</span>
                                 <div class="price-bottom-row">
                                     <span class="price-value"><span class="store-price-old">482</span>400 🪙</span>
@@ -714,7 +569,7 @@
                                 </div>
                             </div>
                             <div class="price-card">
-                                <div class="price-icon"><span class="store-price-badge">-25%</span><i class="fas fa-flask"></i></div>
+                                <div class="price-icon price-icon--img"><span class="store-price-badge">-25%</span><img src="images/pocion-suerte-icon.png" alt="Experiencia 250 Niveles"></div>
                                 <span class="price-name">Experiencia 250 Niveles</span>
                                 <div class="price-bottom-row">
                                     <span class="price-value"><span class="store-price-old">1,200</span>900 🪙</span>
@@ -722,7 +577,7 @@
                                 </div>
                             </div>
                             <div class="price-card">
-                                <div class="price-icon"><span class="store-price-badge">-20%</span><i class="fas fa-coins"></i></div>
+                                <div class="price-icon price-icon--img"><span class="store-price-badge">-20%</span><img src="images/pocion-suerte-icon.png" alt="50,000 de Economía"></div>
                                 <span class="price-name">50,000 de Economía</span>
                                 <div class="price-bottom-row">
                                     <span class="price-value"><span class="store-price-old">1,125</span>900 🪙</span>
@@ -730,29 +585,21 @@
                                 </div>
                             </div>
                             <div class="price-card">
-                                <div class="price-icon"><span class="store-price-badge">-29%</span><i class="fas fa-coins"></i></div>
+                                <div class="price-icon price-icon--img"><span class="store-price-badge">-29%</span><img src="images/pocion-suerte-icon.png" alt="100,000 de Economía"></div>
                                 <span class="price-name">100,000 de Economía</span>
                                 <div class="price-bottom-row">
                                     <span class="price-value"><span class="store-price-old">2,113</span>1,500 🪙</span>
                                     <button class="price-buy-btn" data-product="economia-100k"><i class="fas fa-shopping-cart"></i></button>
                                 </div>
                             </div>
-                            <div class="price-card">
-                                <div class="price-icon price-icon--img"><span class="store-price-badge">-22%</span><img src="images/pocion-suerte-icon.png" alt="Poción de la Suerte"></div>
-                                <span class="price-name">Poción de la Suerte</span>
-                                <div class="price-bottom-row">
-                                    <span class="price-value"><span class="store-price-old">1,154</span>900 🪙</span>
-                                    <button class="price-buy-btn" data-product="pocion-suerte"><i class="fas fa-shopping-cart"></i></button>
-                                </div>
-                            </div>
                         </div>
                     </div>
 
                     <div class="store-category" id="cat-comandos-vuelo">
-                        <h3 class="store-category-title">Comandos y Vuelo</h3>
+                        <h3 class="store-category-title">Comandos</h3>
                         <div class="price-grid">
                             <div class="price-card">
-                                <div class="price-icon"><span class="store-price-badge">-27%</span><i class="fas fa-feather"></i></div>
+                                <div class="price-icon price-icon--img"><span class="store-price-badge">-27%</span><img src="images/alas-angelicales-icon.png" alt="Fly Indefinido"></div>
                                 <span class="price-name">Fly Indefinido</span>
                                 <div class="price-bottom-row">
                                     <span class="price-value"><span class="store-price-old">2,055</span>1,500 🪙</span>
@@ -760,7 +607,7 @@
                                 </div>
                             </div>
                             <div class="price-card">
-                                <div class="price-icon"><span class="store-price-badge">-19%</span><i class="fas fa-feather"></i></div>
+                                <div class="price-icon price-icon--img"><span class="store-price-badge">-19%</span><img src="images/alas-angelicales-icon.png" alt="Fly 30 días"></div>
                                 <span class="price-name">Fly 30 días</span>
                                 <div class="price-bottom-row">
                                     <span class="price-value"><span class="store-price-old">988</span>800 🪙</span>
@@ -768,34 +615,18 @@
                                 </div>
                             </div>
                             <div class="price-card">
-                                <div class="price-icon"><span class="store-price-badge">-15%</span><i class="fas fa-terminal"></i></div>
+                                <div class="price-icon price-icon--img"><span class="store-price-badge">-15%</span><img src="images/libro-ilimitado-icon.png" alt="Pack Comandos"></div>
                                 <span class="price-name">Pack Comandos (/hat /ec /craft)</span>
                                 <div class="price-bottom-row">
                                     <span class="price-value"><span class="store-price-old">471</span>400 🪙</span>
                                     <button class="price-buy-btn" data-product="comandos-pack"><i class="fas fa-shopping-cart"></i></button>
                                 </div>
                             </div>
-                            <div class="price-card">
-                                <div class="price-icon price-icon--img"><span class="store-price-badge">-20%</span><img src="images/libro-ilimitado-icon.png" alt="Libro Ilimitado"></div>
-                                <span class="price-name">Libro Ilimitado</span>
-                                <div class="price-bottom-row">
-                                    <span class="price-value"><span class="store-price-old">1,500</span>1,200 🪙</span>
-                                    <button class="price-buy-btn" data-product="libro-ilimitado"><i class="fas fa-shopping-cart"></i></button>
-                                </div>
-                            </div>
-                            <div class="price-card">
-                                <div class="price-icon price-icon--img"><span class="store-price-badge">-30%</span><img src="images/alas-angelicales-icon.png" alt="Alas Angelicales"></div>
-                                <span class="price-name">Alas Angelicales</span>
-                                <div class="price-bottom-row">
-                                    <span class="price-value"><span class="store-price-old">2,571</span>1,800 🪙</span>
-                                    <button class="price-buy-btn" data-product="alas-angelicales"><i class="fas fa-shopping-cart"></i></button>
-                                </div>
-                            </div>
                         </div>
                     </div>
 
                     <div class="store-category" id="cat-spawners">
-                        <h3 class="store-category-title">Spawners y Construcción</h3>
+                        <h3 class="store-category-title">Spawners</h3>
                         <div class="price-grid">
                             <div class="price-card">
                                 <div class="price-icon price-icon--img"><span class="store-price-badge">-16%</span><img src="images/spawner-vaca-icon.png" alt="Spawner de Vaca"></div>
