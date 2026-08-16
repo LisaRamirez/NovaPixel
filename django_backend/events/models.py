@@ -12,23 +12,32 @@ class Event(models.Model):
         WEEKLY = "weekly", "Semanal"
         MONTHLY = "monthly", "Mensual"
 
-    title = models.CharField(max_length=120)
-    description = models.TextField(help_text="Qué deben hacer los jugadores en este evento.")
-    image = models.ImageField(upload_to="events/", blank=True, null=True)
+    title = models.CharField(max_length=120, verbose_name="Título")
+    description = models.TextField(
+        verbose_name="Descripción", help_text="Qué deben hacer los jugadores en este evento."
+    )
+    image = models.ImageField(upload_to="events/", blank=True, null=True, verbose_name="Imagen")
     badge_label = models.CharField(
         max_length=40,
         default="Evento",
+        verbose_name="Etiqueta",
         help_text="Texto de la etiqueta sobre la imagen, ej. 'Evento Activo', 'Novedad'.",
     )
-    frequency = models.CharField(max_length=10, choices=Frequency.choices, default=Frequency.ONE_TIME)
-    is_active = models.BooleanField(default=True, help_text="Solo los eventos activos se muestran en el sitio.")
-    starts_at = models.DateTimeField(blank=True, null=True)
-    ends_at = models.DateTimeField(blank=True, null=True)
-    order = models.PositiveIntegerField(default=0, help_text="Orden en la web (menor primero).")
-    created_at = models.DateTimeField(auto_now_add=True)
+    frequency = models.CharField(
+        max_length=10, choices=Frequency.choices, default=Frequency.ONE_TIME, verbose_name="Frecuencia"
+    )
+    is_active = models.BooleanField(
+        default=True, verbose_name="Activo", help_text="Solo los eventos activos se muestran en el sitio."
+    )
+    starts_at = models.DateTimeField(blank=True, null=True, verbose_name="Inicia el")
+    ends_at = models.DateTimeField(blank=True, null=True, verbose_name="Termina el")
+    order = models.PositiveIntegerField(default=0, verbose_name="Orden", help_text="Orden en la web (menor primero).")
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name="Creado el")
 
     class Meta:
         ordering = ["order", "-created_at"]
+        verbose_name = "Evento"
+        verbose_name_plural = "Eventos"
 
     def __str__(self):
         return self.title

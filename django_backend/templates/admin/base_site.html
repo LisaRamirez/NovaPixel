@@ -3,16 +3,5 @@
 
 {% block extrastyle %}
   {{ block.super }}
-  <link rel="stylesheet" href="{% static 'admin/novapixel-admin.css' %}">
+  <link rel="stylesheet" href="{% static 'admin/novapixel-admin.css' %}?v=3">
 {% endblock %}
-
-{% block branding %}
-  <div id="site-name" class="novapixel-brand">
-    <a href="{% url 'admin:index' %}">
-      <img src="{% static 'admin/logo-novapixel.png' %}" alt="NovaPixel">
-      <span>NovaPixel · Panel de Administración</span>
-    </a>
-  </div>
-{% endblock %}
-
-{% block nav-global %}{% endblock %}

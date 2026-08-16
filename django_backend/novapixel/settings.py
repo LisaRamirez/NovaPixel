@@ -22,6 +22,7 @@ ALLOWED_HOSTS = [h.strip() for h in os.environ.get("DJANGO_ALLOWED_HOSTS", "loca
 
 INSTALLED_APPS = [
     "daphne",  # primero: reemplaza `runserver` por uno que sirve ASGI (necesario para el WebSocket del plugin)
+    "jazzmin",  # antes de django.contrib.admin: le da al admin un look moderno (sidebar, dashboard, buscador)
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -93,9 +94,52 @@ MEDIA_ROOT = BASE_DIR / "media"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
+# Se necesita antes de JAZZMIN_SETTINGS para el link "Volver al sitio web".
+SITE_URL = os.environ.get("SITE_URL", "http://localhost:8080")
+
+# Jazzmin: tema moderno para el admin (sidebar con iconos, buscador, look
+# oscuro acorde a la web). Solo cambia la UI, no el comportamiento del admin.
+JAZZMIN_SETTINGS = {
+    "site_title": "NovaPixel Admin",
+    "site_header": "NovaPixel",
+    "site_brand": "NovaPixel Admin",
+    "site_logo": "admin/logo-novapixel.png",
+    "login_logo": "admin/logo-novapixel.png",
+    "site_logo_classes": "",
+    "welcome_sign": "Panel de administración de NovaPixel",
+    "copyright": "NovaPixel",
+    "search_model": ["accounts.User", "store.Product", "store.Purchase", "gilcoins.GilcoinPurchase"],
+    "topmenu_links": [
+        {"name": "Volver al sitio web", "url": f"{SITE_URL}/index.html", "new_window": True, "icon": "fas fa-arrow-left"},
+        {"name": "Panel de Gilcoins", "url": "admin:gilcoins_dashboard", "permissions": ["gilcoins.view_gilcoinpurchase"]},
+    ],
+    "icons": {
+        "accounts.User": "fas fa-user",
+        "accounts.PasswordResetToken": "fas fa-key",
+        "events.Event": "fas fa-calendar-star",
+        "gilcoins.GilcoinPackage": "fas fa-coins",
+        "gilcoins.GilcoinPurchase": "fas fa-shopping-cart",
+        "gilcoins.GilcoinTransaction": "fas fa-receipt",
+        "store.Product": "fas fa-store",
+        "store.Purchase": "fas fa-bag-shopping",
+        "auth.Group": "fas fa-users-cog",
+    },
+    "order_with_respect_to": ["accounts", "store", "gilcoins", "events", "auth"],
+    "hide_models": [],
+    "language_chooser": False,
+}
+
+JAZZMIN_UI_TWEAKS = {
+    "theme": "darkly",
+    "default_theme_mode": "dark",  # sin esto el contenido central queda con fondo claro (solo navbar/sidebar quedan oscuros)
+    "navbar": "navbar-dark",
+    "sidebar": "sidebar-dark-primary",
+    "brand_colour": "navbar-dark",
+    "accent": "accent-warning",
+}
+
 # --- Config específica de NovaPixel (equivalentes a server/.env.example) ---
 
-SITE_URL = os.environ.get("SITE_URL", "http://localhost:8080")
 STRIPE_SECRET_KEY = os.environ.get("STRIPE_SECRET_KEY", "")
 STRIPE_WEBHOOK_SECRET = os.environ.get("STRIPE_WEBHOOK_SECRET", "")
 PLUGIN_SHARED_SECRET = os.environ.get("PLUGIN_SHARED_SECRET", "")

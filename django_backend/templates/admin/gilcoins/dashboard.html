@@ -1,0 +1,96 @@
+{% extends "admin/base_site.html" %}
+{% load i18n %}
+
+{% block content_title %} Panel de Gilcoins {% endblock %}
+
+{% block breadcrumbs %}
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{% url 'admin:index' %}">Inicio</a></li>
+        <li class="breadcrumb-item"><a href="{% url 'admin:gilcoins_gilcoinpurchase_changelist' %}">Gilcoins</a></li>
+        <li class="breadcrumb-item">Panel de Gilcoins</li>
+    </ol>
+{% endblock %}
+
+{% block content %}
+<div class="col-12">
+
+    <div class="row">
+        <div class="col-md-3 col-6">
+            <div class="card text-center mb-3">
+                <div class="card-body">
+                    <h2 class="m-0">{{ unique_buyers }}</h2>
+                    <div class="text-muted">Compradores únicos</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 col-6">
+            <div class="card text-center mb-3">
+                <div class="card-body">
+                    <h2 class="m-0">{{ total_purchases }}</h2>
+                    <div class="text-muted">Compras pagadas</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 col-6">
+            <div class="card text-center mb-3">
+                <div class="card-body">
+                    <h2 class="m-0">{{ total_gilcoins|default:0 }} 🪙</h2>
+                    <div class="text-muted">Gilcoins vendidos</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 col-6">
+            <div class="card text-center mb-3">
+                <div class="card-body">
+                    <h2 class="m-0">${{ total_revenue|floatformat:2 }}</h2>
+                    <div class="text-muted">Recaudado (USD)</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-header">
+            <h5 class="m-0">Compradores</h5>
+        </div>
+        <div class="card-body table-responsive p-0">
+            <table class="table table-striped table-sm">
+                <thead>
+                    <tr>
+                        <th>Usuario</th>
+                        <th>Nick de Minecraft</th>
+                        <th># Compras</th>
+                        <th>Gilcoins comprados</th>
+                        <th>Total gastado</th>
+                        <th>Historial</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for b in buyers %}
+                    <tr>
+                        <td><a href="{% url 'admin:accounts_user_change' b.user_id %}">{{ b.username }}</a></td>
+                        <td>{{ b.minecraft_nick }}</td>
+                        <td>{{ b.purchase_count }}</td>
+                        <td>{{ b.total_gilcoins }} 🪙</td>
+                        <td>${{ b.total_spent|floatformat:2 }}</td>
+                        <td>
+                            <a href="{% url 'admin:gilcoins_gilcoinpurchase_changelist' %}?user__id__exact={{ b.user_id }}" class="btn btn-sm btn-outline-warning">
+                                Compras de Gilcoins
+                            </a>
+                            <a href="{% url 'admin:store_purchase_changelist' %}?minecraft_nick={{ b.minecraft_nick|urlencode }}" class="btn btn-sm btn-outline-info">
+                                Compras en la tienda
+                            </a>
+                        </td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="6" class="text-center text-muted py-4">Todavía no hay compras pagadas.</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>
+{% endblock %}
