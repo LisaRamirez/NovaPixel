@@ -113,6 +113,229 @@ const STORE_PRODUCT_PRICES = {
   "donador-vip-lv22": 25000,
 }
 
+// Beneficios de rangos y Donador VIP para el modal "Ver beneficios" (botón
+// .rank-detail-link[data-detail]). Texto tal cual la información de producto
+// ya provista — no se agregan beneficios nuevos. rango-donador-30/indef no
+// tienen entrada a propósito: nunca se recibió su detalle.
+const PRODUCT_DETAILS = {
+  "rango-angelical-30": {
+    image: "images/rango-angelical-icon.png",
+    name: "Rango Angelical",
+    price: "400 🪙",
+    duration: "30 días",
+    benefits: [
+      "🔒 6 Protecciones",
+      "⚔️ Encantamientos hasta Nivel 6",
+      "🏠 6 Hogares",
+      "🎒 3 Mochilas",
+      "🧰 Kit Angelical (una vez durante el rango)",
+      "🎨 Chat con Color",
+      "🚪 Acceso al servidor lleno",
+      "😴 Modo AFK",
+      "💰 $10,000 de economía inicial",
+      "📈 10 espacios de subasta",
+      "🎯 150 niveles de XP",
+    ],
+  },
+  "rango-celestial-30": {
+    image: "images/rango-celestial-icon.png",
+    name: "Rango Celestial",
+    price: "900 🪙",
+    duration: "30 días",
+    benefits: [
+      "🔒 7 Protecciones",
+      "⚔️ Encantamientos hasta Nivel 7",
+      "🏠 7 Hogares",
+      "🎒 6 Mochilas",
+      "🧰 Kit Celestial (una vez durante el rango)",
+      "🎨 Chat con Color",
+      "🚪 Acceso al servidor lleno",
+      "😴 Modo AFK",
+      "⚡ Comandos premium: /fly /anvil /craft /enderchest /recipe /afk",
+      "⛏️ Acceso a la Mina VIP",
+      "💰 $15,000 de economía inicial",
+      "🎯 200 niveles de XP",
+    ],
+  },
+  "rango-divino-30": {
+    image: "images/rango-divino-icon.png",
+    name: "Rango Divino",
+    price: "1,600 🪙",
+    duration: "30 días",
+    benefits: [
+      "🔒 8 Protecciones",
+      "⚔️ Encantamientos hasta Nivel 8",
+      "🏠 8 Hogares",
+      "🎒 9 Mochilas",
+      "🧰 Kit Divino (una vez durante el rango)",
+      "🎨 Chat con Color",
+      "🚪 Acceso al servidor lleno",
+      "😴 Modo AFK",
+      "⚡ Comandos: /afk /anvil /craft /enderchest /feed /fly /heal /recipe /repair",
+      "💰 $30,000 de economía inicial",
+      "🎯 350 niveles de XP",
+    ],
+  },
+  "rango-angelical-indef": {
+    image: "images/rango-angelical-icon.png",
+    name: "Rango Angelical",
+    price: "1,500 🪙",
+    duration: "Indefinido",
+    benefits: [
+      "🔒 6 Protecciones",
+      "⚔️ Encantamientos hasta Nivel 6",
+      "🏠 6 Hogares",
+      "🎒 3 Mochilas",
+      "🧰 Kit Angelical (reclamable cada 30 días)",
+      "🎨 Chat con Color",
+      "🚪 Acceso al servidor lleno",
+      "😴 Modo AFK",
+      "⚙️ 3 comandos exclusivos: /enderchest /recipe /repair",
+      "💰 $10,000 de economía inicial (única vez)",
+      "🎯 150 niveles de XP (única vez)",
+      "💬 Rango Angelical en Discord",
+    ],
+  },
+  "rango-celestial-indef": {
+    image: "images/rango-celestial-icon.png",
+    name: "Rango Celestial",
+    price: "2,100 🪙",
+    duration: "Indefinido",
+    benefits: [
+      "🔒 7 Protecciones",
+      "⚔️ Encantamientos hasta Nivel 7",
+      "🏠 7 Hogares",
+      "🎒 6 Mochilas",
+      "🧰 Kit Celestial (reclamable cada 30 días)",
+      "🎨 Chat con Color",
+      "🚪 Acceso al servidor lleno",
+      "😴 Modo AFK",
+      "⚡ /fly y comandos premium",
+      "⛏️ Acceso a la Mina VIP",
+      "💰 $15,000 de economía inicial (única vez)",
+      "🎯 200 niveles de XP (única vez)",
+      "💬 Rango Celestial en Discord",
+    ],
+  },
+  "rango-divino-indef": {
+    image: "images/rango-divino-icon.png",
+    name: "Rango Divino",
+    price: "3,800 🪙",
+    duration: "Indefinido",
+    benefits: [
+      "🔒 8 Protecciones",
+      "⚔️ Encantamientos hasta Nivel 8",
+      "🏠 8 Hogares",
+      "🎒 9 Mochilas",
+      "🧰 Kit Divino (reclamable cada 30 días)",
+      "🎨 Chat con Color",
+      "🚪 Acceso al servidor lleno",
+      "😴 Modo AFK",
+      "⚡ /fly · /heal · /feed y más",
+      "⛏️ Acceso a la Mina VIP",
+      "💰 $30,000 de economía inicial (única vez)",
+      "🎯 350 niveles de XP (única vez)",
+      "💬 Rango Divino en Discord",
+    ],
+  },
+  "donador-vip-lv10": {
+    icon: "fa-crown",
+    name: "Donador VIP LV10",
+    price: "5,000 🪙 · $50 USD",
+    duration: "Indefinido",
+    benefits: [
+      "🔒 10 Protecciones",
+      "🏠 10 Hogares",
+      "🎒 50 Mochilas",
+      "⚔️ Encantamientos hasta Nivel 10",
+      "🧰 Kit LUXURY (una única vez)",
+      "🎨 Chat con Color",
+      "🚪 Acceso al servidor lleno",
+      "😴 Modo AFK",
+      "⚡ 11 comandos premium: /afk /anvil /beezoka /craft /enderchest /feed /fly /nick /recipe /repair /repair all",
+      "💰 $50,000 de economía inicial",
+      "🎯 500 niveles de XP",
+      "📈 12 espacios de subasta",
+      "⛏️ Acceso a la Mina VIP",
+      "🏰 Acceso a todas las mazmorras",
+      "💬 Canal VIP + rango LUXURY en Discord",
+      "🏷️ Descuentos exclusivos",
+    ],
+  },
+  "donador-vip-lv14": {
+    icon: "fa-crown",
+    name: "Donador VIP LV14",
+    price: "9,000 🪙 · $90 USD",
+    duration: "Indefinido",
+    benefits: [
+      "🔒 10 Protecciones",
+      "🏠 10 Hogares",
+      "🎒 50 Mochilas",
+      "⚔️ Encantamientos hasta Nivel 14",
+      "🧰 Kit LUXURY (una única vez)",
+      "🎨 Chat con Color",
+      "🚪 Acceso al servidor lleno",
+      "😴 Modo AFK",
+      "⚡ Comandos premium LUXURY completos",
+      "💰 $90,000 de economía inicial",
+      "🎯 600 niveles de XP",
+      "📈 13 espacios de subasta",
+      "⛏️ Acceso a la Mina VIP",
+      "🏰 Acceso a todas las mazmorras",
+      "💬 Canal VIP + rango LUXURY en Discord",
+      "🏷️ Descuentos exclusivos",
+    ],
+  },
+  "donador-vip-lv18": {
+    icon: "fa-crown",
+    name: "Donador VIP LV18",
+    price: "15,000 🪙 · $150 USD",
+    duration: "Indefinido",
+    benefits: [
+      "🔒 10 Protecciones",
+      "🏠 10 Hogares",
+      "🎒 50 Mochilas",
+      "⚔️ Encantamientos hasta Nivel 18",
+      "🧰 Kit LUXURY (una única vez)",
+      "🎨 Chat con Color",
+      "🚪 Acceso al servidor lleno",
+      "😴 Modo AFK",
+      "⚡ Comandos premium LUXURY completos",
+      "💰 $150,000 de economía inicial",
+      "🎯 700 niveles de XP",
+      "📈 13 espacios de subasta",
+      "⛏️ Acceso a la Mina VIP",
+      "🏰 Acceso a todas las mazmorras",
+      "💬 Canal VIP + rango LUXURY en Discord",
+      "🏷️ Descuentos exclusivos",
+    ],
+  },
+  "donador-vip-lv22": {
+    icon: "fa-crown",
+    name: "Donador VIP LV22",
+    price: "25,000 🪙 · $250 USD",
+    duration: "Indefinido",
+    benefits: [
+      "🔒 10 Protecciones",
+      "🏠 10 Hogares",
+      "🎒 50 Mochilas",
+      "⚔️ Encantamientos hasta Nivel 25",
+      "🧰 Kit LUXURY (una única vez)",
+      "🎨 Chat con Color",
+      "🚪 Acceso al servidor lleno",
+      "😴 Modo AFK",
+      "⚡ Comandos premium LUXURY completos",
+      "💰 $250,000 de economía inicial",
+      "🎯 900 niveles de XP",
+      "📈 13 espacios de subasta",
+      "⛏️ Acceso a la Mina VIP",
+      "🏰 Acceso a todas las mazmorras",
+      "💬 Canal VIP + rango LUXURY en Discord",
+      "🏷️ Descuentos exclusivos",
+    ],
+  },
+}
+
 function apiFetch(path, options = {}) {
   return fetch(`${NOVAPIXEL_API_BASE}${path}`, {
     ...options,
@@ -445,6 +668,59 @@ document.addEventListener("DOMContentLoaded", () => {
     btn.addEventListener("click", () => startGilcoinCheckout(btn.dataset.package, btn.dataset.provider))
   })
 
+  // Modal "Ver beneficios": muestra el detalle de un rango o Donador VIP
+  // (PRODUCT_DETAILS) sin salir de la tienda. Reutiliza el mismo componente
+  // visual que el modal de login (.checkout-modal-overlay/.checkout-modal).
+  function setupProductDetailModal(cartApi) {
+    const modalEl = document.getElementById("product-detail-modal")
+    if (!modalEl) return
+
+    const closeBtn = document.getElementById("product-detail-close")
+    const imageEl = document.getElementById("product-detail-image")
+    const nameEl = document.getElementById("product-detail-name")
+    const priceEl = document.getElementById("product-detail-price")
+    const durationEl = document.getElementById("product-detail-duration")
+    const benefitsEl = document.getElementById("product-detail-benefits")
+    const buyBtn = document.getElementById("product-detail-buy-btn")
+
+    let currentProductId = null
+
+    function open(productId) {
+      const detail = PRODUCT_DETAILS[productId]
+      if (!detail) return
+
+      currentProductId = productId
+      imageEl.innerHTML = detail.image
+        ? `<img src="${detail.image}" alt="${escapeHtml(detail.name)}">`
+        : `<i class="fas ${detail.icon}"></i>`
+      nameEl.textContent = detail.name
+      priceEl.textContent = detail.price
+      durationEl.textContent = detail.duration
+      benefitsEl.innerHTML = detail.benefits.map((b) => `<li>${escapeHtml(b)}</li>`).join("")
+
+      modalEl.classList.add("active")
+    }
+
+    function close() {
+      modalEl.classList.remove("active")
+      currentProductId = null
+    }
+
+    document.querySelectorAll(".rank-detail-link[data-detail]").forEach((btn) => {
+      btn.addEventListener("click", () => open(btn.dataset.detail))
+    })
+
+    closeBtn.addEventListener("click", close)
+    modalEl.addEventListener("click", (e) => {
+      if (e.target === modalEl) close()
+    })
+
+    buyBtn.addEventListener("click", () => {
+      if (currentProductId && cartApi) cartApi.addItem(currentProductId)
+      close()
+    })
+  }
+
   // Carrito de la tienda: los botones de producto ya no compran al instante,
   // solo agregan al carrito (persistido en localStorage). El pago real de
   // todo el carrito junto ocurre en checkout() contra /api/store/checkout.
@@ -664,6 +940,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   const cartApi = setupCart()
+  setupProductDetailModal(cartApi)
 
   document
     .querySelectorAll(".rank-buy-btn[data-product], .price-buy-btn[data-product], .vip-product-buy-btn[data-product]")
@@ -1014,9 +1291,9 @@ document.addEventListener("DOMContentLoaded", () => {
   })
 })
 
-// Banner dorado de Donador VIP: al hacer clic entra a una "tienda" exclusiva
-// que reemplaza la tienda normal (la oculta) y deja ver solo los productos
-// Donador VIP + el carrito. El botón "Volver" regresa a la tienda normal.
+// Banner dorado "NovaPixel VIP": al hacer clic entra a una "tienda" exclusiva
+// que reemplaza la tienda normal (la oculta) y deja ver Membresías Permanentes
+// + Donador VIP + el carrito. El botón "Volver" regresa a la tienda normal.
 document.addEventListener("DOMContentLoaded", () => {
   const vipBannerBtn = document.getElementById("vip-hero-banner-btn")
   const vipBackBtn = document.getElementById("vip-back-btn")
@@ -1025,7 +1302,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (vipBannerBtn) {
     vipBannerBtn.addEventListener("click", () => {
-      document.body.classList.add("vip-exclusive-mode")
+      document.body.classList.add("store-browsing", "vip-exclusive-mode")
       vipSection.scrollIntoView({ behavior: "smooth", block: "start" })
     })
   }
@@ -1036,6 +1313,15 @@ document.addEventListener("DOMContentLoaded", () => {
       vipSection.scrollIntoView({ behavior: "smooth", block: "start" })
     })
   }
+
+  // Los links "VIP" del footer en otras páginas apuntan a
+  // tienda.html#cat-donador-vip: sin esto, el ancla llegaba a un elemento
+  // display:none (vip-hero-category vive dentro de store-browse, oculto
+  // hasta entrar en modo "explorar") y no pasaba nada visible.
+  if (window.location.hash === "#cat-donador-vip") {
+    document.body.classList.add("store-browsing", "vip-exclusive-mode")
+    vipSection.scrollIntoView({ block: "start" })
+  }
 })
 
 // Tienda category tabs
@@ -1045,6 +1331,7 @@ document.addEventListener("DOMContentLoaded", () => {
   if (tabs.length === 0) return
 
   function activateTab(tab) {
+    document.body.classList.add("store-browsing")
     tabs.forEach((t) => t.classList.remove("active"))
     categories.forEach((c) => c.classList.remove("active"))
     tab.classList.add("active")
@@ -1068,6 +1355,60 @@ document.addEventListener("DOMContentLoaded", () => {
 
   syncTabFromHash()
   window.addEventListener("hashchange", syncTabFromHash)
+})
+
+// Página de inicio de la tienda (store-home): por defecto se ve el hero +
+// accesos rápidos en vez de los 48 productos de una. Entrar a una categoría,
+// a Gilcoins, a VIP o a "Explorar tienda" agrega body.store-browsing, que
+// muestra el catálogo completo (ver reglas en styles.css). "Inicio de la
+// tienda" vuelve atrás.
+document.addEventListener("DOMContentLoaded", () => {
+  const storeHome = document.getElementById("store-home")
+  if (!storeHome) return
+
+  const storeBrowse = document.getElementById("store-browse")
+
+  function enterBrowseMode() {
+    document.body.classList.add("store-browsing")
+    storeBrowse?.scrollIntoView({ behavior: "smooth", block: "start" })
+  }
+
+  const gilcoinsBtn = document.getElementById("store-hero-gilcoins-btn")
+  if (gilcoinsBtn) {
+    gilcoinsBtn.addEventListener("click", () => {
+      enterBrowseMode()
+      document.querySelector('.store-tab[data-target="cat-gilcoins"]')?.click()
+    })
+  }
+
+  document.querySelectorAll(".category-tile[data-target]").forEach((tile) => {
+    tile.addEventListener("click", () => {
+      enterBrowseMode()
+      document.querySelector(`.store-tab[data-target="${tile.dataset.target}"]`)?.click()
+    })
+  })
+
+  const vipTeaserBtn = document.getElementById("store-hero-vip-btn")
+  if (vipTeaserBtn) {
+    vipTeaserBtn.addEventListener("click", () => {
+      document.body.classList.add("store-browsing")
+      document.getElementById("vip-hero-banner-btn")?.click()
+    })
+  }
+
+  const exploreBtn = document.getElementById("store-explore-btn")
+  if (exploreBtn) {
+    exploreBtn.addEventListener("click", enterBrowseMode)
+  }
+
+  const backBtn = document.getElementById("store-home-back-btn")
+  if (backBtn) {
+    backBtn.addEventListener("click", () => {
+      document.body.classList.remove("store-browsing")
+      document.body.classList.remove("vip-exclusive-mode")
+      storeHome.scrollIntoView({ behavior: "smooth", block: "start" })
+    })
+  }
 })
 
 // Menú móvil: en pantallas angostas el navbar se reduce a solo logo +
