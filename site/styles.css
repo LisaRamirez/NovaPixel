@@ -1950,6 +1950,24 @@ body.vip-exclusive-mode .vip-back-btn {
   border-bottom-right-radius: 12px;
 }
 
+/* Bono de valor del paquete (cuánto rinde más por dólar que el más chico).
+   Va en la esquina opuesta al badge "Popular" para que puedan convivir. */
+.gilcoin-luxury-bonus {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: rgba(61, 220, 132, 0.16);
+  border: 1px solid rgba(61, 220, 132, 0.5);
+  border-top: none;
+  border-right: none;
+  color: #3ddc84;
+  font-weight: 800;
+  font-size: 0.66rem;
+  letter-spacing: 0.02em;
+  padding: 5px 10px;
+  border-bottom-left-radius: 12px;
+}
+
 .gilcoin-luxury-icon {
   width: 46px;
   height: 46px;
