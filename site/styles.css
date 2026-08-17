@@ -954,10 +954,6 @@ html {
   display: block;
   width: 100%;
   height: auto;
-  /* El arte del banner es rectangular con fondo negro; el radio evita que
-     corte en seco contra el fondo de la página y lo alinea con el resto
-     de tarjetas de la tienda. */
-  border-radius: 14px;
 }
 
 .vip-hero-category {
