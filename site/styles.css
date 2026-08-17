@@ -954,25 +954,10 @@ html {
   display: block;
   width: 100%;
   height: auto;
-}
-
-.vip-hero-banner-text {
-  position: absolute;
-  top: 50%;
-  left: 7%;
-  z-index: 1;
-  transform: translateY(-50%);
-  color: #ffffff;
-  font-size: 0.95rem;
-  font-weight: 700;
-  letter-spacing: 0.3px;
-  text-align: left;
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.7);
-}
-
-.vip-hero-banner-text i {
-  color: var(--nova-gold);
-  margin-right: 8px;
+  /* El arte del banner es rectangular con fondo negro; el radio evita que
+     corte en seco contra el fondo de la página y lo alinea con el resto
+     de tarjetas de la tienda. */
+  border-radius: 14px;
 }
 
 .vip-hero-category {
@@ -1081,12 +1066,6 @@ body.vip-exclusive-mode .vip-hero-banner {
 
 body.vip-exclusive-mode .vip-back-btn {
   display: inline-flex;
-}
-
-@media (max-width: 600px) {
-  .vip-hero-banner-text {
-    font-size: 0.7rem;
-  }
 }
 
 .store-page {
