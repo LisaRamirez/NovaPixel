@@ -267,6 +267,9 @@
                     <button class="store-tab active" data-target="all">
                         <i class="fas fa-border-all"></i> Todos
                     </button>
+                    <button class="store-tab" data-target="cat-paquetes">
+                        <i class="fas fa-gem"></i> Paquetes
+                    </button>
                     <button class="store-tab" data-target="cat-rangos">
                         <i class="fas fa-crown"></i> Rangos
                     </button>
@@ -294,7 +297,76 @@
                 </div>
 
                 <div class="store-items">
-                    <div class="store-category active" id="cat-rangos">
+                    <div class="store-category active" id="cat-paquetes">
+                        <h3 class="store-category-title">Paquetes Deluxe Permanentes</h3>
+                        <p class="store-subtitle" style="margin-bottom:24px;">Todo agrupado en un solo pack, más barato que comprar cada ítem por separado.</p>
+                        <div class="deluxe-grid">
+
+                            <div class="deluxe-card deluxe-card--inmortal">
+                                <div class="deluxe-icon product-detail-trigger" data-detail="paquete-inmortal" role="button" tabindex="0">
+                                    <img src="images/paquete-inmortal-icon.png" alt="Paquete Inmortal">
+                                </div>
+                                <h4 class="deluxe-name">Inmortal</h4>
+                                <ul class="deluxe-benefits">
+                                    <li>Rango Angelical <strong>INDEFINIDO</strong></li>
+                                    <li>Protección Diamante 128x128</li>
+                                    <li>Brillo (Glowing) a tu elección</li>
+                                    <li>100 Lv de Exp</li>
+                                    <li>50k de economía</li>
+                                    <li>Fly x 30 días</li>
+                                    <li>01 Spawner a elección de la tienda</li>
+                                    <li>01 Llave Ancestral</li>
+                                </ul>
+                                <div class="deluxe-saving">Por separado: <span class="store-price-old">5,200</span> · ahorras 600 🪙</div>
+                                <div class="deluxe-price">4,600 <span>🪙</span></div>
+                                <button class="rank-buy-btn" data-product="paquete-inmortal">Añadir</button>
+                            </div>
+
+                            <div class="deluxe-card deluxe-card--absoluto">
+                                <div class="deluxe-icon product-detail-trigger" data-detail="paquete-absoluto" role="button" tabindex="0">
+                                    <img src="images/paquete-absoluto-icon.png" alt="Paquete Absoluto">
+                                </div>
+                                <h4 class="deluxe-name">Absoluto</h4>
+                                <ul class="deluxe-benefits">
+                                    <li>Rango Celestial <strong>INDEFINIDO</strong></li>
+                                    <li>Protección Netherita 256x256</li>
+                                    <li>Brillo (Glowing) a tu elección</li>
+                                    <li>250 Lv de Exp</li>
+                                    <li>100k de economía</li>
+                                    <li>01 Spawner a elección de la tienda</li>
+                                    <li>Pegado de Schematic</li>
+                                    <li>02 Llaves Ancestrales</li>
+                                </ul>
+                                <div class="deluxe-saving">Por separado: <span class="store-price-old">8,600</span> · ahorras 900 🪙</div>
+                                <div class="deluxe-price">7,700 <span>🪙</span></div>
+                                <button class="rank-buy-btn" data-product="paquete-absoluto">Añadir</button>
+                            </div>
+
+                            <div class="deluxe-card deluxe-card--supremo">
+                                <div class="deluxe-badge">Máximo valor</div>
+                                <div class="deluxe-icon product-detail-trigger" data-detail="paquete-supremo" role="button" tabindex="0">
+                                    <img src="images/paquete-supremo-icon.png" alt="Paquete Supremo">
+                                </div>
+                                <h4 class="deluxe-name">Supremo</h4>
+                                <ul class="deluxe-benefits">
+                                    <li>Rango Divino <strong>INDEFINIDO</strong></li>
+                                    <li>Protección Esmeralda 512x512</li>
+                                    <li>Brillo (Glowing) a tu elección</li>
+                                    <li>300 Lv de Exp</li>
+                                    <li>150k de economía</li>
+                                    <li>01 Spawner a elección de la tienda</li>
+                                    <li>Pegado de Schematic</li>
+                                    <li>03 Llaves Ancestrales</li>
+                                </ul>
+                                <div class="deluxe-saving">Por separado: <span class="store-price-old">12,700</span> · ahorras 1,100 🪙</div>
+                                <div class="deluxe-price">11,600 <span>🪙</span></div>
+                                <button class="rank-buy-btn" data-product="paquete-supremo">Añadir</button>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="store-category" id="cat-rangos">
                         <h3 class="store-category-title">Rangos</h3>
                         <div class="rank-duration-toggle">
                             <button type="button" class="rank-duration-btn active" data-duration="30">30 días</button>

@@ -14,6 +14,9 @@ const NOVAPIXEL_API_BASE = `${window.location.protocol}//${window.location.hostn
 // Catálogo solo para mostrar el nombre del producto en el modal.
 // El precio real y la validación del producto viven en server/src/products.js
 const STORE_PRODUCT_NAMES = {
+  "paquete-inmortal": "Paquete Inmortal",
+  "paquete-absoluto": "Paquete Absoluto",
+  "paquete-supremo": "Paquete Supremo",
   "rango-angelical-30": "Rango Angelical · 30 días",
   "rango-celestial-30": "Rango Celestial · 30 días",
   "rango-divino-30": "Rango Divino · 30 días",
@@ -65,6 +68,9 @@ const STORE_PRODUCT_NAMES = {
 // priceCents en server/src/products.js). El backend siempre revalida el
 // precio real al comprar — esto es solo para mostrarlo en el modal.
 const STORE_PRODUCT_PRICES = {
+  "paquete-inmortal": 4600,
+  "paquete-absoluto": 7700,
+  "paquete-supremo": 11600,
   "rango-angelical-30": 400,
   "rango-celestial-30": 900,
   "rango-divino-30": 1600,
@@ -118,6 +124,57 @@ const STORE_PRODUCT_PRICES = {
 // beneficios nuevos. rango-donador-30/indef no tienen entrada a propósito:
 // nunca se recibió su detalle.
 const PRODUCT_DETAILS = {
+  "paquete-inmortal": {
+    image: "images/paquete-inmortal-icon.png",
+    name: "Paquete Inmortal",
+    price: "4,600 🪙",
+    duration: "Permanente",
+    benefits: [
+      "👑 Rango Angelical INDEFINIDO",
+      "🔒 Protección Diamante 128x128",
+      "✨ Brillo (Glowing) a tu elección",
+      "🧪 100 Lv de Exp",
+      "💰 50k de economía",
+      "🪶 Fly x 30 días",
+      "📦 01 Spawner a elección de la tienda",
+      "🗝️ 01 Llave Ancestral",
+      "🏷️ Por separado costaría 5,200 🪙 — ahorras 600",
+    ],
+  },
+  "paquete-absoluto": {
+    image: "images/paquete-absoluto-icon.png",
+    name: "Paquete Absoluto",
+    price: "7,700 🪙",
+    duration: "Permanente",
+    benefits: [
+      "👑 Rango Celestial INDEFINIDO",
+      "🔒 Protección Netherita 256x256",
+      "✨ Brillo (Glowing) a tu elección",
+      "🧪 250 Lv de Exp",
+      "💰 100k de economía",
+      "📦 01 Spawner a elección de la tienda",
+      "🏗️ Pegado de Schematic",
+      "🗝️ 02 Llaves Ancestrales",
+      "🏷️ Por separado costaría 8,600 🪙 — ahorras 900",
+    ],
+  },
+  "paquete-supremo": {
+    image: "images/paquete-supremo-icon.png",
+    name: "Paquete Supremo",
+    price: "11,600 🪙",
+    duration: "Permanente",
+    benefits: [
+      "👑 Rango Divino INDEFINIDO",
+      "🔒 Protección Esmeralda 512x512",
+      "✨ Brillo (Glowing) a tu elección",
+      "🧪 300 Lv de Exp",
+      "💰 150k de economía",
+      "📦 01 Spawner a elección de la tienda",
+      "🏗️ Pegado de Schematic",
+      "🗝️ 03 Llaves Ancestrales",
+      "🏷️ Por separado costaría 12,700 🪙 — ahorras 1,100",
+    ],
+  },
   "rango-angelical-30": {
     image: "images/rango-angelical-icon.png",
     name: "Rango Angelical",

@@ -1678,6 +1678,173 @@ body.vip-exclusive-mode .vip-back-btn {
   margin: 16px 0;
 }
 
+/* ============================================================
+   Paquetes Deluxe Permanentes: tarjetas con acento de color por
+   paquete, icono circular y los beneficios listados dentro de la
+   propia tarjeta (no hace falta abrir el modal para compararlos).
+   Cada variante solo cambia --deluxe-accent.
+   ============================================================ */
+.deluxe-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  align-items: start;
+}
+
+.deluxe-card {
+  --deluxe-accent: var(--nova-gold);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 0;
+  background: linear-gradient(170deg, rgba(var(--nova-bg-rgb), 0.95), rgba(0, 0, 0, 0.6));
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-top: 3px solid var(--deluxe-accent);
+  border-radius: 16px;
+  padding: 26px 20px 22px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.deluxe-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.45);
+}
+
+.deluxe-card--inmortal {
+  --deluxe-accent: #3ddc84;
+}
+
+.deluxe-card--absoluto {
+  --deluxe-accent: #c86bff;
+}
+
+.deluxe-card--supremo {
+  --deluxe-accent: #ff9f43;
+}
+
+.deluxe-badge {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--deluxe-accent);
+  color: #14101f;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  padding: 4px 14px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+.deluxe-icon {
+  width: 128px;
+  height: 128px;
+  margin-bottom: 14px;
+  border-radius: 50%;
+  border: 3px solid var(--deluxe-accent);
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.1), transparent 70%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.deluxe-icon img {
+  width: 88%;
+  height: 88%;
+  object-fit: contain;
+}
+
+.deluxe-name {
+  margin: 0 0 16px;
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: #ffffff;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.deluxe-benefits {
+  list-style: none;
+  margin: 0 0 18px;
+  padding: 0;
+  width: 100%;
+}
+
+.deluxe-benefits li {
+  display: flex;
+  align-items: flex-start;
+  gap: 9px;
+  background: rgba(255, 255, 255, 0.04);
+  border-left: 2px solid var(--deluxe-accent);
+  border-radius: 6px;
+  padding: 8px 11px;
+  margin-bottom: 7px;
+  color: rgba(255, 255, 255, 0.86);
+  font-size: 0.82rem;
+  line-height: 1.35;
+}
+
+/* El check se dibuja con ::before para no repetir un <i> en cada <li>. */
+.deluxe-benefits li::before {
+  content: "\f00c"; /* fa-check */
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+  color: var(--deluxe-accent);
+  font-size: 0.72rem;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.deluxe-benefits strong {
+  color: var(--deluxe-accent);
+}
+
+.deluxe-saving {
+  width: 100%;
+  text-align: center;
+  color: var(--nova-text-muted);
+  font-size: 0.76rem;
+  padding: 8px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.deluxe-price {
+  color: var(--nova-gold);
+  font-size: 1.9rem;
+  font-weight: 800;
+  line-height: 1.1;
+  margin-bottom: 16px;
+}
+
+.deluxe-price span {
+  font-size: 1.1rem;
+}
+
+.deluxe-card .rank-buy-btn {
+  margin-top: auto;
+}
+
+@media (max-width: 1100px) {
+  .deluxe-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 700px) {
+  .deluxe-grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .deluxe-icon {
+    width: 104px;
+    height: 104px;
+  }
+}
+
 /* Rank tiers */
 .rank-grid {
   display: grid;
