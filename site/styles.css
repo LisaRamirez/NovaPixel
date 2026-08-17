@@ -952,8 +952,15 @@ html {
 
 .vip-hero-banner-img {
   display: block;
-  width: 100%;
+  /* El arte es alto (2.3:1) y a ancho completo empujaba el menú de
+     categorías fuera de pantalla. Se limita la altura en vez de recortar:
+     la imagen se escala entera y se centra, así no se pierde nada del
+     diseño. max-width manda en pantallas angostas. */
+  max-width: 100%;
+  max-height: 400px;
+  width: auto;
   height: auto;
+  margin: 0 auto;
 }
 
 .vip-hero-category {
