@@ -155,9 +155,15 @@ PAYPAL_MODE = os.environ.get("PAYPAL_MODE", "sandbox")
 # frontend es JS estático sin plantillas de Django que inyecten
 # {% csrf_token %}; la protección contra CSRF sigue siendo SameSite=Lax +
 # este origin restringido, igual que en el backend original.
-CORS_ALLOWED_ORIGINS = [SITE_URL]
+# EXTRA_ALLOWED_ORIGINS permite sumar orígenes sin tocar SITE_URL (que
+# además se usa para los enlaces de correo y el retorno de PayPal). Sirve
+# sobre todo en desarrollo, para abrir el sitio desde otro equipo de la
+# red local, ej. "http://192.168.1.81:8080".
+_extra_origins = [o.strip() for o in os.environ.get("EXTRA_ALLOWED_ORIGINS", "").split(",") if o.strip()]
+
+CORS_ALLOWED_ORIGINS = [SITE_URL, *_extra_origins]
 CORS_ALLOW_CREDENTIALS = True
-CSRF_TRUSTED_ORIGINS = [SITE_URL]
+CSRF_TRUSTED_ORIGINS = [SITE_URL, *_extra_origins]
 
 # Sesiones: se usa el framework de sesiones nativo de Django (tabla
 # django_session) en vez de reimplementar una tabla `sessions` a mano como
