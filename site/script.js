@@ -181,6 +181,8 @@ const PRODUCT_DETAILS = {
   "rango-angelical-30": {
     image: "images/rango-angelical-icon.png",
     name: "Rango Angelical",
+    description:
+      "¿Quieres progresar más rápido, disfrutar de mayor comodidad y desbloquear ventajas exclusivas sin perder la esencia de la supervivencia?",
     price: "400 🪙",
     duration: "30 días",
     benefits: [
@@ -200,6 +202,8 @@ const PRODUCT_DETAILS = {
   "rango-celestial-30": {
     image: "images/rango-celestial-icon.png",
     name: "Rango Celestial",
+    description:
+      "El Rango Celestial es la opción ideal para quienes buscan máxima comodidad, mayor libertad y beneficios exclusivos durante 30 días.",
     price: "900 🪙",
     duration: "30 días",
     benefits: [
@@ -220,6 +224,8 @@ const PRODUCT_DETAILS = {
   "rango-divino-30": {
     image: "images/rango-divino-icon.png",
     name: "Rango Divino",
+    description:
+      "El Rango Divinity está diseñado para jugadores que quieren disfrutar de una experiencia premium durante 30 días, con una enorme cantidad de ventajas, comandos exclusivos, mayor capacidad de almacenamiento y un poderoso impulso para su progreso.",
     price: "1,600 🪙",
     duration: "30 días",
     benefits: [
@@ -239,6 +245,8 @@ const PRODUCT_DETAILS = {
   "donador-vip-lv10": {
     image: "images/donador-vip-lv10-icon.png",
     name: "Donador VIP LV10",
+    description:
+      "El DONADOR LUXURY está creado para quienes quieren llevar su experiencia al máximo, disfrutar de beneficios exclusivos y destacar dentro de la comunidad.",
     price: "5,000 🪙 · $50 USD",
     duration: "Indefinido",
     benefits: [
@@ -263,6 +271,8 @@ const PRODUCT_DETAILS = {
   "donador-vip-lv14": {
     image: "images/donador-vip-lv14-icon.png",
     name: "Donador VIP LV14",
+    description:
+      "El DONADOR LUXURY de $90 USD es un rango INDEFINIDO diseñado para quienes quieren disfrutar de una de las experiencias más completas y exclusivas de NOVAPIXEL.",
     price: "9,000 🪙 · $90 USD",
     duration: "Indefinido",
     benefits: [
@@ -287,6 +297,8 @@ const PRODUCT_DETAILS = {
   "donador-vip-lv18": {
     image: "images/donador-vip-lv18-icon.png",
     name: "Donador VIP LV18",
+    description:
+      "El DONADOR LUXURY de $150 USD representa el nivel más alto de esta línea de beneficios. Un rango INDEFINIDO creado para jugadores que buscan disfrutar de una experiencia premium, destacar dentro de la comunidad y acceder a una enorme cantidad de ventajas exclusivas.",
     price: "15,000 🪙 · $150 USD",
     duration: "Indefinido",
     benefits: [
@@ -311,6 +323,8 @@ const PRODUCT_DETAILS = {
   "donador-vip-lv22": {
     image: "images/donador-vip-lv22-icon.png",
     name: "Donador VIP LV22",
+    description:
+      "El DONADOR LUXURY de $250 USD es la edición más exclusiva y costosa de nuestra tienda, creada para jugadores que quieren disfrutar de una experiencia premium llevada al máximo nivel.",
     price: "25,000 🪙 · $250 USD",
     duration: "Indefinido",
     benefits: [
@@ -330,6 +344,543 @@ const PRODUCT_DETAILS = {
       "🏰 Acceso a todas las mazmorras",
       "💬 Canal VIP + rango LUXURY en Discord",
       "🏷️ Descuentos exclusivos",
+    ],
+  },
+  "brillo-agua": {
+    image: "images/brillo-agua-icon.png",
+    name: "Brillo Agua",
+    description:
+      "Con Brillo Agua podrás disfrutar de un espectacular efecto Glowing que hará que tu personaje resalte con un intenso tono agua, creando una apariencia fresca, brillante y diferente.",
+    price: "500 🪙",
+    duration: "Permanente",
+    benefits: [
+      "💧 Brillo color agua alrededor de tu personaje",
+      "✨ Efecto Glowing",
+      "👀 Destaca fácilmente entre los demás jugadores",
+      "🌎 Disfrútalo en todo el servidor",
+      "💎 Beneficio cosmético exclusivo",
+    ],
+  },
+  "brillo-arcoiris": {
+    image: "images/brillo-arcoiris-icon.png",
+    name: "Brillo Arcoíris",
+    description:
+      "Lleva tu apariencia al siguiente nivel con Brillo Arcoíris, un espectacular beneficio cosmético que hará que tu personaje destaque con un llamativo efecto Glowing multicolor.",
+    price: "500 🪙",
+    duration: "Permanente",
+    benefits: [
+      "🌈 Efecto Arcoíris",
+      "✨ Glowing alrededor de todo tu personaje",
+      "👀 Destaca fácilmente entre los demás jugadores",
+      "🌎 Disfrútalo en todo el servidor",
+      "💎 Un efecto cosmético único y llamativo",
+    ],
+  },
+  "brillo-azul": {
+    image: "images/brillo-azul-icon.png",
+    name: "Brillo Azul",
+    description:
+      "Con Brillo Azul podrás darle a tu personaje un espectacular efecto de brillo (Glowing) que hará que resaltes visualmente estés donde estés.",
+    price: "500 🪙",
+    duration: "Permanente",
+    benefits: [
+      "💙 Brillo azul alrededor de tu personaje",
+      "✨ Efecto Glowing",
+      "👀 Hazte visible y destaca entre los demás",
+      "🌎 Disfrútalo en todo el servidor",
+      "💎 Beneficio cosmético exclusivo",
+    ],
+  },
+  "brillo-negro": {
+    image: "images/brillo-negro-icon.png",
+    name: "Brillo Negro",
+    description:
+      "Con Brillo Negro podrás disfrutar de un exclusivo efecto Glowing que hará resaltar tu personaje con una estética oscura, elegante y única.",
+    price: "500 🪙",
+    duration: "Permanente",
+    benefits: [
+      "🖤 Brillo negro alrededor de tu personaje",
+      "✨ Efecto Glowing",
+      "👀 Destaca entre todos los jugadores",
+      "🌎 Disfrútalo en todo el servidor",
+      "💎 Beneficio cosmético exclusivo",
+    ],
+  },
+  "brillo-rosado": {
+    image: "images/brillo-rosado-icon.png",
+    name: "Brillo Rosado",
+    description:
+      "Con Brillo Rosado podrás disfrutar de un espectacular efecto Glowing que hará resaltar todo tu personaje con un intenso tono rosado.",
+    price: "500 🪙",
+    duration: "Permanente",
+    benefits: [
+      "💗 Brillo rosado alrededor de tu personaje",
+      "✨ Efecto Glowing",
+      "👀 Destaca fácilmente entre los demás jugadores",
+      "🌎 Disfrútalo en todo el servidor",
+      "💎 Beneficio cosmético exclusivo",
+    ],
+  },
+  "comandos-pack": {
+    name: "Pack Comandos (/anvil /hat /ec /craft)",
+    description:
+      "Con el Pack de Comandos tendrás acceso a /hat, /ec y /craft, disponibles tanto en Survival como en el MapaMundi.",
+    price: "400 🪙",
+    duration: "Permanente",
+    benefits: [
+      "⚡ 3 comandos incluidos",
+      "🌎 Disponibles en Survival",
+      "🗺 Disponibles en MapaMundi",
+      "💎 Una alternativa económica a un rango premium",
+      "🚀 Más comodidad durante tu aventura",
+    ],
+  },
+  "economia-100k": {
+    name: "100,000 de Economía",
+    description:
+      "Con 100,000 de Economía recibirás 100,000 de dinero IN-GAME directamente dentro de NOVAPIXEL, listo para gastar, invertir y aprovechar en la economía del servidor.",
+    price: "1,500 🪙",
+    duration: "Entrega unica",
+    benefits: [
+      "🪙 +100,000 de dinero dentro del juego",
+      "🛒 Compra todo lo que necesites dentro del servidor",
+      "⚔ Invierte en tu equipamiento y progreso",
+      "🏠 Consigue recursos y productos del mercado",
+      "🚀 Impulsa tu aventura desde el primer momento",
+    ],
+  },
+  "economia-50k": {
+    name: "50,000 de Economía",
+    description:
+      "Con este producto recibirás 50,000 de dinero dentro del juego, listos para utilizar en la economía del servidor.",
+    price: "900 🪙",
+    duration: "Entrega unica",
+    benefits: [
+      "🪙 +50,000 de dinero IN-GAME",
+      "🛒 Compra productos y objetos dentro del servidor",
+      "⚔ Invierte en tu progreso",
+      "🏠 Obtén lo que necesitas para tu aventura",
+      "🚀 Impulsa tu economía desde el primer momento",
+    ],
+  },
+  "exp-100": {
+    name: "Experiencia 100 Niveles",
+    description:
+      "Con Experiencia 100 Niveles recibirás un bote de experiencia dentro del juego que te permitirá obtener 100 niveles de XP y acelerar tu progreso inmediatamente.",
+    price: "400 🪙",
+    duration: "Entrega unica",
+    benefits: [
+      "🎯 +100 niveles de experiencia",
+      "🧪 Bote de experiencia entregado dentro del juego",
+      "⚡ Recibe tu XP y úsala cuando quieras",
+      "🔥 Ideal para potenciar tu equipamiento",
+    ],
+  },
+  "exp-250": {
+    name: "Experiencia 250 Niveles",
+    description:
+      "¿Necesitas una gran cantidad de experiencia para potenciar tus objetos y avanzar más rápido?",
+    price: "900 🪙",
+    duration: "Entrega unica",
+    benefits: [
+      "🎯 +250 niveles de experiencia",
+      "🧪 Bote de experiencia entregado dentro del juego",
+      "⚡ Gran impulso instantáneo de XP",
+      "🔥 Perfecto para encantar y mejorar tu equipamiento",
+    ],
+  },
+  "fly-30": {
+    name: "Fly 30 días",
+    description:
+      "¿Quieres moverte libremente por el servidor, explorar desde las alturas y construir con mucha más comodidad?",
+    price: "800 🪙",
+    duration: "30 dias",
+    benefits: [
+      "🕊 Acceso a /fly durante 30 días",
+      "🌎 Vuela en Survival",
+      "🗺 Vuela en el MapaMundi",
+      "🏗 Construye desde el aire con mayor facilidad",
+      "⚡ Desplázate rápidamente por el mundo",
+    ],
+  },
+  "fly-indefinido": {
+    name: "Fly Indefinido",
+    description:
+      "¿Cansado de caminar largas distancias? ¿Quieres construir, explorar y moverte por el mundo con total libertad?",
+    price: "1,500 🪙",
+    duration: "Indefinido",
+    benefits: [
+      "🕊 Acceso a /fly INDEFINIDO",
+      "🌎 Vuela en Survival",
+      "🗺 Vuela en el MapaMundi",
+      "🏗 Construye desde el aire con mayor comodidad",
+      "🚀 Muévete rápidamente por el mundo",
+      "🕊 Survival + Fly",
+      "🗺 MapaMundi + Fly",
+      "♾ Acceso INDEFINIDO",
+    ],
+  },
+  "kit-bahamon": {
+    image: "images/kit-bahamon-icon.png",
+    name: "Kit Bahamon",
+    description:
+      "¿Te gustan las armaduras oscuras, las criaturas legendarias y las apariencias que imponen respeto?",
+    price: "1,700 🪙",
+    duration: "Permanente",
+    benefits: [
+      "🌑 Estética oscura",
+      "🐉 Inspiración de dragón",
+      "🪽 Alas imponentes",
+      "⚔ Armas a juego",
+      "👑 Diseño exclusivo y amenazante",
+      "🪽 Alas majestuosas",
+      "🌑 Armadura oscura",
+      "🐉 Detalles inspirados en dragones",
+    ],
+  },
+  "kit-bee": {
+    image: "images/kit-bee-icon.png",
+    name: "Kit Bee",
+    description:
+      "El Kit Bee llega para demostrar que también puedes ser tierno, elegante y espectacular al mismo tiempo.",
+    price: "1,600 🪙",
+    duration: "Permanente",
+    benefits: [
+      "🐝 Temática de abeja",
+      "✨ Armadura dorada",
+      "🪽 Alas espectaculares",
+      "⚔ Armas personalizadas",
+      "🛠 Herramientas a juego",
+      "👑 Diseño exclusivo de NOVAPIXEL",
+      "🪽 Alas majestuosas",
+      "💛 Detalles dorados",
+    ],
+  },
+  "kit-conqueror": {
+    image: "images/kit-conqueror-icon.png",
+    name: "Kit Conqueror",
+    description:
+      "El Kit Conqueror es un conjunto estético especial que combina una imponente inspiración árabe y maya, acompañado de unas alas majestuosas que convierten tu personaje en una presencia imposible de ignorar.",
+    price: "2,000 🪙",
+    duration: "Permanente",
+    benefits: [
+      "✨ Diseño exclusivo",
+      "🪽 Alas majestuosas",
+      "🏜 Inspiración árabe",
+      "🌿 Detalles de estilo maya",
+      "👑 Apariencia digna de un conquistador",
+    ],
+  },
+  "kit-darkflame": {
+    image: "images/kit-darkflame-icon.png",
+    name: "Kit Darkflame",
+    description:
+      "El Kit Darkflame está diseñado para quienes prefieren un estilo oscuro, demoníaco y amenazante, con una estética dominada por intensas llamas rojas y una armadura que parece salida de las profundidades del Nether.",
+    price: "2,200 🪙",
+    duration: "Permanente",
+    benefits: [
+      "🔥 Llamas rojas imponentes",
+      "😈 Diseño demoníaco",
+      "🪖 Casco de apariencia siniestra",
+      "⚔ Armadura oscura y amenazante",
+      "✨ Diseño estético exclusivo",
+      "😈 Detalles malignos",
+      "🔥 Efectos y elementos de fuego",
+      "🪖 Casco intimidante",
+    ],
+  },
+  "kit-ifrit": {
+    image: "images/kit-ifrit-icon.png",
+    name: "Kit Ifrit",
+    description:
+      "El Kit Ifrit combina una estética oscura con intensos detalles en rojo y negro, acompañada de unas espectaculares alas inspiradas en un dragón.",
+    price: "1,500 🪙",
+    duration: "Permanente",
+    benefits: [
+      "🐉 Estética de criatura legendaria",
+      "🪽 Alas rojas y negras",
+      "🔥 Detalles intensos y llamativos",
+      "🌑 Armadura oscura",
+      "👑 Diseño exclusivo y majestuoso",
+      "🪽 Rojo intenso",
+      "🌑 Negro profundo",
+      "🐉 Inspiración de dragón",
+    ],
+  },
+  "kit-loki": {
+    image: "images/kit-loki-icon.png",
+    name: "Kit Loki",
+    description:
+      "El Kit Loki está inspirado en la estética del legendario Loki, con una imponente armadura verde, un casco con características similares a sus emblemáticos cuernos y un conjunto de armas que completan su apariencia.",
+    price: "1,700 🪙",
+    duration: "Permanente",
+    benefits: [
+      "💚 Armadura verde imponente",
+      "🪖 Casco inspirado en sus característicos cuernos",
+      "⚔ Armas a juego",
+      "🐍 Estética inspirada en Loki",
+      "👑 Diseño único y llamativo",
+      "⚔ Tus encantamientos",
+      "➕💚 La estética de Loki",
+      "🟰🔥 Una armadura completamente personalizada",
+    ],
+  },
+  "kit-molten": {
+    image: "images/kit-molten-icon.png",
+    name: "Kit Molten",
+    description:
+      "El Kit Molten combina una estética oscura con un diseño sofisticado que transforma por completo la apariencia de tu personaje.",
+    price: "1,800 🪙",
+    duration: "Permanente",
+    benefits: [
+      "🖤 Armadura de tonos oscuros",
+      "🪽 Alas de diseño espectacular",
+      "🎩 Casco elegante e imponente",
+      "✨ Estética refinada y exclusiva",
+      "👑 Diseño pensado para destacar",
+      "🪽 Diseño oscuro",
+      "🌑 Detalles misteriosos",
+      "✨ Apariencia sofisticada",
+    ],
+  },
+  "kit-necros": {
+    image: "images/kit-necros-icon.png",
+    name: "Kit Necros",
+    description:
+      "¿Te gustan las apariencias oscuras, pero quieres añadir un toque de brillo, misterio y poder?",
+    price: "2,000 🪙",
+    duration: "Permanente",
+    benefits: [
+      "💜 Color morado brillante",
+      "🪽 Alas espectaculares",
+      "🌑 Estética de ángel oscuro",
+      "✨ Armadura con detalles luminosos",
+      "👑 Diseño exclusivo y llamativo",
+      "💜 Brillo morado",
+      "🪽 Alas imponentes",
+      "🌑 Estética oscura",
+    ],
+  },
+  "kit-sakura": {
+    image: "images/kit-sakura-icon.png",
+    name: "Kit Sakura",
+    description:
+      "Inspirado en la belleza de los cerezos en flor, este kit combina tonos rosados, detalles delicados y una estética espectacular que transforma por completo la apariencia de tu personaje.",
+    price: "1,500 🪙",
+    duration: "Permanente",
+    benefits: [
+      "🌸 Inspiración Sakura",
+      "💗 Estética rosa exclusiva",
+      "🪽 Alas espectaculares",
+      "⚔ Armas personalizadas",
+      "🛠 Herramientas a juego",
+      "✨ Diseño elegante y llamativo",
+      "🪽 Alas con estética Sakura",
+      "🛡 Armadura personalizada",
+    ],
+  },
+  "kit-samurai": {
+    image: "images/kit-samurai-icon.png",
+    name: "Kit Samurai",
+    description:
+      "¿Quieres dejar atrás las armaduras convencionales y darle a tu personaje una apariencia completamente diferente?",
+    price: "3,200 🪙",
+    duration: "Permanente",
+    benefits: [
+      "✨ Diseños asiáticos exclusivos",
+    ],
+  },
+  "kit-star-light": {
+    image: "images/kit-star-light-icon.png",
+    name: "Kit Star Light",
+    description:
+      "El Kit Star Light es nuestra propuesta más lujosa, llamativa y exclusiva para quienes quieren destacar visualmente dentro del servidor.",
+    price: "3,500 🪙",
+    duration: "Permanente",
+    benefits: [
+      "👑 Diseño exclusivo",
+      "✨ Estética dorada",
+      "🪽 Alas impresionantes",
+      "💎 Aspecto premium",
+      "🔥 Un look que no encontrarás en una armadura convencional",
+      "✨ Una apariencia exclusiva",
+      "⚔ Tus propios encantamientos",
+      "🪽 Alas espectaculares",
+    ],
+  },
+  "pico-3x3": {
+    image: "images/pico-3x3-icon.png",
+    name: "Pico 3x3",
+    description:
+      "Con el PICO 3×3 podrás romper 9 bloques de una sola vez, haciendo que tus sesiones de minería sean mucho más rápidas, cómodas y eficientes.",
+    price: "1,500 🪙",
+    duration: "Permanente",
+    benefits: [
+      "⛏ Área de excavación 3×3",
+      "⚡ Rompe hasta 9 bloques simultáneamente",
+      "🌍 Úsalo en la Mina, Survival o Mapamundi",
+      "🔥 Una herramienta ideal para acelerar tu progreso",
+      "⛏ 3×3 por golpe",
+      "⚡ Más bloques en menos tiempo",
+      "🌍 Múltiples zonas de uso",
+      "📖 Compatible con Irrompibilidad custom",
+    ],
+  },
+  "proteccion-diamante-128": {
+    image: "images/proteccion-128-icon.png",
+    name: "Protección Diamante 128x128",
+    description:
+      "¿Tienes una casa, una base o un terreno enorme que quieres mantener completamente protegido?",
+    price: "800 🪙",
+    duration: "Permanente",
+    benefits: [
+      "🏠 Protección de 128×128 bloques",
+      "🛡 Protege tus construcciones y propiedades",
+      "🔒 Evita que otros jugadores dañen tu zona protegida",
+      "👥 Ideal para compartir un área segura con tus amigos",
+      "🌍 Perfecta para bases grandes, ciudades, proyectos y zonas comunitarias",
+      "🏡 Una gran base",
+      "🏰 Un castillo",
+      "🌳 Una zona de supervivencia",
+    ],
+  },
+  "proteccion-esmeralda-512": {
+    image: "images/proteccion-512-icon.png",
+    name: "Protección Esmeralda 512x512",
+    description:
+      "La Protección Esmeralda 512×512 está diseñada para quienes necesitan un territorio gigantesco donde construir, expandirse y compartir sus proyectos con amigos.",
+    price: "4,500 🪙",
+    duration: "Permanente",
+    benefits: [
+      "💚 512×512 bloques de protección",
+      "🛡 Protege tus construcciones y propiedades",
+      "🔒 Mantén tu territorio protegido frente a otros jugadores",
+      "👥 Ideal para compartir una gran zona con tus amigos",
+      "🏰 Perfecta para mega bases, ciudades y proyectos de gran escala",
+      "💎 Diamante: 128×128",
+      "🔥 Netherita: 256×256",
+      "💚 Esmeralda: 512×512",
+    ],
+  },
+  "proteccion-netherita-256": {
+    image: "images/proteccion-256-icon.png",
+    name: "Protección Netherita 256x256",
+    description:
+      "¿Tu base está creciendo? ¿Tienes un proyecto enorme o quieres crear una zona completa para ti y tus amigos?",
+    price: "2,100 🪙",
+    duration: "Permanente",
+    benefits: [
+      "💎 256×256 bloques de protección",
+      "🛡 Protege tus construcciones y propiedades",
+      "🔒 Mantén tu zona protegida frente a otros jugadores",
+      "👥 Perfecta para jugar y construir con tus amigos",
+      "🏰 Ideal para grandes bases, ciudades y proyectos ambiciosos",
+      "🏰 Mega bases",
+      "🏙 Ciudades y comunidades",
+      "🌳 Grandes zonas de supervivencia",
+    ],
+  },
+  "schematic-pegado": {
+    image: "images/schematic-pegado-icon.png",
+    name: "Pegado de Schematic",
+    description:
+      "¿Encontraste una construcción increíble pero no quieres pasar horas colocándola bloque por bloque?",
+    price: "1,200 🪙",
+    duration: "Entrega unica",
+    benefits: [
+      "🏗 Schematic de hasta 40×40",
+      "🎨 Tú eliges la construcción",
+      "⚡ Ahorra horas de construcción",
+      "🌎 Disponible en Survival",
+      "🗺 Disponible en MapaMundi",
+      "👷 Colocación realizada por un miembro autorizado del Staff",
+    ],
+  },
+  "spawner-arana": {
+    image: "images/spawner-arana-icon.png",
+    name: "Spawner de Araña",
+    description:
+      "¿Quieres tener una fuente de arañas cerca de tu base y aprovechar sus recursos sin tener que recorrer el mundo en busca de mobs?",
+    price: "500 🪙",
+    duration: "Permanente",
+    benefits: [
+      "🕷 Generación de arañas",
+      "🧵 Ideal para obtener hilo",
+      "👁 Posibilidad de conseguir ojos de araña",
+      "⚙ Perfecto para construir granjas de mobs",
+      "🏠 Colócalo cerca de tu zona de trabajo",
+    ],
+  },
+  "spawner-cerdo": {
+    image: "images/spawner-cerdo-icon.png",
+    name: "Spawner de Cerdo",
+    description:
+      "Con el Spawner de Cerdo podrás generar cerdos en tu propia zona y crear una granja cerca de tu base, teniendo tus recursos siempre a mano.",
+    price: "300 🪙",
+    duration: "Permanente",
+    benefits: [
+      "🐷 Generación de cerdos",
+      "🍖 Fuente de alimento para tu Survival",
+      "🏠 Ideal para colocar cerca de tu base",
+      "🌾 Perfecto para crear tu propia granja",
+      "⚡ Ahorra tiempo buscando animales",
+      "🍖 Carne de cerdo",
+      "🐷 Generación constante de animales",
+      "📦 Recursos para tu supervivencia",
+    ],
+  },
+  "spawner-pollo": {
+    image: "images/spawner-pollo-icon.png",
+    name: "Spawner de Pollo",
+    description:
+      "¿Cansado de recorrer el mundo buscando animales cada vez que necesitas comida o materiales?",
+    price: "300 🪙",
+    duration: "Permanente",
+    benefits: [
+      "🐔 Generación de pollos",
+      "🍗 Ideal para crear una granja de alimentos",
+      "🪶 Obtén plumas y otros recursos",
+      "🏠 Perfecto para colocar cerca de tu base",
+      "⚡ Ahorra tiempo buscando animales",
+      "🍗 Alimento",
+      "🪶 Plumas",
+      "🐔 Animales para tu granja",
+    ],
+  },
+  "spawner-vaca": {
+    image: "images/spawner-vaca-icon.png",
+    name: "Spawner de Vaca",
+    description:
+      "Con el Spawner de Vaca podrás colocar un spawner que generará vacas dentro de tu zona, permitiéndote crear y gestionar tu propia granja.",
+    price: "300 🪙",
+    duration: "Permanente",
+    benefits: [
+      "🥩 Generación de vacas",
+      "🏠 Ideal para tu base o granja",
+      "🌾 Crea tu propia zona de producción",
+      "⚡ Ahorra tiempo buscando animales por el mundo",
+      "💎 Perfecto para jugadores de Survival",
+      "🍖 Alimento",
+      "🟫 Cuero",
+      "📚 Materiales para tus proyectos",
+    ],
+  },
+  "tag-personalizado": {
+    image: "images/tag-personalizado-icon.png",
+    name: "Tag Personalizado",
+    description:
+      "Con el Tag Personalizado podrás elegir una etiqueta exclusiva para acompañar tu nombre y darle a tu perfil una identidad completamente única dentro de NOVAPIXEL.",
+    price: "300 🪙",
+    duration: "Permanente",
+    benefits: [
+      "🏷 Elige entre una gran variedad de Tags disponibles",
+      "✨ Haz que tu nombre destaque",
+      "💬 Visible en tus mensajes del chat",
+      "📋 Visible en el TAB",
+      "📊 Visible en el Scoreboard",
+      "👑 Dale personalidad a tu nombre",
+      "⚔ Épico",
+      "👑 Elegante",
     ],
   },
 }
@@ -743,6 +1294,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const nameEl = document.getElementById("product-detail-name")
     const priceEl = document.getElementById("product-detail-price")
     const durationEl = document.getElementById("product-detail-duration")
+    const descriptionEl = document.getElementById("product-detail-description")
     const benefitsEl = document.getElementById("product-detail-benefits")
     const buyBtn = document.getElementById("product-detail-buy-btn")
 
@@ -757,6 +1309,12 @@ document.addEventListener("DOMContentLoaded", () => {
         ? `<img src="${detail.image}" alt="${escapeHtml(detail.name)}">`
         : `<i class="fas ${detail.icon}"></i>`
       nameEl.textContent = detail.name
+      // Los productos que todavía no tienen descripción escrita no dejan un
+      // párrafo vacío abriendo hueco sobre la lista de beneficios.
+      if (descriptionEl) {
+        descriptionEl.textContent = detail.description || ""
+        descriptionEl.style.display = detail.description ? "" : "none"
+      }
       priceEl.textContent = detail.price
       durationEl.textContent = detail.duration
       benefitsEl.innerHTML = detail.benefits.map((b) => `<li>${escapeHtml(b)}</li>`).join("")
@@ -772,6 +1330,22 @@ document.addEventListener("DOMContentLoaded", () => {
       modalEl.classList.remove("active")
       currentProductId = null
     }
+
+    // Las tarjetas del catálogo no traen el disparador escrito en el HTML:
+    // se marca aquí a partir del id que ya lleva su botón de compra, para no
+    // repetir el mismo atributo en las 33 tarjetas y que no se desincronice
+    // al añadir productos. Solo se marcan las que tienen ficha escrita.
+    document.querySelectorAll(".price-card").forEach((card) => {
+      const productId = card.querySelector("[data-product]")?.dataset.product
+      const icon = card.querySelector(".price-icon")
+      if (!productId || !icon || !PRODUCT_DETAILS[productId]) return
+      if (icon.dataset.detail) return
+      icon.classList.add("product-detail-trigger")
+      icon.dataset.detail = productId
+      icon.setAttribute("role", "button")
+      icon.setAttribute("tabindex", "0")
+      icon.setAttribute("aria-label", `Ver detalle de ${PRODUCT_DETAILS[productId].name}`)
+    })
 
     // El detalle se abre al tocar la imagen del producto (no hay botón
     // "Ver beneficios"); tabindex/Enter lo mantienen accesible por teclado.

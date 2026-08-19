@@ -2721,6 +2721,16 @@ body.vip-exclusive-mode .vip-back-btn {
   padding: 3px 12px;
 }
 
+/* Descripción del producto: va entre el precio y la lista de beneficios, y
+   se oculta sola en los productos a los que todavía no se les ha escrito. */
+.product-detail-description {
+  margin: 0 0 18px;
+  text-align: left;
+  color: var(--nova-text-muted);
+  font-size: 0.92rem;
+  line-height: 1.6;
+}
+
 .product-detail-benefits {
   list-style: none;
   margin: 0 0 22px;
