@@ -1,0 +1,11 @@
+---
+# Despliegue del sitio estático con el Git de cPanel (v2nets).
+# Al pulsar "Desplegar commit HEAD" en Control de versión de Git™, cPanel
+# ejecuta estas tareas: copian /site al docroot del dominio principal.
+# El backend Django NO se copia — corre desde el propio repo, registrado
+# en el Python Selector, y se actualiza con un simple "pull".
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/hfjtkiku/public_html
+    - /bin/mkdir -p $DEPLOYPATH
+    - /bin/cp -R site/. $DEPLOYPATH/
