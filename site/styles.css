@@ -2557,6 +2557,45 @@ body.vip-exclusive-mode .vip-back-btn {
   border-color: var(--nova-gold);
 }
 
+/* Ver la contraseña. El envoltorio y el botón los inyecta script.js sobre
+   cada input[type=password] de los modales; es inline-block para ocupar el
+   mismo hueco que ocupaba el campo suelto y no descuadrar el formulario. */
+.password-field {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+.password-field .checkout-modal-input {
+  display: block;
+  padding-right: 46px;
+}
+.password-toggle {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 44px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--nova-text-muted);
+  font-size: 0.95rem;
+  cursor: pointer;
+  border-radius: 0 10px 10px 0;
+  transition: color 0.2s ease;
+}
+.password-toggle:hover {
+  color: var(--nova-gold);
+}
+.password-toggle:focus-visible {
+  outline: 2px solid var(--nova-gold);
+  outline-offset: -2px;
+  color: var(--nova-gold);
+}
+
 .checkout-modal-hint {
   color: var(--nova-text-muted);
   font-size: 0.8rem;

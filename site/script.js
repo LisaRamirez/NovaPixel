@@ -522,9 +522,8 @@ function setupAuthModal(onAuthSuccess) {
   }
 
   closeBtn.addEventListener("click", close)
-  modal.addEventListener("click", (e) => {
-    if (e.target === modal) close()
-  })
+  // El clic en el fondo NO cierra: se perdía el formulario a medio llenar
+  // por rozar fuera de la tarjeta. Se sale con la X o con Escape.
   showRegisterLink.addEventListener("click", (e) => {
     e.preventDefault()
     showRegisterView()
@@ -594,7 +593,7 @@ function setupAuthModal(onAuthSuccess) {
       NovaPixelAuth.user = data
       NovaPixelAuth.render()
       close()
-      if (onAuthSuccess) onAuthSuccess()
+      if (onAuthSuccess) onAuthSuccess("login")
     } catch (err) {
       setError(loginError, err.message)
     } finally {
@@ -637,7 +636,7 @@ function setupAuthModal(onAuthSuccess) {
       NovaPixelAuth.user = data
       NovaPixelAuth.render()
       close()
-      if (onAuthSuccess) onAuthSuccess()
+      if (onAuthSuccess) onAuthSuccess("register")
     } catch (err) {
       setError(registerError, err.message)
     } finally {
@@ -648,12 +647,54 @@ function setupAuthModal(onAuthSuccess) {
   return { open, close }
 }
 
+// Añade un ojo para ver/ocultar a cada campo de contraseña. Se hace desde
+// aquí y no en el HTML porque el formulario está copiado en cuatro páginas.
+// Engancha por la clase del campo y no por el modal que lo contiene: así
+// entra también reset-password.html, que no usa .checkout-modal.
+function setupPasswordToggles() {
+  document.querySelectorAll('input.checkout-modal-input[type="password"]').forEach((input) => {
+    if (input.dataset.toggleReady) return
+    input.dataset.toggleReady = "1"
+
+    const field = document.createElement("div")
+    field.className = "password-field"
+    input.parentNode.insertBefore(field, input)
+    field.appendChild(input)
+
+    const btn = document.createElement("button")
+    btn.type = "button"
+    btn.className = "password-toggle"
+    btn.innerHTML = '<i class="fas fa-eye" aria-hidden="true"></i>'
+    btn.setAttribute("aria-label", "Mostrar contraseña")
+    btn.setAttribute("aria-pressed", "false")
+    field.appendChild(btn)
+
+    btn.addEventListener("click", () => {
+      const visible = input.type === "text"
+      input.type = visible ? "password" : "text"
+      btn.innerHTML = `<i class="fas fa-eye${visible ? "" : "-slash"}" aria-hidden="true"></i>`
+      btn.setAttribute("aria-label", visible ? "Mostrar contraseña" : "Ocultar contraseña")
+      btn.setAttribute("aria-pressed", String(!visible))
+      input.focus()
+    })
+  })
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   NovaPixelAuth.refresh()
+  setupPasswordToggles()
 
   let pendingGilcoinPurchase = null
   let pendingCartCheckout = false
-  const authModal = setupAuthModal(() => {
+  const authModal = setupAuthModal((mode) => {
+    // Recién creada la cuenta el saldo es 0, así que la acción pendiente
+    // sería un pago que se lleva al jugador fuera de la tienda justo al
+    // registrarse. Se descarta y se queda donde estaba.
+    if (mode === "register") {
+      pendingGilcoinPurchase = null
+      pendingCartCheckout = false
+      return
+    }
     if (pendingGilcoinPurchase) {
       const { packageId, provider } = pendingGilcoinPurchase
       pendingGilcoinPurchase = null
