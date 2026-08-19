@@ -59,7 +59,7 @@ const STORE_PRODUCT_NAMES = {
   "economia-100k": "100,000 de Economía",
   "fly-indefinido": "Fly Indefinido",
   "fly-30": "Fly 30 días",
-  "comandos-pack": "Pack Comandos (/hat /ec /craft)",
+  "comandos-pack": "Pack Comandos (/anvil /hat /ec /craft)",
   "spawner-vaca": "Spawner de Vaca",
   "spawner-pollo": "Spawner de Pollo",
   "spawner-cerdo": "Spawner de Cerdo",
