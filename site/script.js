@@ -32,10 +32,6 @@ const STORE_PRODUCT_NAMES = {
   "rango-celestial-30": "Rango Celestial · 30 días",
   "rango-divino-30": "Rango Divino · 30 días",
   "rango-donador-30": "Rango Donador · 30 días",
-  "rango-angelical-indef": "Rango Angelical · Indefinido",
-  "rango-celestial-indef": "Rango Celestial · Indefinido",
-  "rango-divino-indef": "Rango Divino · Indefinido",
-  "rango-donador-indef": "Rango Donador · Indefinido",
   "pico-3x3": "Pico 3x3",
   "proteccion-diamante-128": "Protección Diamante 128x128",
   "proteccion-netherita-256": "Protección Netherita 256x256",
@@ -86,10 +82,6 @@ const STORE_PRODUCT_PRICES = {
   "rango-celestial-30": 900,
   "rango-divino-30": 1600,
   "rango-donador-30": 5000,
-  "rango-angelical-indef": 1500,
-  "rango-celestial-indef": 2100,
-  "rango-divino-indef": 3800,
-  "rango-donador-indef": 15000,
   "pico-3x3": 1500,
   "proteccion-diamante-128": 800,
   "proteccion-netherita-256": 2100,
@@ -132,8 +124,8 @@ const STORE_PRODUCT_PRICES = {
 // Beneficios de rangos y Donador VIP para el modal de detalle, que se abre
 // al tocar la imagen del producto (.product-detail-trigger[data-detail]).
 // Texto tal cual la información de producto ya provista — no se agregan
-// beneficios nuevos. rango-donador-30/indef no tienen entrada a propósito:
-// nunca se recibió su detalle.
+// beneficios nuevos. rango-donador-30 no tiene entrada a propósito: nunca se
+// recibió su detalle.
 const PRODUCT_DETAILS = {
   "paquete-inmortal": {
     image: "images/paquete-inmortal-icon.png",
@@ -242,68 +234,6 @@ const PRODUCT_DETAILS = {
       "⚡ Comandos: /afk /anvil /craft /enderchest /feed /fly /heal /recipe /repair",
       "💰 $30,000 de economía inicial",
       "🎯 350 niveles de XP",
-    ],
-  },
-  "rango-angelical-indef": {
-    image: "images/rango-angelical-icon.png",
-    name: "Rango Angelical",
-    price: "1,500 🪙",
-    duration: "Indefinido",
-    benefits: [
-      "🔒 6 Protecciones",
-      "⚔️ Encantamientos hasta Nivel 6",
-      "🏠 6 Hogares",
-      "🎒 3 Mochilas",
-      "🧰 Kit Angelical (reclamable cada 30 días)",
-      "🎨 Chat con Color",
-      "🚪 Acceso al servidor lleno",
-      "😴 Modo AFK",
-      "⚙️ 3 comandos exclusivos: /enderchest /recipe /repair",
-      "💰 $10,000 de economía inicial (única vez)",
-      "🎯 150 niveles de XP (única vez)",
-      "💬 Rango Angelical en Discord",
-    ],
-  },
-  "rango-celestial-indef": {
-    image: "images/rango-celestial-icon.png",
-    name: "Rango Celestial",
-    price: "2,100 🪙",
-    duration: "Indefinido",
-    benefits: [
-      "🔒 7 Protecciones",
-      "⚔️ Encantamientos hasta Nivel 7",
-      "🏠 7 Hogares",
-      "🎒 6 Mochilas",
-      "🧰 Kit Celestial (reclamable cada 30 días)",
-      "🎨 Chat con Color",
-      "🚪 Acceso al servidor lleno",
-      "😴 Modo AFK",
-      "⚡ /fly y comandos premium",
-      "⛏️ Acceso a la Mina VIP",
-      "💰 $15,000 de economía inicial (única vez)",
-      "🎯 200 niveles de XP (única vez)",
-      "💬 Rango Celestial en Discord",
-    ],
-  },
-  "rango-divino-indef": {
-    image: "images/rango-divino-icon.png",
-    name: "Rango Divino",
-    price: "3,800 🪙",
-    duration: "Indefinido",
-    benefits: [
-      "🔒 8 Protecciones",
-      "⚔️ Encantamientos hasta Nivel 8",
-      "🏠 8 Hogares",
-      "🎒 9 Mochilas",
-      "🧰 Kit Divino (reclamable cada 30 días)",
-      "🎨 Chat con Color",
-      "🚪 Acceso al servidor lleno",
-      "😴 Modo AFK",
-      "⚡ /fly · /heal · /feed y más",
-      "⛏️ Acceso a la Mina VIP",
-      "💰 $30,000 de economía inicial (única vez)",
-      "🎯 350 niveles de XP (única vez)",
-      "💬 Rango Divino en Discord",
     ],
   },
   "donador-vip-lv10": {
