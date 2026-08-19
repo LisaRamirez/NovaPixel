@@ -15,7 +15,7 @@ class Product(models.Model):
         help_text="Agrupa el producto en una pestaña de la tienda, ej. 'Rangos 30 días'.",
     )
     price_gilcoins = models.PositiveIntegerField(
-        verbose_name="Precio (Gilcoins)", help_text="Costo en Gilcoins (100 Gilcoins = $1 USD)."
+        verbose_name="Precio (GGcoins)", help_text="Costo en GGcoins (100 GGcoins = $1 USD)."
     )
     commands = models.JSONField(
         default=list,

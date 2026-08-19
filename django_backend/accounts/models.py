@@ -25,7 +25,7 @@ class User(AbstractUser):
         help_text="Nick de Minecraft (Java o Bedrock) ligado a esta cuenta.",
     )
     email = models.EmailField(unique=True, blank=True, null=True, verbose_name="Correo electrónico")
-    gilcoin_balance = models.PositiveIntegerField(default=0, verbose_name="Saldo de Gilcoins")
+    gilcoin_balance = models.PositiveIntegerField(default=0, verbose_name="Saldo de GGcoins")
     staff_role = models.CharField(
         max_length=10, choices=StaffRole.choices, default=StaffRole.NONE, verbose_name="Rol de staff"
     )

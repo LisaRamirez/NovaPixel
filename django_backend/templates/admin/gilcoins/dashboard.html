@@ -1,13 +1,13 @@
 {% extends "admin/base_site.html" %}
 {% load i18n %}
 
-{% block content_title %} Panel de Gilcoins {% endblock %}
+{% block content_title %} Panel de GGcoins {% endblock %}
 
 {% block breadcrumbs %}
     <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="{% url 'admin:index' %}">Inicio</a></li>
-        <li class="breadcrumb-item"><a href="{% url 'admin:gilcoins_gilcoinpurchase_changelist' %}">Gilcoins</a></li>
-        <li class="breadcrumb-item">Panel de Gilcoins</li>
+        <li class="breadcrumb-item"><a href="{% url 'admin:gilcoins_gilcoinpurchase_changelist' %}">GGcoins</a></li>
+        <li class="breadcrumb-item">Panel de GGcoins</li>
     </ol>
 {% endblock %}
 
@@ -35,7 +35,7 @@
             <div class="card text-center mb-3">
                 <div class="card-body">
                     <h2 class="m-0">{{ total_gilcoins|default:0 }} 🪙</h2>
-                    <div class="text-muted">Gilcoins vendidos</div>
+                    <div class="text-muted">GGcoins vendidos</div>
                 </div>
             </div>
         </div>
@@ -60,7 +60,7 @@
                         <th>Usuario</th>
                         <th>Nick de Minecraft</th>
                         <th># Compras</th>
-                        <th>Gilcoins comprados</th>
+                        <th>GGcoins comprados</th>
                         <th>Total gastado</th>
                         <th>Historial</th>
                     </tr>
@@ -75,7 +75,7 @@
                         <td>${{ b.total_spent|floatformat:2 }}</td>
                         <td>
                             <a href="{% url 'admin:gilcoins_gilcoinpurchase_changelist' %}?user__id__exact={{ b.user_id }}" class="btn btn-sm btn-outline-warning">
-                                Compras de Gilcoins
+                                Compras de GGcoins
                             </a>
                             <a href="{% url 'admin:store_purchase_changelist' %}?minecraft_nick={{ b.minecraft_nick|urlencode }}" class="btn btn-sm btn-outline-info">
                                 Compras en la tienda

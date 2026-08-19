@@ -71,7 +71,7 @@ const STORE_PRODUCT_NAMES = {
   "donador-vip-lv22": "Donador VIP LV22",
 }
 
-// Costo en Gilcoins de cada producto (100 Gilcoins = $1, mismo valor que
+// Costo en GGcoins de cada producto (100 GGcoins = $1, mismo valor que
 // priceCents en server/src/products.js). El backend siempre revalida el
 // precio real al comprar — esto es solo para mostrarlo en el modal.
 const STORE_PRODUCT_PRICES = {
@@ -664,7 +664,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   })
 
-  // Botones de paquetes de Gilcoins: piden login si hace falta y luego
+  // Botones de paquetes de GGcoins: piden login si hace falta y luego
   // redirigen al proveedor de pago elegido (Stripe o PayPal).
   async function startGilcoinCheckout(packageId, provider) {
     if (!NovaPixelAuth.user) {
@@ -722,7 +722,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       const affordable = isAffordable(productId)
       buyBtn.classList.toggle("needs-recharge", !affordable)
-      buyBtn.textContent = affordable ? "Añadir al carrito" : "Recargar Gilcoins"
+      buyBtn.textContent = affordable ? "Añadir al carrito" : "Recargar GGcoins"
 
       modalEl.classList.add("active")
     }
@@ -761,7 +761,7 @@ document.addEventListener("DOMContentLoaded", () => {
     })
   }
 
-  // Modal "Recargar Gilcoins": los paquetes ya no viven en una pestaña
+  // Modal "Recargar GGcoins": los paquetes ya no viven en una pestaña
   // propia, sino en este modal, abierto desde cualquier botón "Recargar"
   // (saldo insuficiente para un ítem) o desde el aviso de saldo del carrito.
   function setupGilcoinRechargeModal() {
@@ -788,7 +788,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // Un producto es "no asequible" cuando hay sesión iniciada y el saldo de
-  // Gilcoins de la cuenta no alcanza para ESE ítem en particular. Sin
+  // GGcoins de la cuenta no alcanza para ESE ítem en particular. Sin
   // sesión no se penaliza: agregar al carrito sigue funcionando igual,
   // el login se pide recién al pagar.
   function isAffordable(productId) {
@@ -806,7 +806,7 @@ document.addEventListener("DOMContentLoaded", () => {
         btn.classList.toggle("needs-recharge", !affordable)
         if (btn.classList.contains("price-buy-btn")) {
           btn.innerHTML = affordable ? '<i class="fas fa-shopping-cart"></i>' : '<i class="fas fa-coins"></i>'
-          btn.title = affordable ? "" : "Te faltan Gilcoins — clic para recargar"
+          btn.title = affordable ? "" : "Te faltan GGcoins — clic para recargar"
         } else {
           btn.textContent = affordable ? "Añadir" : "Recargar"
         }
@@ -928,7 +928,7 @@ document.addEventListener("DOMContentLoaded", () => {
         checkoutBtn.disabled = insufficient
         checkoutBtn.textContent = insufficient ? "Saldo insuficiente" : "Finalizar compra"
       } else {
-        balanceEl.textContent = "Inicia sesión para pagar con tus Gilcoins."
+        balanceEl.textContent = "Inicia sesión para pagar con tus GGcoins."
         balanceEl.classList.remove("insufficient")
         checkoutBtn.disabled = false
         checkoutBtn.textContent = "Iniciar sesión y pagar"
@@ -1129,7 +1129,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 })
 
 // ==========================================================================
-// Página "Confirmando pago" (retorno de PayPal al comprar Gilcoins)
+// Página "Confirmando pago" (retorno de PayPal al comprar GGcoins)
 // ==========================================================================
 
 document.addEventListener("DOMContentLoaded", async () => {
@@ -1452,7 +1452,7 @@ document.addEventListener("DOMContentLoaded", () => {
 // muestra todas las categorías a la vez; el resto de pestañas muestra solo
 // la suya. Único catálogo — ya no hay página de inicio previa ni sidebar.
 document.addEventListener("DOMContentLoaded", () => {
-  // El botón "Recargar Gilcoins" vive al final del menú (misma pinta que
+  // El botón "Recargar GGcoins" vive al final del menú (misma pinta que
   // las pestañas), pero no activa una categoría: abre el modal de recarga.
   const rechargeMenuBtn = document.getElementById("store-menu-recharge-btn")
   if (rechargeMenuBtn) {

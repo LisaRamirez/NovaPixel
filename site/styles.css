@@ -1430,7 +1430,7 @@ body.vip-exclusive-mode .vip-back-btn {
   color: #000000;
 }
 
-/* Botón "Recargar Gilcoins": mismo tamaño que las pestañas de categoría
+/* Botón "Recargar GGcoins": mismo tamaño que las pestañas de categoría
    pero con acento dorado, para distinguirlo como una acción y no como una
    categoría más. Va al final del menú, pegado a Spawners (sin margin-left
    auto, que en pantallas anchas lo empujaba lejos del resto). */
@@ -1865,7 +1865,7 @@ body.vip-exclusive-mode .vip-back-btn {
   border-color: rgba(var(--nova-gold-rgb), 0.5);
 }
 
-/* Comprar Gilcoins — estilo "luxury" inspirado en tiendas de moneda virtual
+/* Comprar GGcoins — estilo "luxury" inspirado en tiendas de moneda virtual
    tipo League of Legends: tarjetas casi negras, borde y brillo dorados. */
 .gilcoin-luxury-grid {
   display: grid;
@@ -2707,7 +2707,7 @@ body.vip-exclusive-mode .vip-back-btn {
   color: #ff6b6b;
 }
 
-/* Modal "Recargar Gilcoins": más ancho que el checkout-modal base para que
+/* Modal "Recargar GGcoins": más ancho que el checkout-modal base para que
    quepa la grilla de paquetes cómodamente. */
 /* Columna flex para que solo scrollee la grilla de paquetes: así el título
    y el botón de cerrar quedan siempre a la vista, aunque la lista sea larga
@@ -3068,7 +3068,7 @@ body.vip-page {
 }
 
 /* Oferta de apertura (ficticia): precio tachado + insignia -15% junto al
-   precio real de cada producto — NO se usa en la pestaña "Comprar Gilcoins". */
+   precio real de cada producto — NO se usa en la pestaña "Comprar GGcoins". */
 .store-price-old {
   color: rgba(255, 255, 255, 0.4);
   text-decoration: line-through;

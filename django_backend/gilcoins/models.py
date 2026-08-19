@@ -3,13 +3,13 @@ from django.db import models
 
 
 class GilcoinPackage(models.Model):
-    """Paquetes de Gilcoins que se compran con dinero real (antes en
+    """Paquetes de GGcoins que se compran con dinero real (antes en
     server/src/gilcoinPackages.js). `id` es el slug ya conocido por el
     frontend, ej. "pack-575"."""
 
     id = models.SlugField(primary_key=True, max_length=32, verbose_name="ID")
     name = models.CharField(max_length=80, verbose_name="Nombre")
-    gilcoins = models.PositiveIntegerField(verbose_name="Gilcoins")
+    gilcoins = models.PositiveIntegerField(verbose_name="GGcoins")
     price_cents = models.PositiveIntegerField(verbose_name="Precio (centavos)", help_text="Precio real en centavos de USD.")
     compare_at_price_cents = models.PositiveIntegerField(
         verbose_name="Precio anterior (centavos)",
@@ -20,8 +20,8 @@ class GilcoinPackage(models.Model):
 
     class Meta:
         ordering = ["order"]
-        verbose_name = "Paquete de Gilcoins"
-        verbose_name_plural = "Paquetes de Gilcoins"
+        verbose_name = "Paquete de GGcoins"
+        verbose_name_plural = "Paquetes de GGcoins"
 
     def __str__(self):
         return self.name
@@ -42,7 +42,7 @@ class GilcoinPurchase(models.Model):
     package = models.ForeignKey(
         GilcoinPackage, on_delete=models.PROTECT, related_name="purchases", verbose_name="Paquete"
     )
-    gilcoins = models.PositiveIntegerField(verbose_name="Gilcoins")
+    gilcoins = models.PositiveIntegerField(verbose_name="GGcoins")
     price_cents = models.PositiveIntegerField(verbose_name="Precio (centavos)")
     provider = models.CharField(max_length=10, choices=Provider.choices, verbose_name="Proveedor")
     provider_ref = models.CharField(max_length=255, unique=True, verbose_name="Referencia del proveedor")
@@ -53,8 +53,8 @@ class GilcoinPurchase(models.Model):
     paid_at = models.DateTimeField(null=True, blank=True, verbose_name="Pagado el")
 
     class Meta:
-        verbose_name = "Compra de Gilcoins"
-        verbose_name_plural = "Compras de Gilcoins"
+        verbose_name = "Compra de GGcoins"
+        verbose_name_plural = "Compras de GGcoins"
 
     def __str__(self):
         return f"{self.user.username} · {self.package_id} · {self.status}"
@@ -77,8 +77,8 @@ class GilcoinTransaction(models.Model):
     class Meta:
         indexes = [models.Index(fields=["user", "created_at"])]
         ordering = ["-created_at"]
-        verbose_name = "Transacción de Gilcoins"
-        verbose_name_plural = "Transacciones de Gilcoins"
+        verbose_name = "Transacción de GGcoins"
+        verbose_name_plural = "Transacciones de GGcoins"
 
     def __str__(self):
         return f"{self.user.username} · {self.delta:+d} · {self.reason}"

@@ -46,7 +46,7 @@ def checkout_stripe(request):
                 {
                     "price_data": {
                         "currency": "usd",
-                        "product_data": {"name": f"{package.name} ({package.gilcoins} Gilcoins)"},
+                        "product_data": {"name": f"{package.name} ({package.gilcoins} GGcoins)"},
                         "unit_amount": package.price_cents,
                     },
                     "quantity": 1,

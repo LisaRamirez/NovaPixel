@@ -56,7 +56,7 @@ def checkout(request):
     reference = f"gilcoin:{secrets.token_hex(8)}"
     new_balance = try_spend_gilcoins(request.user, total_gilcoins, "store_purchase", reference)
     if new_balance is None:
-        return error_response("Saldo de Gilcoins insuficiente.")
+        return error_response("Saldo de GGcoins insuficiente.")
 
     now = timezone.now()
     purchases = []

@@ -3,11 +3,11 @@
 Este repo tiene cuatro partes:
 
 - **/site**: el sitio web estático — `index.html` (portada), `tienda.html` (tienda), `informacion.html` (info de productos), `mis-compras.html` (historial), `reset-password.html` y `gilcoins-callback.html` (retorno de PayPal), compartiendo `script.js` y `styles.css`. **Es lo único que se sube al hosting del sitio (ej. v2networks)** — no necesita build, son archivos estáticos.
-- **/django_backend**: backend Django con cuentas de usuario, la economía de Gilcoins, pagos con Stripe/PayPal, eventos y un panel de administración (Jazzmin). Corre aparte, en su propio servidor/proceso (no en el mismo hosting estático que `/site`).
+- **/django_backend**: backend Django con cuentas de usuario, la economía de GGcoins, pagos con Stripe/PayPal, eventos y un panel de administración (Jazzmin). Corre aparte, en su propio servidor/proceso (no en el mismo hosting estático que `/site`).
 - **/plugin**: plugin de Paper/Spigot que entrega la compra en el juego cuando el jugador entra al server.
 - **/scripts**: `pterodactyl.py`, cliente mínimo de la API de Pterodactyl (panel de TaroHosting) para desplegar el plugin y operar el servidor de Minecraft remoto sin entrar al panel web.
 
-Flujo completo: el jugador crea una cuenta (usuario + contraseña) ligada a **un** nick de Minecraft → inicia sesión → compra **Gilcoins** (moneda virtual, 100 Gilcoins = $1 USD) con Stripe o PayPal → gasta esos Gilcoins al instante en productos de la tienda (sin pasar por una pasarela de pago de nuevo) → el plugin, al detectar al jugador conectado, consulta el backend y ejecuta los comandos de entrega. El jugador puede ver su saldo en el navbar y su historial de compras en `mis-compras.html`.
+Flujo completo: el jugador crea una cuenta (usuario + contraseña) ligada a **un** nick de Minecraft → inicia sesión → compra **GGcoins** (moneda virtual, 100 GGcoins = $1 USD) con Stripe o PayPal → gasta esos GGcoins al instante en productos de la tienda (sin pasar por una pasarela de pago de nuevo) → el plugin, al detectar al jugador conectado, consulta el backend y ejecuta los comandos de entrega. El jugador puede ver su saldo en el navbar y su historial de compras en `mis-compras.html`.
 
 ## 1. Requisitos de infraestructura
 
@@ -47,14 +47,14 @@ python manage.py runserver 8001
 ### Panel de administración
 
 `/admin/` usa el tema [Jazzmin](https://django-jazzmin.readthedocs.io/) (sidebar oscura, buscador, iconos). Incluye:
-- Exportar a Excel/PDF desde cualquier listado de Gilcoins (`novapixel/admin_export.py`, `ExportMixin`).
-- Panel de métricas de Gilcoins (`admin:gilcoins_dashboard`): total recaudado, compradores únicos y detalle por cuenta.
+- Exportar a Excel/PDF desde cualquier listado de GGcoins (`novapixel/admin_export.py`, `ExportMixin`).
+- Panel de métricas de GGcoins (`admin:gilcoins_dashboard`): total recaudado, compradores únicos y detalle por cuenta.
 
 ### Cuentas de usuario
 
 El registro y login viven en `accounts/`. Cada cuenta (`accounts.User`, extiende `AbstractUser`) tiene usuario, contraseña y **un solo nick de Minecraft**, fijado al registrarse. La sesión se guarda en una cookie `httpOnly` de Django.
 
-Comprar **requiere sesión iniciada**: `POST /api/store/checkout` descuenta Gilcoins del saldo de la cuenta autenticada — nunca recibe el nick del cliente, lo toma de la sesión, así nadie puede comprar a nombre de otro jugador. `GET /api/purchases/me` devuelve el historial de la cuenta logueada, usado por `mis-compras.html`.
+Comprar **requiere sesión iniciada**: `POST /api/store/checkout` descuenta GGcoins del saldo de la cuenta autenticada — nunca recibe el nick del cliente, lo toma de la sesión, así nadie puede comprar a nombre de otro jugador. `GET /api/purchases/me` devuelve el historial de la cuenta logueada, usado por `mis-compras.html`.
 
 Limitación conocida: el nick queda fijo al registrarse, no hay forma de cambiarlo desde la web todavía (editar directo en el admin de `accounts.User` si un jugador se equivoca al escribirlo).
 
@@ -62,14 +62,14 @@ Limitación conocida: el nick queda fijo al registrarse, no hay forma de cambiar
 
 "¿Olvidaste tu contraseña?" en el modal de login llama a `POST /api/auth/forgot-password`, que genera un token de un solo uso (`accounts.PasswordResetToken`, expira en 1 hora) y envía un enlace a `reset-password.html?token=...` usando la API de [Resend](https://resend.com). Esa página llama a `POST /api/auth/reset-password` para guardar la contraseña nueva.
 
-### Economía de Gilcoins
+### Economía de GGcoins
 
-Los productos de la tienda se compran al instante gastando **Gilcoins**, una moneda virtual a tasa fija de **100 Gilcoins = $1 USD**.
+Los productos de la tienda se compran al instante gastando **GGcoins**, una moneda virtual a tasa fija de **100 GGcoins = $1 USD**.
 
 - `gilcoins.GilcoinPackage`: los paquetes que se compran con dinero real (Stripe o PayPal), editables desde el admin.
 - `POST /api/gilcoins/checkout/stripe` y `POST /api/gilcoins/checkout/paypal`: crean el pago y una fila `pending` en `GilcoinPurchase`.
 - Confirmación: el webhook de Stripe (`webhook/stripe`) o `POST /api/gilcoins/paypal/capture` (llamado desde `gilcoins-callback.html`) acreditan el saldo y quedan registrados en `GilcoinTransaction` (ledger de auditoría).
-- `POST /api/store/checkout`: recibe el carrito completo, valida cada línea contra `store.Product`, calcula el total y gasta los Gilcoins de una sola vez de forma atómica. Si el saldo alcanza, inserta una fila `store.Purchase` por cada unidad comprada — no pasa por ninguna pasarela de pago.
+- `POST /api/store/checkout`: recibe el carrito completo, valida cada línea contra `store.Product`, calcula el total y gasta los GGcoins de una sola vez de forma atómica. Si el saldo alcanza, inserta una fila `store.Purchase` por cada unidad comprada — no pasa por ninguna pasarela de pago.
 
 ### Carrito de compra
 
@@ -81,7 +81,7 @@ El banner dorado "NovaPixel VIP" abre una vista exclusiva con los rangos permane
 
 ### Catálogo de productos
 
-`store.Product` (gestionable desde el admin) define cada producto: precio en Gilcoins y los comandos de consola que se ejecutan al entregarlo (usa `%player%` como marcador del nick).
+`store.Product` (gestionable desde el admin) define cada producto: precio en GGcoins y los comandos de consola que se ejecutan al entregarlo (usa `%player%` como marcador del nick).
 
 - Los **rangos** vienen con comandos de [LuckPerms](https://luckperms.net/) asumiendo grupos `angelical`, `celestial`, `divino`, `donador` — ajusta los nombres si los tuyos son distintos.
 - **Protecciones, kits y cosméticos** dependen de los plugins que uses, así que algunos se dejan con `commands: []` y entrega manual: el plugin de Minecraft avisará a los admins conectados (permiso `novapixel.store.notify`) para que la entreguen a mano.
@@ -142,4 +142,4 @@ El modal de compra muestra la cabeza del skin junto al campo del nick usando [mc
 
 - Si el backend no puede conectarse a internet al momento de confirmar la entrega, la compra queda como `paid` y se reintentará en la siguiente conexión o revisión periódica del jugador.
 - No hay cambio de nick post-registro — si lo necesitas, es el siguiente candidato a construir.
-- Los umbrales de la Tienda VIP están en USD gastado en Gilcoins; si algún día agregas otro método de pago que no pase por `GilcoinPurchase`, ese gasto no contaría para los niveles VIP.
+- Los umbrales de la Tienda VIP están en USD gastado en GGcoins; si algún día agregas otro método de pago que no pase por `GilcoinPurchase`, ese gasto no contaría para los niveles VIP.

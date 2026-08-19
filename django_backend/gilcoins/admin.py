@@ -15,7 +15,7 @@ GILCOIN_STATUS_COLORS = {
 
 
 class GilcoinPurchaseInline(admin.TabularInline):
-    """Historial de compras de Gilcoins de la cuenta, visible directamente
+    """Historial de compras de GGcoins de la cuenta, visible directamente
     desde su ficha en accounts.UserAdmin. Solo lectura: las compras se crean
     desde el checkout, no a mano."""
 
@@ -35,11 +35,11 @@ class GilcoinPurchaseInline(admin.TabularInline):
 class GilcoinPackageAdmin(ExportMixin, admin.ModelAdmin):
     list_display = ("id", "name", "gilcoins", "price_cents", "compare_at_price_cents", "is_active", "order")
     ordering = ("order",)
-    export_title = "Paquetes de Gilcoins"
+    export_title = "Paquetes de GGcoins"
     export_fields = [
         ("ID", "id"),
         ("Nombre", "name"),
-        ("Gilcoins", "gilcoins"),
+        ("GGcoins", "gilcoins"),
         ("Precio (USD)", lambda o: f"{o.price_cents / 100:.2f}"),
         ("Activo", lambda o: "Sí" if o.is_active else "No"),
     ]
@@ -52,13 +52,13 @@ class GilcoinPurchaseAdmin(ExportMixin, admin.ModelAdmin):
     search_fields = ("user__username", "user__minecraft_nick", "provider_ref")
     readonly_fields = ("provider_ref", "created_at")
     change_list_template = "admin/gilcoins/gilcoinpurchase_change_list.html"
-    export_title = "Compras de Gilcoins"
+    export_title = "Compras de GGcoins"
     export_fields = [
         ("ID", "id"),
         ("Usuario", "user.username"),
         ("Nick de Minecraft", "user.minecraft_nick"),
         ("Paquete", "package.name"),
-        ("Gilcoins", "gilcoins"),
+        ("GGcoins", "gilcoins"),
         ("Precio (USD)", lambda o: f"{o.price_cents / 100:.2f}"),
         ("Proveedor", "get_provider_display"),
         ("Estado", "get_status_display"),
@@ -85,9 +85,9 @@ class GilcoinPurchaseAdmin(ExportMixin, admin.ModelAdmin):
         ] + super().get_urls()
 
     def dashboard_view(self, request):
-        """Métricas de Gilcoins: cuánta gente compró, cuánto se recaudó en
+        """Métricas de GGcoins: cuánta gente compró, cuánto se recaudó en
         total y el detalle por cuenta, con acceso directo al historial de
-        cada una (compras de Gilcoins y compras en la tienda)."""
+        cada una (compras de GGcoins y compras en la tienda)."""
         paid = GilcoinPurchase.objects.filter(status=GilcoinPurchase.Status.PAID)
 
         totals = paid.aggregate(
@@ -109,7 +109,7 @@ class GilcoinPurchaseAdmin(ExportMixin, admin.ModelAdmin):
 
         context = {
             **self.admin_site.each_context(request),
-            "title": "Panel de Gilcoins",
+            "title": "Panel de GGcoins",
             "total_purchases": totals["total_purchases"] or 0,
             "total_gilcoins": totals["total_gilcoins"] or 0,
             "total_revenue": (totals["total_revenue_cents"] or 0) / 100,
@@ -133,7 +133,7 @@ class GilcoinPurchaseAdmin(ExportMixin, admin.ModelAdmin):
 @admin.register(GilcoinTransaction)
 class GilcoinTransactionAdmin(admin.ModelAdmin):
     """Es un ledger de auditoría: se genera solo desde el código al
-    acreditar/gastar Gilcoins, nunca se edita a mano desde el admin."""
+    acreditar/gastar GGcoins, nunca se edita a mano desde el admin."""
 
     list_display = ("id", "user", "delta", "reason", "balance_after", "created_at")
     list_filter = ("reason",)

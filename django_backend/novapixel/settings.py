@@ -121,7 +121,7 @@ JAZZMIN_SETTINGS = {
     "search_model": ["accounts.User", "store.Product", "store.Purchase", "gilcoins.GilcoinPurchase"],
     "topmenu_links": [
         {"name": "Volver al sitio web", "url": f"{SITE_URL}/index.html", "new_window": True, "icon": "fas fa-arrow-left"},
-        {"name": "Panel de Gilcoins", "url": "admin:gilcoins_dashboard", "permissions": ["gilcoins.view_gilcoinpurchase"]},
+        {"name": "Panel de GGcoins", "url": "admin:gilcoins_dashboard", "permissions": ["gilcoins.view_gilcoinpurchase"]},
     ],
     "icons": {
         "accounts.User": "fas fa-user",

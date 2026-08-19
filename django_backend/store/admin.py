@@ -27,7 +27,7 @@ class ProductAdmin(ExportMixin, admin.ModelAdmin):
         ("ID", "id"),
         ("Nombre", "name"),
         ("Categoría", "category"),
-        ("Precio (Gilcoins)", "price_gilcoins"),
+        ("Precio (GGcoins)", "price_gilcoins"),
         ("Entrega manual", lambda o: "Sí" if o.manual_delivery else "No"),
         ("Activo", lambda o: "Sí" if o.is_active else "No"),
     ]

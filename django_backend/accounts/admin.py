@@ -22,7 +22,7 @@ class UserAdmin(ExportMixin, DjangoUserAdmin):
         ("Usuario", "username"),
         ("Nick de Minecraft", "minecraft_nick"),
         ("Correo", "email"),
-        ("Saldo de Gilcoins", "gilcoin_balance"),
+        ("Saldo de GGcoins", "gilcoin_balance"),
         ("Rol de staff", "get_staff_role_display"),
         ("Activo", lambda o: "Sí" if o.is_active else "No"),
         ("Fecha de registro", lambda o: o.date_joined.strftime("%d/%m/%Y %H:%M") if o.date_joined else ""),

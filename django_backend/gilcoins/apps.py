@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class GilcoinsConfig(AppConfig):
+class GGcoinsConfig(AppConfig):
     name = 'gilcoins'
-    verbose_name = "Gilcoins"
+    verbose_name = "GGcoins"
