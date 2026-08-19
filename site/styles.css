@@ -1981,6 +1981,61 @@ body.vip-exclusive-mode .vip-back-btn {
   mask-image: radial-gradient(circle, #000 58%, transparent 100%);
 }
 
+/* Coronas del Donador VIP. Son PNG con fondo transparente, así que no
+   llevan ni el recorte circular ni el degradado dorado del icono base:
+   la corona se muestra entera y el brillo la acompaña por fuera. */
+.gilcoin-luxury-icon.gilcoin-luxury-icon--crown {
+  width: clamp(112px, 13vw, 150px);
+  height: clamp(112px, 13vw, 150px);
+  border-radius: 0;
+  background: none;
+  box-shadow: none;
+  overflow: visible;
+}
+
+.gilcoin-luxury-icon--crown img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.5));
+  transition: transform 0.25s ease, filter 0.25s ease;
+}
+
+/* Cada nivel se ilumina con el color de su gema. */
+.gilcoin-luxury-icon--crown[data-detail="donador-vip-lv10"] img {
+  filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.5)) drop-shadow(0 0 14px rgba(214, 138, 50, 0.4));
+}
+.gilcoin-luxury-icon--crown[data-detail="donador-vip-lv14"] img {
+  filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.5)) drop-shadow(0 0 16px rgba(74, 200, 96, 0.42));
+}
+.gilcoin-luxury-icon--crown[data-detail="donador-vip-lv18"] img {
+  filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.5)) drop-shadow(0 0 18px rgba(96, 176, 255, 0.45));
+}
+.gilcoin-luxury-icon--crown[data-detail="donador-vip-lv22"] img {
+  filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.5)) drop-shadow(0 0 22px rgba(178, 94, 232, 0.5));
+}
+
+.gilcoin-luxury-icon--crown:hover img,
+.gilcoin-luxury-icon--crown:focus-visible img {
+  transform: translateY(-4px) scale(1.05);
+}
+
+.gilcoin-luxury-icon--crown:focus-visible {
+  outline: 2px solid rgba(255, 199, 79, 0.9);
+  outline-offset: 6px;
+  border-radius: 8px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gilcoin-luxury-icon--crown img {
+    transition: none;
+  }
+  .gilcoin-luxury-icon--crown:hover img,
+  .gilcoin-luxury-icon--crown:focus-visible img {
+    transform: none;
+  }
+}
+
 .gilcoin-luxury-name {
   color: #ffffff;
   font-weight: 700;

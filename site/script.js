@@ -307,7 +307,7 @@ const PRODUCT_DETAILS = {
     ],
   },
   "donador-vip-lv10": {
-    icon: "fa-crown",
+    image: "images/donador-vip-lv10-icon.png",
     name: "Donador VIP LV10",
     price: "5,000 🪙 · $50 USD",
     duration: "Indefinido",
@@ -331,7 +331,7 @@ const PRODUCT_DETAILS = {
     ],
   },
   "donador-vip-lv14": {
-    icon: "fa-crown",
+    image: "images/donador-vip-lv14-icon.png",
     name: "Donador VIP LV14",
     price: "9,000 🪙 · $90 USD",
     duration: "Indefinido",
@@ -355,7 +355,7 @@ const PRODUCT_DETAILS = {
     ],
   },
   "donador-vip-lv18": {
-    icon: "fa-crown",
+    image: "images/donador-vip-lv18-icon.png",
     name: "Donador VIP LV18",
     price: "15,000 🪙 · $150 USD",
     duration: "Indefinido",
@@ -379,7 +379,7 @@ const PRODUCT_DETAILS = {
     ],
   },
   "donador-vip-lv22": {
-    icon: "fa-crown",
+    image: "images/donador-vip-lv22-icon.png",
     name: "Donador VIP LV22",
     price: "25,000 🪙 · $250 USD",
     duration: "Indefinido",
