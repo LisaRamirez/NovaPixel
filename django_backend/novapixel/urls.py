@@ -1,7 +1,7 @@
 from django.conf import settings
-from django.conf.urls.static import static
 from django.contrib import admin
-from django.urls import include, path
+from django.urls import include, path, re_path
+from django.views.static import serve
 
 admin.site.site_header = "NovaPixel · Panel de Administración"
 admin.site.site_title = "NovaPixel Admin"
@@ -18,5 +18,10 @@ urlpatterns = [
     path("webhook/", include("gilcoins.webhook_urls")),
 ]
 
-if settings.DEBUG:
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+# Las imágenes que se suben desde el admin (eventos) viven en MEDIA_ROOT.
+# `static()` sólo las sirve con DEBUG=True, así que en producción se
+# enrutan explícitamente: en cPanel no hay nginx propio delante y sin esto
+# los eventos quedarían sin imagen. El volumen es bajo (unas pocas fotos).
+urlpatterns += [
+    re_path(r"^media/(?P<path>.*)$", serve, {"document_root": settings.MEDIA_ROOT}),
+]

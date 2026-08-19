@@ -40,6 +40,9 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
+    # WhiteNoise sirve los estáticos ya recolectados sin depender de Apache:
+    # con DEBUG=False Django deja de servirlos y el admin quedaría sin CSS.
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     "corsheaders.middleware.CorsMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
@@ -89,8 +92,15 @@ USE_TZ = True
 
 STATIC_URL = "static/"
 STATICFILES_DIRS = [BASE_DIR / "static"]
+# Destino de `collectstatic`; es lo que sirve WhiteNoise en producción.
+STATIC_ROOT = BASE_DIR / "staticfiles"
 MEDIA_URL = "media/"
 MEDIA_ROOT = BASE_DIR / "media"
+
+STORAGES = {
+    "default": {"BACKEND": "django.core.files.storage.FileSystemStorage"},
+    "staticfiles": {"BACKEND": "whitenoise.storage.CompressedStaticFilesStorage"},
+}
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
@@ -174,6 +184,12 @@ SESSION_COOKIE_AGE = 30 * 24 * 60 * 60  # 30 días, igual que SESSION_TTL_SECOND
 SESSION_COOKIE_SAMESITE = "Lax"
 SESSION_COOKIE_SECURE = os.environ.get("COOKIE_SECURE", "false").lower() == "true"
 SESSION_SAVE_EVERY_REQUEST = False
+CSRF_COOKIE_SECURE = SESSION_COOKIE_SECURE
+
+# Detrás de Apache (cPanel) y/o Cloudflare, Django ve la petición como http;
+# sin esto redirige en bucle y descarta las cookies marcadas Secure.
+SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
+USE_X_FORWARDED_HOST = True
 
 # WebSocket del plugin (entrega en tiempo real): el checkout le avisa al
 # plugin al instante en vez de esperar su sondeo periódico. InMemoryChannelLayer

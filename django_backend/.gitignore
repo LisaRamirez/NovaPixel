@@ -5,3 +5,4 @@ store.db
 db.sqlite3
 media/
 staticfiles/
+.env.production

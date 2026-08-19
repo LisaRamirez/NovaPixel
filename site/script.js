@@ -3,13 +3,24 @@
 // ==========================================================================
 
 // URL base del backend de la tienda (ver carpeta /django_backend).
-// EN PRODUCCIÓN: reemplaza esta línea por la URL real del backend, ej.
-//   const NOVAPIXEL_API_BASE = "https://api.novapixel.host"
+// En producción el backend vive en el subdominio api.* del mismo dominio raíz:
+// eso es lo que mantiene válida la cookie de sesión (SameSite=Lax la descarta
+// entre dominios distintos, y el login parecería fallar sin ningún error).
 // En desarrollo se deriva del host desde el que se sirve la página (puerto
 // 8001) en vez de fijar "localhost": así el sitio también funciona al
 // abrirlo desde otro equipo de la red local, donde "localhost" apuntaría
 // al equipo del visitante y no al que corre el backend.
-const NOVAPIXEL_API_BASE = `${window.location.protocol}//${window.location.hostname}:8001`
+const NOVAPIXEL_API_BASE = (() => {
+  const { protocol, hostname } = window.location
+  const isLocal =
+    hostname === "localhost" ||
+    hostname === "127.0.0.1" ||
+    hostname.startsWith("192.168.") ||
+    hostname.startsWith("10.")
+  if (isLocal) return `${protocol}//${hostname}:8001`
+  // Producción: novapixelmc.com y www.novapixelmc.com → api.novapixelmc.com
+  return `https://api.${hostname.replace(/^www\./, "")}`
+})()
 
 // Catálogo solo para mostrar el nombre del producto en el modal.
 // El precio real y la validación del producto viven en server/src/products.js
