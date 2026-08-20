@@ -130,6 +130,8 @@ const PRODUCT_DETAILS = {
   "paquete-inmortal": {
     image: "images/paquete-inmortal-icon.png",
     name: "Paquete Inmortal",
+    description:
+      "Ocho beneficios en una sola compra, por 600 GGcoins menos que adquirirlos sueltos. Incluye el Rango Angelical indefinido, que desde la retirada de los rangos permanentes ya solo se consigue dentro de un paquete.",
     price: "4,600 🪙",
     duration: "Permanente",
     benefits: [
@@ -147,6 +149,8 @@ const PRODUCT_DETAILS = {
   "paquete-absoluto": {
     image: "images/paquete-absoluto-icon.png",
     name: "Paquete Absoluto",
+    description:
+      "El escalón intermedio: sube el rango a Celestial indefinido, dobla el alcance de la protección hasta 256x256 y añade el pegado de schematic y una segunda Llave Ancestral. Ahorras 900 GGcoins frente a comprarlo por separado.",
     price: "7,700 🪙",
     duration: "Permanente",
     benefits: [
@@ -164,6 +168,8 @@ const PRODUCT_DETAILS = {
   "paquete-supremo": {
     image: "images/paquete-supremo-icon.png",
     name: "Paquete Supremo",
+    description:
+      "El lote más completo de la tienda: Rango Divino indefinido, la protección más grande que se vende, tres Llaves Ancestrales y 150k de economía inicial. Ahorras 1.100 GGcoins frente a comprar cada pieza por su cuenta.",
     price: "11,600 🪙",
     duration: "Permanente",
     benefits: [
@@ -240,6 +246,26 @@ const PRODUCT_DETAILS = {
       "⚡ Comandos: /afk /anvil /craft /enderchest /feed /fly /heal /recipe /repair",
       "💰 $30,000 de economía inicial",
       "🎯 350 niveles de XP",
+    ],
+  },
+  "rango-donador-30": {
+    image: "images/rango-donador-icon.png",
+    name: "Rango Donador",
+    description:
+      "El m\u00e1s alto de los rangos de 30 d\u00edas: supera al Divino en mochilas y en comandos, y a\u00f1ade /nick, /clearinventory, /condense y /disposal. Beneficios le\u00eddos del grupo donador del servidor.",
+    price: "5,000 \ud83e\udea9",
+    duration: "30 d\u00edas",
+    benefits: [
+      "\ud83d\udd12 10 Protecciones",
+      "\ud83c\udf92 30 Mochilas",
+      "\u26cf\ufe0f Acceso a la Mina VIP",
+      "\ud83c\udfa8 Chat con Color completo",
+      "\ud83e\udeb6 /fly y /afk",
+      "\u2764\ufe0f /heal y /feed sin espera",
+      "\ud83d\udd28 /repair y /repair all",
+      "\ud83e\uddf0 /anvil, /craft y /enderchest",
+      "\ud83c\udff7\ufe0f /nick para cambiar tu nombre",
+      "\ud83e\uddf9 /clearinventory, /condense y /disposal",
     ],
   },
   "donador-vip-lv10": {
