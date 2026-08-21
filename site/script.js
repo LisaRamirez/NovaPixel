@@ -75,17 +75,17 @@ const STORE_PRODUCT_NAMES = {
 // priceCents en server/src/products.js). El backend siempre revalida el
 // precio real al comprar — esto es solo para mostrarlo en el modal.
 const STORE_PRODUCT_PRICES = {
-  "paquete-inmortal": 4600,
-  "paquete-absoluto": 7700,
-  "paquete-supremo": 11600,
-  "rango-angelical-30": 400,
-  "rango-celestial-30": 900,
-  "rango-divino-30": 1600,
+  "paquete-inmortal": 11100,
+  "paquete-absoluto": 22300,
+  "paquete-supremo": 25400,
+  "rango-angelical-30": 1400,
+  "rango-celestial-30": 2900,
+  "rango-divino-30": 4400,
   "rango-donador-30": 5000,
-  "pico-3x3": 1500,
-  "proteccion-diamante-128": 800,
-  "proteccion-netherita-256": 2100,
-  "proteccion-esmeralda-512": 4500,
+  "pico-3x3": 3200,
+  "proteccion-diamante-128": 2400,
+  "proteccion-netherita-256": 5000,
+  "proteccion-esmeralda-512": 7000,
   "kit-star-light": 3500,
   "kit-samurai": 3200,
   "kit-conqueror": 2000,
@@ -105,20 +105,20 @@ const STORE_PRODUCT_PRICES = {
   "tag-personalizado": 300,
   "exp-100": 400,
   "exp-250": 900,
-  "economia-50k": 900,
-  "economia-100k": 1500,
+  "economia-50k": 2700,
+  "economia-100k": 5000,
   "fly-indefinido": 1500,
   "fly-30": 800,
   "comandos-pack": 400,
-  "spawner-vaca": 300,
-  "spawner-pollo": 300,
-  "spawner-cerdo": 300,
-  "spawner-arana": 500,
-  "schematic-pegado": 1200,
-  "donador-vip-lv10": 5000,
-  "donador-vip-lv14": 9000,
-  "donador-vip-lv18": 15000,
-  "donador-vip-lv22": 25000,
+  "spawner-vaca": 600,
+  "spawner-pollo": 600,
+  "spawner-cerdo": 600,
+  "spawner-arana": 1380,
+  "schematic-pegado": 5000,
+  "donador-vip-lv10": 10300,
+  "donador-vip-lv14": 13450,
+  "donador-vip-lv18": 23600,
+  "donador-vip-lv22": 41000,
 }
 
 // Beneficios de rangos y Donador VIP para el modal de detalle, que se abre
@@ -132,7 +132,7 @@ const PRODUCT_DETAILS = {
     name: "Paquete Inmortal",
     description:
       "Ocho beneficios en una sola compra, por 600 GGcoins menos que adquirirlos sueltos. Incluye el Rango Angelical indefinido, que desde la retirada de los rangos permanentes ya solo se consigue dentro de un paquete.",
-    price: "4,600 🪙",
+    price: "11,100 🪙",
     duration: "Permanente",
     benefits: [
       "👑 Rango Angelical INDEFINIDO",
@@ -143,7 +143,7 @@ const PRODUCT_DETAILS = {
       "🪶 Fly x 30 días",
       "📦 01 Spawner a elección de la tienda",
       "🗝️ 01 Llave Ancestral",
-      "🏷️ Por separado costaría 5,200 🪙 — ahorras 600",
+      "🏷️ Por separado costaría 11,800 🪙 — ahorras 700",
     ],
   },
   "paquete-absoluto": {
@@ -151,7 +151,7 @@ const PRODUCT_DETAILS = {
     name: "Paquete Absoluto",
     description:
       "El escalón intermedio: sube el rango a Celestial indefinido, dobla el alcance de la protección hasta 256x256 y añade el pegado de schematic y una segunda Llave Ancestral. Ahorras 900 GGcoins frente a comprarlo por separado.",
-    price: "7,700 🪙",
+    price: "22,300 🪙",
     duration: "Permanente",
     benefits: [
       "👑 Rango Celestial INDEFINIDO",
@@ -162,7 +162,7 @@ const PRODUCT_DETAILS = {
       "📦 01 Spawner a elección de la tienda",
       "🏗️ Pegado de Schematic",
       "🗝️ 02 Llaves Ancestrales",
-      "🏷️ Por separado costaría 8,600 🪙 — ahorras 900",
+      "🏷️ Por separado costaría 23,200 🪙 — ahorras 900",
     ],
   },
   "paquete-supremo": {
@@ -170,7 +170,7 @@ const PRODUCT_DETAILS = {
     name: "Paquete Supremo",
     description:
       "El lote más completo de la tienda: Rango Divino indefinido, la protección más grande que se vende, tres Llaves Ancestrales y 150k de economía inicial. Ahorras 1.100 GGcoins frente a comprar cada pieza por su cuenta.",
-    price: "11,600 🪙",
+    price: "25,400 🪙",
     duration: "Permanente",
     benefits: [
       "👑 Rango Divino INDEFINIDO",
@@ -181,7 +181,7 @@ const PRODUCT_DETAILS = {
       "📦 01 Spawner a elección de la tienda",
       "🏗️ Pegado de Schematic",
       "🗝️ 03 Llaves Ancestrales",
-      "🏷️ Por separado costaría 12,700 🪙 — ahorras 1,100",
+      "🏷️ Por separado costaría 26,500 🪙 — ahorras 1,100",
     ],
   },
   "rango-angelical-30": {
@@ -189,7 +189,7 @@ const PRODUCT_DETAILS = {
     name: "Rango Angelical",
     description:
       "¿Quieres progresar más rápido, disfrutar de mayor comodidad y desbloquear ventajas exclusivas sin perder la esencia de la supervivencia?",
-    price: "400 🪙",
+    price: "1,400 🪙",
     duration: "30 días",
     benefits: [
       "🔒 6 Protecciones",
@@ -210,7 +210,7 @@ const PRODUCT_DETAILS = {
     name: "Rango Celestial",
     description:
       "El Rango Celestial es la opción ideal para quienes buscan máxima comodidad, mayor libertad y beneficios exclusivos durante 30 días.",
-    price: "900 🪙",
+    price: "2,900 🪙",
     duration: "30 días",
     benefits: [
       "🔒 7 Protecciones",
@@ -232,7 +232,7 @@ const PRODUCT_DETAILS = {
     name: "Rango Divino",
     description:
       "El Rango Divinity está diseñado para jugadores que quieren disfrutar de una experiencia premium durante 30 días, con una enorme cantidad de ventajas, comandos exclusivos, mayor capacidad de almacenamiento y un poderoso impulso para su progreso.",
-    price: "1,600 🪙",
+    price: "4,400 🪙",
     duration: "30 días",
     benefits: [
       "🔒 8 Protecciones",
@@ -273,7 +273,7 @@ const PRODUCT_DETAILS = {
     name: "Donador VIP LV10",
     description:
       "El DONADOR LUXURY está creado para quienes quieren llevar su experiencia al máximo, disfrutar de beneficios exclusivos y destacar dentro de la comunidad.",
-    price: "5,000 🪙 · $50 USD",
+    price: "10,300 🪙 · $65 USD",
     duration: "Indefinido",
     benefits: [
       "🔒 10 Protecciones",
@@ -299,7 +299,7 @@ const PRODUCT_DETAILS = {
     name: "Donador VIP LV14",
     description:
       "El DONADOR LUXURY de $90 USD es un rango INDEFINIDO diseñado para quienes quieren disfrutar de una de las experiencias más completas y exclusivas de NOVAPIXEL.",
-    price: "9,000 🪙 · $90 USD",
+    price: "13,450 🪙 · $85 USD",
     duration: "Indefinido",
     benefits: [
       "🔒 10 Protecciones",
@@ -325,7 +325,7 @@ const PRODUCT_DETAILS = {
     name: "Donador VIP LV18",
     description:
       "El DONADOR LUXURY de $150 USD representa el nivel más alto de esta línea de beneficios. Un rango INDEFINIDO creado para jugadores que buscan disfrutar de una experiencia premium, destacar dentro de la comunidad y acceder a una enorme cantidad de ventajas exclusivas.",
-    price: "15,000 🪙 · $150 USD",
+    price: "23,600 🪙 · $150 USD",
     duration: "Indefinido",
     benefits: [
       "🔒 10 Protecciones",
@@ -351,7 +351,7 @@ const PRODUCT_DETAILS = {
     name: "Donador VIP LV22",
     description:
       "El DONADOR LUXURY de $250 USD es la edición más exclusiva y costosa de nuestra tienda, creada para jugadores que quieren disfrutar de una experiencia premium llevada al máximo nivel.",
-    price: "25,000 🪙 · $250 USD",
+    price: "41,000 🪙 · $250 USD",
     duration: "Indefinido",
     benefits: [
       "🔒 10 Protecciones",
@@ -465,7 +465,7 @@ const PRODUCT_DETAILS = {
     name: "100,000 de Economía",
     description:
       "Con 100,000 de Economía recibirás 100,000 de dinero IN-GAME directamente dentro de NOVAPIXEL, listo para gastar, invertir y aprovechar en la economía del servidor.",
-    price: "1,500 🪙",
+    price: "5,000 🪙",
     duration: "Entrega unica",
     benefits: [
       "🪙 +100,000 de dinero dentro del juego",
@@ -479,7 +479,7 @@ const PRODUCT_DETAILS = {
     name: "50,000 de Economía",
     description:
       "Con este producto recibirás 50,000 de dinero dentro del juego, listos para utilizar en la economía del servidor.",
-    price: "900 🪙",
+    price: "2,700 🪙",
     duration: "Entrega unica",
     benefits: [
       "🪙 +50,000 de dinero IN-GAME",
@@ -739,7 +739,7 @@ const PRODUCT_DETAILS = {
     name: "Pico 3x3",
     description:
       "Con el PICO 3×3 podrás romper 9 bloques de una sola vez, haciendo que tus sesiones de minería sean mucho más rápidas, cómodas y eficientes.",
-    price: "1,500 🪙",
+    price: "3,200 🪙",
     duration: "Permanente",
     benefits: [
       "⛏ Área de excavación 3×3",
@@ -757,7 +757,7 @@ const PRODUCT_DETAILS = {
     name: "Protección Diamante 128x128",
     description:
       "¿Tienes una casa, una base o un terreno enorme que quieres mantener completamente protegido?",
-    price: "800 🪙",
+    price: "2,400 🪙",
     duration: "Permanente",
     benefits: [
       "🏠 Protección de 128×128 bloques",
@@ -775,7 +775,7 @@ const PRODUCT_DETAILS = {
     name: "Protección Esmeralda 512x512",
     description:
       "La Protección Esmeralda 512×512 está diseñada para quienes necesitan un territorio gigantesco donde construir, expandirse y compartir sus proyectos con amigos.",
-    price: "4,500 🪙",
+    price: "7,000 🪙",
     duration: "Permanente",
     benefits: [
       "💚 512×512 bloques de protección",
@@ -793,7 +793,7 @@ const PRODUCT_DETAILS = {
     name: "Protección Netherita 256x256",
     description:
       "¿Tu base está creciendo? ¿Tienes un proyecto enorme o quieres crear una zona completa para ti y tus amigos?",
-    price: "2,100 🪙",
+    price: "5,000 🪙",
     duration: "Permanente",
     benefits: [
       "💎 256×256 bloques de protección",
@@ -811,7 +811,7 @@ const PRODUCT_DETAILS = {
     name: "Pegado de Schematic",
     description:
       "¿Encontraste una construcción increíble pero no quieres pasar horas colocándola bloque por bloque?",
-    price: "1,200 🪙",
+    price: "5,000 🪙",
     duration: "Entrega unica",
     benefits: [
       "🏗 Schematic de hasta 40×40",
@@ -827,7 +827,7 @@ const PRODUCT_DETAILS = {
     name: "Spawner de Araña",
     description:
       "¿Quieres tener una fuente de arañas cerca de tu base y aprovechar sus recursos sin tener que recorrer el mundo en busca de mobs?",
-    price: "500 🪙",
+    price: "1,380 🪙",
     duration: "Permanente",
     benefits: [
       "🕷 Generación de arañas",
@@ -842,7 +842,7 @@ const PRODUCT_DETAILS = {
     name: "Spawner de Cerdo",
     description:
       "Con el Spawner de Cerdo podrás generar cerdos en tu propia zona y crear una granja cerca de tu base, teniendo tus recursos siempre a mano.",
-    price: "300 🪙",
+    price: "600 🪙",
     duration: "Permanente",
     benefits: [
       "🐷 Generación de cerdos",
@@ -860,7 +860,7 @@ const PRODUCT_DETAILS = {
     name: "Spawner de Pollo",
     description:
       "¿Cansado de recorrer el mundo buscando animales cada vez que necesitas comida o materiales?",
-    price: "300 🪙",
+    price: "600 🪙",
     duration: "Permanente",
     benefits: [
       "🐔 Generación de pollos",
@@ -878,7 +878,7 @@ const PRODUCT_DETAILS = {
     name: "Spawner de Vaca",
     description:
       "Con el Spawner de Vaca podrás colocar un spawner que generará vacas dentro de tu zona, permitiéndote crear y gestionar tu propia granja.",
-    price: "300 🪙",
+    price: "600 🪙",
     duration: "Permanente",
     benefits: [
       "🥩 Generación de vacas",
