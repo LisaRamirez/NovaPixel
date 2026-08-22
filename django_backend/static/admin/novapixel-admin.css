@@ -1,17 +1,71 @@
-/* Retoques del panel de administración sobre Jazzmin.
-   Jazzmin no le pone límite de ancho a la imagen de la pantalla de acceso,
-   así que el logo de NovaPixel (1900px de ancho) se dibujaba a tamaño real
-   y ocupaba la pantalla entera por encima del formulario. */
+/* Paleta NovaPixel sobre Jazzmin (Bootstrap 5 + AdminLTE4). Bootstrap 5 deriva
+   casi todos sus componentes de estas custom properties, así que pisarlas acá
+   alcanza para recolorear botones, links y utilidades sin tocar el vendor. */
+:root,
+html[data-bs-theme="dark"] {
+  --bs-primary: #9b5de5;
+  --bs-primary-rgb: 155, 93, 229;
+  --bs-warning: #ffd23f;
+  --bs-warning-rgb: 255, 210, 63;
+  --bs-link-color: #ffd23f;
+  --bs-link-color-rgb: 255, 210, 63;
+  --bs-link-hover-color: #f15bb5;
+  --bs-link-hover-color-rgb: 241, 91, 181;
+}
 
+.app-NovaPixel .brand-link,
+.main-sidebar .brand-link {
+  border-bottom-color: rgba(155, 93, 229, 0.3);
+}
+
+/* Ítem activo del sidebar: gradiente NovaPixel en vez del azul/gris por defecto */
+.sidebar-menu .nav-link.active {
+  background: linear-gradient(135deg, #9b5de5, #f15bb5, #ffd23f) !important;
+  color: #14101f !important;
+  font-weight: 700;
+  border-radius: 8px;
+}
+
+.sidebar-menu .nav-link.active i,
+.sidebar-menu .nav-link.active p {
+  color: #14101f !important;
+}
+
+.btn-warning {
+  background-color: #ffd23f;
+  border-color: #ffd23f;
+  color: #14101f;
+}
+
+.btn-warning:hover {
+  background-color: #f1c22e;
+  border-color: #f1c22e;
+}
+
+.text-warning {
+  color: #ffd23f !important;
+}
+
+/* Tarjetas del panel de control / panel de GGcoins */
+.card {
+  border-color: rgba(155, 93, 229, 0.2);
+}
+
+.card-header {
+  background: linear-gradient(135deg, rgba(155, 93, 229, 0.15), rgba(241, 91, 181, 0.08));
+}
+
+/* Pantalla de acceso. Jazzmin no le pone límite de ancho a la imagen y el
+   logo de NovaPixel mide 1900px: se dibujaba a tamaño real y empujaba el
+   formulario al fondo de una página larguísima. */
 .login-logo img,
 .login-logo .logo-light,
 .login-logo .logo-dark {
+  display: block;
   max-width: 260px;
   width: 100%;
   height: auto;
-  /* Sin esto queda pegado al borde superior de la ventana. */
   margin: 8px auto 4px;
-  display: block;
 }
 
 /* El mismo logo se reutiliza en la barra lateral, donde el hueco es aún
@@ -22,8 +76,6 @@
   width: auto;
 }
 
-/* La tarjeta del formulario se quedaba estrecha bajo un logo enorme; ahora
-   que el logo está acotado, se le da un ancho cómodo y centrado. */
 .login-box {
   width: 100%;
   max-width: 400px;
