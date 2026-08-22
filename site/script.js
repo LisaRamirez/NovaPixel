@@ -955,7 +955,29 @@ function wireNickAvatarPreview(inputEl, imgEl) {
 const NovaPixelAuth = {
   user: null,
 
+  // Última sesión conocida, guardada en el navegador. No es una credencial
+  // —el acceso lo sigue dando la cookie de sesión, que el JS no puede leer—
+  // sino solo lo justo para pintar el menú sin esperar a la API.
+  CACHE_SESION: "novapixel:ultima-sesion",
+
+  // El menú tardaba en aparecer porque no se pintaba nada hasta que
+  // /api/auth/me contestaba: primero un hueco vacío y luego un salto. Ahora
+  // se pinta al instante con lo último que se supo y la API confirma o
+  // corrige un momento después.
+  pintarDesdeCache() {
+    if (this._yaPintado) return
+    this._yaPintado = true
+    try {
+      const guardado = localStorage.getItem(this.CACHE_SESION)
+      if (guardado) this.user = JSON.parse(guardado)
+    } catch {
+      this.user = null
+    }
+    this.render()
+  },
+
   async refresh() {
+    this.pintarDesdeCache()
     try {
       const res = await apiFetch("/api/auth/me")
       this.user = res.ok ? await res.json() : null
@@ -967,6 +989,15 @@ const NovaPixelAuth = {
   },
 
   render() {
+    // Se recuerda para la próxima carga. Si la sesión caducó, el refresh la
+    // deja en null y aquí mismo se borra, así que no se queda enganchada.
+    try {
+      if (this.user) localStorage.setItem(this.CACHE_SESION, JSON.stringify(this.user))
+      else localStorage.removeItem(this.CACHE_SESION)
+    } catch {
+      // Modo incógnito o almacenamiento lleno: se pierde el atajo, nada más.
+    }
+
     document.dispatchEvent(new CustomEvent("novapixel:auth-changed"))
 
     const container = document.getElementById("nav-account")
