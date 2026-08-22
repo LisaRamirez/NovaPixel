@@ -116,6 +116,9 @@ JAZZMIN_SETTINGS = {
     "site_logo": "admin/logo-novapixel.png",
     "login_logo": "admin/logo-novapixel.png",
     "site_logo_classes": "",
+    # Jazzmin no acota el logo de la pantalla de acceso y el nuestro mide
+    # 1900px de ancho: se dibujaba a tamaño real, tapando el formulario.
+    "custom_css": "admin/novapixel-admin.css",
     "welcome_sign": "Panel de administración de NovaPixel",
     "copyright": "NovaPixel",
     "search_model": ["accounts.User", "store.Product", "store.Purchase", "gilcoins.GilcoinPurchase"],
