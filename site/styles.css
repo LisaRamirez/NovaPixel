@@ -766,6 +766,15 @@ body {
     display: block;
   }
 
+  /* Hasta que setupMobileMenu los mueve al desplegable, estos dos bloques
+     cuelgan de .nav-content — y con los estilos de columna de más abajo se
+     veían apilados y descolocados sobre el navbar durante la carga. Solo se
+     enseñan una vez dentro del desplegable, que es su sitio en móvil. */
+  .nav-content > .nav-links,
+  .nav-content > .nav-actions {
+    display: none;
+  }
+
   .mobile-menu-dropdown {
     display: none;
     position: absolute;
@@ -1098,7 +1107,10 @@ body.vip-exclusive-mode .vip-back-btn {
   overflow-x: auto;
   gap: 10px;
   position: sticky;
-  top: 110px;
+  /* El navbar mide distinto en escritorio, tablet y celular, así que su
+     altura la mide script.js y la deja en --altura-navbar. Fijarlo a un
+     número concreto dejaba el menú metido debajo del navbar en móvil. */
+  top: calc(var(--altura-navbar, 110px) + 8px);
   z-index: 5;
   background: rgba(var(--nova-bg-rgb), 0.75);
   backdrop-filter: blur(8px);
@@ -1529,11 +1541,20 @@ body.vip-exclusive-mode .vip-back-btn {
   color: var(--nova-gold);
 }
 
-/* En tablet y celular el menú no se fija al hacer scroll: el navbar ya
-   ocupa buena parte de la pantalla y el sticky comía altura útil. */
+/* En tablet y celular el menú sí se fija: es la navegación de toda la
+   tienda y perderla al bajar obliga a subir del todo para cambiar de
+   categoría. Lo que sí se hace es adelgazarlo, que era el motivo real de
+   haberlo soltado antes — comía demasiada altura útil. */
 @media (max-width: 1100px) {
   .store-menu {
-    position: static;
+    gap: 8px;
+    padding: 8px;
+    border-radius: 12px;
+  }
+
+  .store-menu .store-tab {
+    padding: 8px 12px;
+    font-size: 0.9rem;
   }
 }
 

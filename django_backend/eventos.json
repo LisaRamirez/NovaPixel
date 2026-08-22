@@ -1,0 +1,82 @@
+[
+{
+  "model": "events.event",
+  "pk": 1,
+  "fields": {
+    "title": "EVENTO: MATA VACAS",
+    "description": "Estas listo para liberar de su prision corporea a muchas vacas?",
+    "image": "events/evento1.jpg",
+    "badge_label": "Evento Activo",
+    "frequency": "weekly",
+    "is_active": true,
+    "starts_at": null,
+    "ends_at": null,
+    "order": 0,
+    "created_at": "2026-08-07T18:19:49.547Z"
+  }
+},
+{
+  "model": "events.event",
+  "pk": 2,
+  "fields": {
+    "title": "EVENTO: BATALLA DE ZUMOS",
+    "description": "Prepárate para la batalla más épica del año, combates 1v1.",
+    "image": "events/event2.jpg",
+    "badge_label": "Eventos",
+    "frequency": "monthly",
+    "is_active": true,
+    "starts_at": null,
+    "ends_at": null,
+    "order": 1,
+    "created_at": "2026-08-07T18:19:49.559Z"
+  }
+},
+{
+  "model": "events.event",
+  "pk": 3,
+  "fields": {
+    "title": "Comunidad Activa",
+    "description": "Únete a nuestro Discord, nuevas tiendas creadas por jugadores.",
+    "image": "events/event5.jpg",
+    "badge_label": "Comunidad",
+    "frequency": "daily",
+    "is_active": true,
+    "starts_at": null,
+    "ends_at": null,
+    "order": 2,
+    "created_at": "2026-08-07T18:19:49.567Z"
+  }
+},
+{
+  "model": "events.event",
+  "pk": 4,
+  "fields": {
+    "title": "Nuevo Mundo: Tierras Místicas",
+    "description": "¡Explora el nuevo mundo lleno de biomas únicos, dungeons secretos y criaturas místicas! Acceso disponible para todos los rangos.",
+    "image": "events/event3.jpg",
+    "badge_label": "Novedad",
+    "frequency": "one_time",
+    "is_active": true,
+    "starts_at": null,
+    "ends_at": null,
+    "order": 3,
+    "created_at": "2026-08-09T05:54:30.915Z"
+  }
+},
+{
+  "model": "events.event",
+  "pk": 5,
+  "fields": {
+    "title": "Actualización del Sistema Económico",
+    "description": "Nuevas tiendas, trabajos mejorados y un sistema de subastas renovado. ¡Más formas de ganar dinero que nunca!",
+    "image": "events/event4.jpg",
+    "badge_label": "Actualización",
+    "frequency": "one_time",
+    "is_active": true,
+    "starts_at": null,
+    "ends_at": null,
+    "order": 4,
+    "created_at": "2026-08-09T05:54:30.928Z"
+  }
+}
+]

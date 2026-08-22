@@ -2473,6 +2473,9 @@ function setupMobileMenu() {
   }
 }
 
+// En DOMContentLoaded, no en "load": esperar a que carguen las imágenes
+// dejaba el navbar a medio montar durante un buen rato en móvil.
+document.addEventListener("DOMContentLoaded", setupMobileMenu)
 window.addEventListener("load", setupMobileMenu)
 window.matchMedia("(max-width: 768px)").addEventListener("change", setupMobileMenu)
 
@@ -2570,4 +2573,32 @@ document.addEventListener("DOMContentLoaded", async () => {
   } catch {
     grid.innerHTML = `<p class="events-loading">No se pudieron cargar los eventos. Intenta más tarde.</p>`
   }
+})
+
+// El menú de categorías de la tienda se queda pegado bajo el navbar al
+// bajar: es la navegación de todo el catálogo y perderla obliga a subir del
+// todo para cambiar de sección. El navbar no mide lo mismo en escritorio
+// que en tablet o celular, así que su altura se mide aquí y CSS la usa en
+// el top del sticky. Con un número fijo, en móvil el menú quedaba escondido
+// detrás del navbar.
+document.addEventListener("DOMContentLoaded", () => {
+  const navbar = document.querySelector(".navbar")
+  if (!navbar) return
+
+  // Solo se escribe la variable cuando el alto cambia de verdad. Sin este
+  // corte, el ResizeObserver entraba en bucle consigo mismo —medir, escribir,
+  // relayout, volver a medir— y el menú pegajoso temblaba al hacer scroll.
+  let ultimoAlto = null
+  function medirNavbar() {
+    const alto = Math.round(navbar.getBoundingClientRect().height)
+    if (alto === ultimoAlto) return
+    ultimoAlto = alto
+    document.documentElement.style.setProperty("--altura-navbar", `${alto}px`)
+  }
+
+  medirNavbar()
+  window.addEventListener("resize", medirNavbar)
+  // El navbar cambia de alto cuando las fuentes acaban de cargar y cuando
+  // el menú pasa a dos líneas, y eso no dispara "resize".
+  if (window.ResizeObserver) new ResizeObserver(medirNavbar).observe(navbar)
 })
