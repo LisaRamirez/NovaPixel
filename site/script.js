@@ -2145,6 +2145,111 @@ document.addEventListener("DOMContentLoaded", () => {
   window.addEventListener("hashchange", syncTabFromHash)
 })
 
+// Buscador del catálogo. Busca en el nombre, en el título de la categoría y en
+// la descripción que enseña la ficha de detalle, así que "spawner" encuentra
+// también los paquetes que incluyen uno. Mientras hay texto escrito manda
+// sobre las pestañas: se ven todas las secciones y se ocultan las fichas que
+// no coinciden. Al vaciarlo, la pestaña que estuviera activa vuelve sola,
+// porque nunca se le quita la clase .active a nadie.
+document.addEventListener("DOMContentLoaded", () => {
+  const input = document.getElementById("store-search-input")
+  const clearBtn = document.getElementById("store-search-clear")
+  const status = document.getElementById("store-search-status")
+  const items = document.querySelector(".store-items")
+  if (!input || !items || !clearBtn || !status) return
+
+  // Sin acentos y en minúsculas, para que "protección" y "proteccion"
+  // encuentren lo mismo — media tienda se escribe con tilde.
+  const normaliza = (texto) =>
+    texto
+      .toLowerCase()
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "")
+
+  const categorias = Array.from(items.querySelectorAll(".store-category"))
+
+  // El índice se construye una sola vez al cargar: cada ficha con todo su
+  // texto buscable ya normalizado, para no recorrer el DOM en cada tecla.
+  const fichas = []
+  categorias.forEach((categoria) => {
+    const titulo = categoria.querySelector(".store-category-title")?.textContent ?? ""
+    categoria.querySelectorAll(".price-card, .rank-card, .deluxe-card").forEach((card) => {
+      const nombre = card.querySelector(".price-name, .rank-name, .deluxe-name")?.textContent ?? ""
+      const productId = card.querySelector("[data-product]")?.dataset.product ?? ""
+      const detalle = PRODUCT_DETAILS[productId]
+      const texto = [
+        nombre,
+        titulo,
+        productId.replace(/-/g, " "),
+        detalle?.description ?? "",
+        (detalle?.benefits ?? []).join(" "),
+      ].join(" ")
+      fichas.push({ card, categoria, texto: normaliza(texto) })
+    })
+  })
+
+  function aplicar(consulta) {
+    const limpia = consulta.trim()
+    const q = normaliza(limpia)
+    clearBtn.hidden = limpia.length === 0
+
+    if (q.length === 0) {
+      items.classList.remove("searching")
+      fichas.forEach(({ card }) => (card.hidden = false))
+      categorias.forEach((categoria) => (categoria.hidden = false))
+      status.hidden = true
+      return
+    }
+
+    items.classList.add("searching")
+
+    // Todas las palabras deben aparecer, en cualquier orden: así "rango
+    // divino" encuentra el Divino aunque su nombre no lleve "rango".
+    const palabras = q.split(/\s+/)
+    let encontradas = 0
+
+    fichas.forEach(({ card, texto }) => {
+      const coincide = palabras.every((palabra) => texto.includes(palabra))
+      card.hidden = !coincide
+      if (coincide) encontradas += 1
+    })
+
+    categorias.forEach((categoria) => {
+      const tieneAlgo = fichas.some((f) => f.categoria === categoria && !f.card.hidden)
+      categoria.hidden = !tieneAlgo
+    })
+
+    status.hidden = false
+    status.textContent =
+      encontradas === 0
+        ? `Nada coincide con «${limpia}». Prueba con otra palabra.`
+        : `${encontradas} ${encontradas === 1 ? "producto" : "productos"} para «${limpia}».`
+  }
+
+  function vaciar() {
+    input.value = ""
+    aplicar("")
+    input.focus()
+  }
+
+  input.addEventListener("input", () => aplicar(input.value))
+  input.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") vaciar()
+  })
+  clearBtn.addEventListener("click", vaciar)
+
+  // Elegir una categoría cancela la búsqueda: si no, la pestaña parecería no
+  // hacer nada porque el buscador seguiría mandando sobre las secciones.
+  document.querySelectorAll(".store-tab[data-target]").forEach((tab) => {
+    tab.addEventListener("click", () => {
+      if (input.value) {
+        input.value = ""
+        aplicar("")
+      }
+    })
+  })
+})
+
 // Selector "30 días" / "Indefinido" dentro de la pestaña Rangos: alterna
 // qué panel de precios se ve sin salir de la categoría.
 document.addEventListener("DOMContentLoaded", () => {

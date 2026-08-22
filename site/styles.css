@@ -1111,6 +1111,90 @@ body.vip-exclusive-mode .vip-back-btn {
   flex: 0 0 auto;
 }
 
+/* Buscador del catálogo. Vive justo debajo del menú de categorías y, mientras
+   tiene texto, manda sobre las pestañas: se muestran todas las secciones y se
+   ocultan las fichas que no coinciden. */
+.store-search {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin: 14px 0 4px;
+}
+
+.store-search-icon {
+  position: absolute;
+  left: 16px;
+  color: rgba(var(--nova-purple-rgb), 0.75);
+  pointer-events: none;
+  font-size: 0.95rem;
+}
+
+.store-search-input {
+  width: 100%;
+  padding: 13px 44px 13px 44px;
+  border-radius: 14px;
+  border: 1px solid rgba(var(--nova-purple-rgb), 0.25);
+  background: rgba(var(--nova-bg-rgb), 0.75);
+  color: inherit;
+  font-family: inherit;
+  font-size: 1rem;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.store-search-input::placeholder {
+  color: rgba(255, 255, 255, 0.45);
+}
+
+.store-search-input:focus {
+  outline: none;
+  border-color: rgba(var(--nova-purple-rgb), 0.7);
+  box-shadow: 0 0 0 3px rgba(var(--nova-purple-rgb), 0.18);
+}
+
+/* La X nativa de <input type="search"> se oculta: usamos la nuestra, que
+   además devuelve el foco al campo. */
+.store-search-input::-webkit-search-cancel-button {
+  display: none;
+}
+
+.store-search-clear {
+  position: absolute;
+  right: 10px;
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(var(--nova-purple-rgb), 0.18);
+  color: inherit;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.store-search-clear:hover {
+  background: rgba(var(--nova-purple-rgb), 0.35);
+}
+
+.store-search-status {
+  margin: 10px 2px 0;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.95rem;
+}
+
+/* Con búsqueda activa, .active deja de decidir qué sección se ve: las manda
+   el buscador marcando cada ficha y cada sección con [hidden]. */
+.store-items.searching .store-category {
+  display: block;
+}
+
+.store-items.searching .store-category[hidden],
+.store-items.searching .price-card[hidden],
+.store-items.searching .rank-card[hidden],
+.store-items.searching .deluxe-card[hidden] {
+  display: none;
+}
+
 .store-items {
   min-width: 0;
 }

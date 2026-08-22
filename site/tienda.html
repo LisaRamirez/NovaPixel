@@ -304,6 +304,22 @@
                     </button>
                 </div>
 
+                <div class="store-search">
+                    <i class="fas fa-search store-search-icon" aria-hidden="true"></i>
+                    <input
+                        type="search"
+                        id="store-search-input"
+                        class="store-search-input"
+                        placeholder="Buscar producto…"
+                        autocomplete="off"
+                        aria-label="Buscar en la tienda"
+                    >
+                    <button type="button" class="store-search-clear" id="store-search-clear" aria-label="Limpiar la búsqueda" hidden>
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <p class="store-search-status" id="store-search-status" role="status" aria-live="polite" hidden></p>
+
                 <div class="store-items">
                     <div class="store-category active" id="cat-paquetes">
                         <h3 class="store-category-title">Paquetes Deluxe Permanentes</h3>
