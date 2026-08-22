@@ -866,6 +866,9 @@ html {
 /* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
+  /* Sin height, las barras horizontales usaban la del navegador (unos
+     15px) y engordaban la franja del menú de la tienda. */
+  height: 8px;
 }
 
 ::-webkit-scrollbar-track {
@@ -1114,13 +1117,29 @@ body.vip-exclusive-mode .vip-back-btn {
   z-index: 5;
   background: rgba(var(--nova-bg-rgb), 0.75);
   backdrop-filter: blur(8px);
-  padding: 12px;
-  border-radius: 16px;
+  /* Franja delgada a propósito: al quedarse fija arriba, cada píxel de más
+     es catálogo que el jugador deja de ver. */
+  padding: 7px 8px;
+  border-radius: 14px;
   border: 1px solid rgba(var(--nova-purple-rgb), 0.25);
+}
+
+/* Su propia barra de scroll, más fina todavía que la general. */
+.store-menu::-webkit-scrollbar {
+  height: 5px;
+}
+
+.store-menu::-webkit-scrollbar-track {
+  background: transparent;
 }
 
 .store-menu .store-tab {
   flex: 0 0 auto;
+  /* Más bajas que las pestañas sueltas: aquí van dentro de una franja fija
+     y el alto de esa franja es alto que se le quita al catálogo. */
+  padding: 9px 14px;
+  gap: 8px;
+  border-radius: 10px;
 }
 
 /* Buscador del catálogo. Vive justo debajo del menú de categorías y, mientras
@@ -1989,6 +2008,47 @@ body.vip-exclusive-mode .vip-back-btn {
 @media (max-width: 520px) {
   .gilcoin-luxury-grid {
     grid-template-columns: 1fr;
+  }
+}
+
+/* Tarjeta suelta al final de una rejilla de dos columnas.
+   Con 3 ítems, el tercero quedaba pegado a la izquierda y con medio ancho
+   de hueco vacío al lado. Ahora ocupa la fila entera y se centra, pero
+   conserva el ancho de una tarjeta normal para no verse gigante.
+   :last-child:nth-child(odd) = es la última y va en posición impar, o sea
+   en la columna 1 sin pareja. El ancho es la mitad menos medio hueco, que
+   es exactamente lo que mide una columna. */
+@media (max-width: 900px) {
+  .price-grid > .price-card:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+    width: calc(50% - 10px); /* gap entre columnas: 20px */
+    margin-inline: auto;
+  }
+}
+
+@media (max-width: 700px) {
+  .rank-grid > .rank-card:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+    width: calc(50% - 8px); /* gap: 16px */
+    margin-inline: auto;
+  }
+}
+
+/* Estas dos solo mientras siguen en dos columnas: por debajo pasan a una
+   sola y entonces no hay nada que centrar. */
+@media (min-width: 521px) and (max-width: 1100px) {
+  .gilcoin-luxury-grid > .gilcoin-luxury-card:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+    width: calc(50% - 11px); /* gap: 22px */
+    margin-inline: auto;
+  }
+}
+
+@media (min-width: 701px) and (max-width: 1100px) {
+  .deluxe-grid > .deluxe-card:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+    width: calc(50% - 12px); /* gap: 24px */
+    margin-inline: auto;
   }
 }
 
