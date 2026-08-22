@@ -2583,8 +2583,9 @@ body.vip-exclusive-mode .vip-back-btn {
 
 .checkout-modal-title {
   color: var(--nova-gold);
-  margin: 0 0 6px;
+  margin: 0 0 20px;
   font-size: 1.3rem;
+  text-align: center;
 }
 
 .checkout-modal-product {
@@ -2603,29 +2604,37 @@ body.vip-exclusive-mode .vip-back-btn {
 .checkout-nick-row {
   display: flex;
   align-items: center;
-  gap: 10px;
-  margin-bottom: 8px;
+  margin-bottom: 16px;
 }
 
+/* El avatar no reserva sitio mientras no hay ninguno que enseñar: si lo
+   reservara, el campo del nick aparecería desplazado a la derecha respecto
+   a los demás y parecería descuadrado. Crece con transición al cargarse. */
 .checkout-nick-avatar {
-  width: 40px;
+  width: 0;
   height: 40px;
   border-radius: 8px;
   background: rgba(var(--nova-bg-rgb), 0.9);
-  border: 1px solid rgba(var(--nova-purple-rgb), 0.4);
+  border: none;
   flex-shrink: 0;
   image-rendering: pixelated;
   opacity: 0;
-  transition: opacity 0.2s ease;
+  transition: width 0.2s ease, margin-right 0.2s ease, opacity 0.2s ease;
 }
 
 .checkout-nick-avatar.visible {
+  width: 40px;
+  margin-right: 10px;
+  border: 1px solid rgba(var(--nova-purple-rgb), 0.4);
   opacity: 1;
 }
 
 .checkout-modal-input {
   flex: 1;
   width: 100%;
+  /* Sin este margen cada campo quedaba pegado a la etiqueta del siguiente
+     y el formulario se leía como un bloque apretado. */
+  margin-bottom: 16px;
   background: rgba(var(--nova-bg-rgb), 0.9);
   border: 1px solid rgba(var(--nova-purple-rgb), 0.4);
   border-radius: 10px;
@@ -2636,9 +2645,29 @@ body.vip-exclusive-mode .vip-back-btn {
   transition: border-color 0.2s ease;
 }
 
+/* Cuando el campo va dentro de un envoltorio (la fila del avatar o el ojo
+   de la contraseña), el margen lo lleva el envoltorio: si lo llevaran los
+   dos, el hueco se duplicaría. */
+.checkout-nick-row .checkout-modal-input,
+.password-field .checkout-modal-input {
+  margin-bottom: 0;
+}
+
 .checkout-modal-input:focus {
   outline: none;
   border-color: var(--nova-gold);
+}
+
+/* Chrome pinta de blanco lo que autocompleta y no deja cambiarlo con
+   background-color; el truco es una sombra interior enorme del color que
+   toca. La transición absurda evita el fogonazo blanco del primer frame. */
+.checkout-modal-input:-webkit-autofill,
+.checkout-modal-input:-webkit-autofill:hover,
+.checkout-modal-input:-webkit-autofill:focus {
+  -webkit-text-fill-color: #ffffff;
+  -webkit-box-shadow: 0 0 0 1000px rgba(var(--nova-bg-rgb), 0.95) inset;
+  caret-color: #ffffff;
+  transition: background-color 9999s ease-out;
 }
 
 /* Ver la contraseña. El envoltorio y el botón los inyecta script.js sobre
@@ -2648,6 +2677,7 @@ body.vip-exclusive-mode .vip-back-btn {
   position: relative;
   display: inline-block;
   width: 100%;
+  margin-bottom: 16px;
 }
 .password-field .checkout-modal-input {
   display: block;
@@ -2684,7 +2714,14 @@ body.vip-exclusive-mode .vip-back-btn {
   color: var(--nova-text-muted);
   font-size: 0.8rem;
   margin: 0 0 12px;
-  line-height: 1.4;
+  line-height: 1.5;
+  text-align: center;
+}
+
+/* El enlace "Inicia sesión" que cierra el formulario respira un poco más:
+   es el final del bloque, no una nota más pegada al botón. */
+.checkout-modal-submit + .checkout-modal-hint {
+  margin-top: 16px;
 }
 
 .checkout-modal-error {
@@ -2693,6 +2730,7 @@ body.vip-exclusive-mode .vip-back-btn {
   margin: 0 0 12px;
   min-height: 1em;
   display: none;
+  text-align: center;
 }
 
 .checkout-modal-success {
@@ -2709,6 +2747,63 @@ body.vip-exclusive-mode .vip-back-btn {
 
 .checkout-modal-error.active {
   display: block;
+}
+
+/* "Continuar con Google". Blanco sobre fondo oscuro a propósito: son las
+   guías de marca de Google y, además, es el botón que la gente reconoce de
+   otros sitios sin tener que leerlo. */
+.google-signin-btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: #ffffff;
+  color: #1f1f1f;
+  font-family: inherit;
+  font-size: 0.98rem;
+  font-weight: 600;
+  padding: 12px 0;
+  margin-bottom: 4px;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  border-radius: 25px;
+  cursor: pointer;
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.google-signin-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
+}
+
+.google-signin-btn:disabled {
+  opacity: 0.65;
+  cursor: default;
+  transform: none;
+}
+
+.google-signin-logo {
+  width: 18px;
+  height: 18px;
+  flex: 0 0 auto;
+}
+
+/* Separador "o" entre el botón de Google y el formulario de siempre. */
+.auth-divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 16px 0 14px;
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 0.85rem;
+}
+
+.auth-divider::before,
+.auth-divider::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.15);
 }
 
 .checkout-modal-submit {

@@ -31,7 +31,6 @@ const STORE_PRODUCT_NAMES = {
   "rango-angelical-30": "Rango Angelical · 30 días",
   "rango-celestial-30": "Rango Celestial · 30 días",
   "rango-divino-30": "Rango Divino · 30 días",
-  "rango-donador-30": "Rango Donador · 30 días",
   "pico-3x3": "Pico 3x3",
   "proteccion-diamante-128": "Protección Diamante 128x128",
   "proteccion-netherita-256": "Protección Netherita 256x256",
@@ -81,7 +80,6 @@ const STORE_PRODUCT_PRICES = {
   "rango-angelical-30": 1400,
   "rango-celestial-30": 2900,
   "rango-divino-30": 4400,
-  "rango-donador-30": 5000,
   "pico-3x3": 3200,
   "proteccion-diamante-128": 2400,
   "proteccion-netherita-256": 5000,
@@ -124,8 +122,7 @@ const STORE_PRODUCT_PRICES = {
 // Beneficios de rangos y Donador VIP para el modal de detalle, que se abre
 // al tocar la imagen del producto (.product-detail-trigger[data-detail]).
 // Texto tal cual la información de producto ya provista — no se agregan
-// beneficios nuevos. rango-donador-30 no tiene entrada a propósito: nunca se
-// recibió su detalle.
+// beneficios nuevos.
 const PRODUCT_DETAILS = {
   "paquete-inmortal": {
     image: "images/paquete-inmortal-icon.png",
@@ -246,26 +243,6 @@ const PRODUCT_DETAILS = {
       "⚡ Comandos: /afk /anvil /craft /enderchest /feed /fly /heal /recipe /repair",
       "💰 $30,000 de economía inicial",
       "🎯 350 niveles de XP",
-    ],
-  },
-  "rango-donador-30": {
-    image: "images/rango-donador-icon.png",
-    name: "Rango Donador",
-    description:
-      "El m\u00e1s alto de los rangos de 30 d\u00edas: supera al Divino en mochilas y en comandos, y a\u00f1ade /nick, /clearinventory, /condense y /disposal. Beneficios le\u00eddos del grupo donador del servidor.",
-    price: "5,000 \ud83e\udea9",
-    duration: "30 d\u00edas",
-    benefits: [
-      "\ud83d\udd12 10 Protecciones",
-      "\ud83c\udf92 30 Mochilas",
-      "\u26cf\ufe0f Acceso a la Mina VIP",
-      "\ud83c\udfa8 Chat con Color completo",
-      "\ud83e\udeb6 /fly y /afk",
-      "\u2764\ufe0f /heal y /feed sin espera",
-      "\ud83d\udd28 /repair y /repair all",
-      "\ud83e\uddf0 /anvil, /craft y /enderchest",
-      "\ud83c\udff7\ufe0f /nick para cambiar tu nombre",
-      "\ud83e\uddf9 /clearinventory, /condense y /disposal",
     ],
   },
   "donador-vip-lv10": {
@@ -1051,7 +1028,18 @@ function setupAuthModal(onAuthSuccess) {
   const forgotSuccess = document.getElementById("forgot-success")
   const forgotSubmit = document.getElementById("forgot-submit")
 
+  // Cuarta pantalla: Google ya dijo quién es, pero no sabe su nick de
+  // Minecraft — y sin nick no hay dónde entregar las compras.
+  const googleNickView = document.getElementById("auth-google-nick-view")
+  const googleUsername = document.getElementById("google-username-input")
+  const googleNick = document.getElementById("google-nick-input")
+  const googleAvatar = document.getElementById("google-nick-avatar")
+  const googleIntro = document.getElementById("google-nick-intro")
+  const googleError = document.getElementById("google-nick-error")
+  const googleSubmit = document.getElementById("google-nick-submit")
+
   wireNickAvatarPreview(registerNick, registerAvatar)
+  if (googleNick && googleAvatar) wireNickAvatarPreview(googleNick, googleAvatar)
 
   function setError(el, message) {
     el.textContent = message
@@ -1063,10 +1051,15 @@ function setupAuthModal(onAuthSuccess) {
     el.classList.remove("active")
   }
 
+  function ocultarGoogleNick() {
+    if (googleNickView) googleNickView.style.display = "none"
+  }
+
   function showLoginView() {
     loginView.style.display = ""
     registerView.style.display = "none"
     forgotView.style.display = "none"
+    ocultarGoogleNick()
     clearError(loginError)
   }
 
@@ -1074,6 +1067,7 @@ function setupAuthModal(onAuthSuccess) {
     loginView.style.display = "none"
     registerView.style.display = ""
     forgotView.style.display = "none"
+    ocultarGoogleNick()
     clearError(registerError)
   }
 
@@ -1081,9 +1075,34 @@ function setupAuthModal(onAuthSuccess) {
     loginView.style.display = "none"
     registerView.style.display = "none"
     forgotView.style.display = ""
+    ocultarGoogleNick()
     forgotEmail.value = ""
     clearError(forgotError)
     forgotSuccess.classList.remove("active")
+  }
+
+  // Se abre al volver de Google cuando el correo todavía no tenía cuenta.
+  // Los datos vienen del backend, que los guardó en la sesión al validar el
+  // código: aquí no se toca nada que Google haya dicho.
+  async function showGoogleNickView() {
+    if (!googleNickView) return
+    loginView.style.display = "none"
+    registerView.style.display = "none"
+    forgotView.style.display = "none"
+    googleNickView.style.display = ""
+    clearError(googleError)
+    modal.classList.add("active")
+
+    try {
+      const res = await apiFetch("/api/auth/google/pending")
+      const data = await res.json()
+      if (!res.ok) throw new Error(data.error || "Tu sesión de Google caducó.")
+      googleIntro.textContent = `Entraste con ${data.email}. Solo falta elegir tu usuario y decirnos tu nick de Minecraft.`
+      if (!googleUsername.value) googleUsername.value = data.suggestedUsername || ""
+      setTimeout(() => googleNick.focus(), 50)
+    } catch (err) {
+      setError(googleError, err.message)
+    }
   }
 
   function open() {
@@ -1221,7 +1240,53 @@ function setupAuthModal(onAuthSuccess) {
     }
   })
 
-  return { open, close }
+  // El botón de Google saca al navegador del sitio (no es un fetch): va a
+  // /google/start, que redirige a Google, y Google devuelve a la tienda con
+  // un ?google=... que se lee al cargar la página.
+  modal.querySelectorAll("[data-google-signin]").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      btn.disabled = true
+      window.location.href = `${NOVAPIXEL_API_BASE}/api/auth/google/start`
+    })
+  })
+
+  if (googleSubmit) {
+    googleSubmit.addEventListener("click", async () => {
+      const username = googleUsername.value.trim()
+      const minecraftNick = googleNick.value.trim()
+      clearError(googleError)
+
+      if (username.length < 3 || username.length > 20) {
+        setError(googleError, "El usuario debe tener entre 3 y 20 caracteres.")
+        return
+      }
+      if (!minecraftNick) {
+        setError(googleError, "Escribe tu nick de Minecraft.")
+        return
+      }
+
+      googleSubmit.disabled = true
+      try {
+        const res = await apiFetch("/api/auth/google/complete", {
+          method: "POST",
+          body: JSON.stringify({ username, minecraftNick }),
+        })
+        const data = await res.json()
+        if (!res.ok) throw new Error(data.error || "No se pudo crear la cuenta.")
+        close()
+        await NovaPixelAuth.refresh()
+        // Igual que en el registro normal: recién creada la cuenta el saldo
+        // es 0, así que no se arrastra ninguna compra pendiente.
+        if (typeof onAuthSuccess === "function") onAuthSuccess("register")
+      } catch (err) {
+        setError(googleError, err.message)
+      } finally {
+        googleSubmit.disabled = false
+      }
+    })
+  }
+
+  return { open, close, showGoogleNickView }
 }
 
 // Añade un ojo para ver/ocultar a cada campo de contraseña. Se hace desde
@@ -1281,6 +1346,39 @@ document.addEventListener("DOMContentLoaded", () => {
       if (cartApi) cartApi.checkout()
     }
   })
+
+  // Vuelta de Google. El backend no puede responder JSON aquí (es una
+  // navegación del navegador, no un fetch), así que manda el resultado en
+  // el query string. Se limpia de la URL en cuanto se lee, para que
+  // recargar la página no repita el mensaje ni reabra el formulario.
+  if (authModal) {
+    const params = new URLSearchParams(window.location.search)
+    const resultadoGoogle = params.get("google")
+    if (resultadoGoogle) {
+      params.delete("google")
+      const resto = params.toString()
+      window.history.replaceState(
+        {},
+        "",
+        window.location.pathname + (resto ? `?${resto}` : "") + window.location.hash
+      )
+
+      if (resultadoGoogle === "falta-nick") {
+        authModal.showGoogleNickView()
+      } else if (resultadoGoogle === "ok") {
+        NovaPixelAuth.refresh()
+      } else if (resultadoGoogle === "error") {
+        authModal.open()
+        const loginError = document.getElementById("login-error")
+        if (loginError) {
+          loginError.textContent = "No pudimos completar el acceso con Google. Inténtalo de nuevo."
+          loginError.classList.add("active")
+        }
+      }
+      // "cancelado" no dice nada: la persona pulsó Cancelar en Google y ya
+      // sabe lo que hizo.
+    }
+  }
 
   // Botones de paquetes de GGcoins: piden login si hace falta y luego
   // redirigen al proveedor de pago elegido (Stripe o PayPal).

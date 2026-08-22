@@ -4,9 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NovaPixel - Servidor de Minecraft</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css?v=20260822b">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-WW11GKD3NV"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-WW11GKD3NV');
+    </script>
 </head>
 <body>
     <!-- Unified Navigation -->
@@ -55,6 +64,11 @@
 
             <div id="auth-login-view">
                 <h3 class="checkout-modal-title">Iniciar sesión</h3>
+                <button type="button" class="google-signin-btn" data-google-signin>
+                    <svg class="google-signin-logo" viewBox="0 0 18 18" aria-hidden="true"><path fill="#4285F4" d="M17.64 9.2c0-.64-.06-1.25-.16-1.84H9v3.48h4.84a4.14 4.14 0 0 1-1.8 2.72v2.26h2.92c1.7-1.57 2.68-3.88 2.68-6.62z"/><path fill="#34A853" d="M9 18c2.43 0 4.47-.8 5.96-2.18l-2.92-2.26c-.8.54-1.84.86-3.04.86-2.34 0-4.32-1.58-5.03-3.7H.96v2.33A9 9 0 0 0 9 18z"/><path fill="#FBBC05" d="M3.97 10.72a5.4 5.4 0 0 1 0-3.44V4.95H.96a9 9 0 0 0 0 8.1l3.01-2.33z"/><path fill="#EA4335" d="M9 3.58c1.32 0 2.5.45 3.44 1.35l2.58-2.58C13.46.9 11.43 0 9 0A9 9 0 0 0 .96 4.95l3.01 2.33C4.68 5.16 6.66 3.58 9 3.58z"/></svg>
+                    Continuar con Google
+                </button>
+                <div class="auth-divider"><span>o</span></div>
                 <label class="checkout-modal-label" for="login-username-input">Usuario</label>
                 <input type="text" id="login-username-input" class="checkout-modal-input" autocomplete="username">
                 <label class="checkout-modal-label" for="login-password-input">Contraseña</label>
@@ -67,6 +81,11 @@
 
             <div id="auth-register-view" style="display:none;">
                 <h3 class="checkout-modal-title">Crear cuenta</h3>
+                <button type="button" class="google-signin-btn" data-google-signin>
+                    <svg class="google-signin-logo" viewBox="0 0 18 18" aria-hidden="true"><path fill="#4285F4" d="M17.64 9.2c0-.64-.06-1.25-.16-1.84H9v3.48h4.84a4.14 4.14 0 0 1-1.8 2.72v2.26h2.92c1.7-1.57 2.68-3.88 2.68-6.62z"/><path fill="#34A853" d="M9 18c2.43 0 4.47-.8 5.96-2.18l-2.92-2.26c-.8.54-1.84.86-3.04.86-2.34 0-4.32-1.58-5.03-3.7H.96v2.33A9 9 0 0 0 9 18z"/><path fill="#FBBC05" d="M3.97 10.72a5.4 5.4 0 0 1 0-3.44V4.95H.96a9 9 0 0 0 0 8.1l3.01-2.33z"/><path fill="#EA4335" d="M9 3.58c1.32 0 2.5.45 3.44 1.35l2.58-2.58C13.46.9 11.43 0 9 0A9 9 0 0 0 .96 4.95l3.01 2.33C4.68 5.16 6.66 3.58 9 3.58z"/></svg>
+                    Continuar con Google
+                </button>
+                <div class="auth-divider"><span>o</span></div>
                 <label class="checkout-modal-label" for="register-username-input">Usuario</label>
                 <input type="text" id="register-username-input" class="checkout-modal-input" autocomplete="username">
                 <label class="checkout-modal-label" for="register-email-input">Correo</label>
@@ -94,6 +113,22 @@
                 <p class="checkout-modal-success" id="forgot-success"></p>
                 <button class="checkout-modal-submit" id="forgot-submit">Enviar enlace</button>
                 <p class="checkout-modal-hint"><a href="#" id="show-login-from-forgot-link">Volver a iniciar sesión</a></p>
+            </div>
+
+            <div id="auth-google-nick-view" style="display:none;">
+                <h3 class="checkout-modal-title">Ya casi está</h3>
+                <p class="checkout-modal-hint" id="google-nick-intro"></p>
+                <label class="checkout-modal-label" for="google-username-input">Usuario</label>
+                <input type="text" id="google-username-input" class="checkout-modal-input" autocomplete="username">
+                <label class="checkout-modal-label" for="google-nick-input">Tu nick de Minecraft (Java o Bedrock)</label>
+                <div class="checkout-nick-row">
+                    <img id="google-nick-avatar" class="checkout-nick-avatar" src="" alt="" width="40" height="40">
+                    <input type="text" id="google-nick-input" class="checkout-modal-input" placeholder="Ej: Steve123" autocomplete="off">
+                </div>
+                <p class="checkout-modal-hint">Este nick queda ligado a tu cuenta para siempre — revísalo bien, ahí se entregan tus compras.</p>
+                <p class="checkout-modal-hint">¿Juegas en <strong>Bedrock</strong>? Escribe un punto delante del nick: <strong>.Steve123</strong></p>
+                <p class="checkout-modal-error" id="google-nick-error"></p>
+                <button class="checkout-modal-submit" id="google-nick-submit">Crear cuenta</button>
             </div>
         </div>
     </div>
@@ -323,6 +358,6 @@
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <script src="script.js?v=20260822b"></script>
 </body>
 </html>

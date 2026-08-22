@@ -25,6 +25,18 @@ class User(AbstractUser):
         help_text="Nick de Minecraft (Java o Bedrock) ligado a esta cuenta.",
     )
     email = models.EmailField(unique=True, blank=True, null=True, verbose_name="Correo electrónico")
+    # "sub" de Google: su identificador estable del usuario. Se guarda en vez
+    # de fiarse solo del correo porque el correo puede cambiar de dueño y el
+    # sub no. Null (no cadena vacía) para que unique deje convivir a todos
+    # los que se registraron con contraseña y nunca han usado Google.
+    google_id = models.CharField(
+        max_length=64,
+        unique=True,
+        blank=True,
+        null=True,
+        verbose_name="ID de Google",
+        help_text="Identificador de la cuenta de Google enlazada, si la hay.",
+    )
     gilcoin_balance = models.PositiveIntegerField(default=0, verbose_name="Saldo de GGcoins")
     staff_role = models.CharField(
         max_length=10, choices=StaffRole.choices, default=StaffRole.NONE, verbose_name="Rol de staff"

@@ -159,6 +159,16 @@ PAYPAL_CLIENT_ID = os.environ.get("PAYPAL_CLIENT_ID", "")
 PAYPAL_CLIENT_SECRET = os.environ.get("PAYPAL_CLIENT_SECRET", "")
 PAYPAL_MODE = os.environ.get("PAYPAL_MODE", "sandbox")
 
+# Inicio de sesión con Google. El redirect debe coincidir carácter a carácter
+# con el que esté dado de alta en la consola de Google, o el intercambio del
+# código falla con redirect_uri_mismatch. Si no hay credenciales, la API
+# responde que no está disponible y el botón no se pinta en la web.
+GOOGLE_CLIENT_ID = os.environ.get("GOOGLE_CLIENT_ID", "")
+GOOGLE_CLIENT_SECRET = os.environ.get("GOOGLE_CLIENT_SECRET", "")
+GOOGLE_REDIRECT_URI = os.environ.get(
+    "GOOGLE_REDIRECT_URI", "https://api.novapixelmc.com/api/auth/google/callback"
+)
+
 # CORS: mismo modelo de protección que el backend Node (origin explícito +
 # credentials, nunca "*" — un origin abierto con cookies sería una falla
 # CSRF). Las vistas de la API usan @csrf_exempt (ver cada app) porque el

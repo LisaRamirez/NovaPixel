@@ -2,3 +2,5 @@
 Thumbs.db
 node_modules/
 django_backend_venv/
+__pycache__/
+*.pyc
