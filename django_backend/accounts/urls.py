@@ -11,6 +11,7 @@ urlpatterns = [
     path("reset-password", views.reset_password),
     # Inicio de sesión con Google. "callback" tiene que coincidir con la URI
     # de redireccionamiento dada de alta en la consola de Google.
+    path("google/available", views.google_available),
     path("google/start", views.google_start),
     path("google/callback", views.google_callback),
     path("google/pending", views.google_pending),

@@ -293,3 +293,15 @@ def google_complete(request):
     request.session.pop(google_oauth.PENDIENTE, None)
     django_login(request, user, backend=AUTH_BACKEND)
     return JsonResponse(_user_payload(user), status=201)
+
+
+@require_http_methods(["GET"])
+def google_available(request):
+    """Dice si el botón de Google se puede pintar.
+
+    Sin credenciales en el .env el flujo no puede funcionar, y un botón que
+    falla al pulsarlo es peor que no tenerlo. El frontend pregunta esto la
+    primera vez que se abre el modal y solo entonces lo enseña; en cuanto se
+    añadan las claves y se reinicie la app, aparece solo.
+    """
+    return JsonResponse({"available": google_oauth.esta_configurado()})

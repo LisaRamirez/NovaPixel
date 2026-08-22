@@ -2718,6 +2718,21 @@ body.vip-exclusive-mode .vip-back-btn {
   text-align: center;
 }
 
+/* Los enlaces del modal ("Regístrate", "¿Olvidaste tu contraseña?") salían
+   con el azul por defecto del navegador —y morado al visitarlos—, ilegible
+   sobre el fondo oscuro. Van en el dorado de la marca. */
+.checkout-modal-hint a,
+.checkout-modal-hint a:visited {
+  color: var(--nova-gold);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.checkout-modal-hint a:hover,
+.checkout-modal-hint a:focus-visible {
+  text-decoration: underline;
+}
+
 /* El enlace "Inicia sesión" que cierra el formulario respira un poco más:
    es el final del bloque, no una nota más pegada al botón. */
 .checkout-modal-submit + .checkout-modal-hint {
@@ -2780,6 +2795,14 @@ body.vip-exclusive-mode .vip-back-btn {
   opacity: 0.65;
   cursor: default;
   transform: none;
+}
+
+/* Sin esto el atributo [hidden] no sirve de nada: el display:flex de arriba
+   gana al display:none que el navegador aplica por defecto a [hidden], y el
+   botón se seguía viendo (y pulsando) aunque Google no esté configurado. */
+.google-signin-btn[hidden],
+.auth-divider[hidden] {
+  display: none;
 }
 
 .google-signin-logo {

@@ -1110,6 +1110,7 @@ function setupAuthModal(onAuthSuccess) {
     loginUsername.value = ""
     loginPassword.value = ""
     modal.classList.add("active")
+    revelarGoogleSiProcede()
     setTimeout(() => loginUsername.focus(), 50)
   }
 
@@ -1249,6 +1250,25 @@ function setupAuthModal(onAuthSuccess) {
       window.location.href = `${NOVAPIXEL_API_BASE}/api/auth/google/start`
     })
   })
+
+  // Los botones vienen ocultos del HTML: un botón que falla al pulsarlo es
+  // peor que no tenerlo, y sin credenciales en el .env el flujo no puede
+  // funcionar. Se pregunta una sola vez, la primera que se abre el modal.
+  let googleComprobado = false
+  async function revelarGoogleSiProcede() {
+    if (googleComprobado) return
+    googleComprobado = true
+    try {
+      const res = await apiFetch("/api/auth/google/available")
+      const data = await res.json()
+      if (!res.ok || !data.available) return
+      modal
+        .querySelectorAll("[data-google-signin], [data-google-divider]")
+        .forEach((el) => el.removeAttribute("hidden"))
+    } catch {
+      // Si la API no responde, el formulario de siempre sigue ahí.
+    }
+  }
 
   if (googleSubmit) {
     googleSubmit.addEventListener("click", async () => {
